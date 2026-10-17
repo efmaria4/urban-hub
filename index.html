@@ -1,0 +1,716 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Guest guide for Urban Hub, Thessaloniki">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,-apple-system,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Urban Hub Guest Guide</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap">
+<style>
+/* Layout: phone-first "app" — illustrated bay header, quick-action grid, ask box, then soft rounded sections in arrival order. Thermaikos sky, sunny yellow, coral. */
+:root{
+  --bg:#f2f7fb; --card:#ffffff; --ink:#1d3341; --muted:#5f7685; --line:#dbe7ef;
+  --sea:#2f7396; --sky:#dcedf7; --sun:#ffc94d; --sun-soft:#fff3cf; --coral:#ef7f63; --coral-soft:#fde6df; --mint:#3fa57f;
+  --todo:#fff1c2; --todo-ink:#7a5a00; --todo-line:#e9be4a;
+  --f-display:"Fredoka", "Nunito", system-ui, sans-serif;
+  --f-body:"Nunito", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --r:22px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0e1b24; --card:#152733; --ink:#e7f1f7; --muted:#9db4c2; --line:#24404f;
+  --sea:#7fc3e4; --sky:#1b3747; --sun:#ffd26b; --sun-soft:#3a3013; --coral:#f79b82; --coral-soft:#3b2620; --mint:#6fd1a9;
+  --todo:#3a2f10; --todo-ink:#f5d888; --todo-line:#a8862e; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0e1b24; --card:#152733; --ink:#e7f1f7; --muted:#9db4c2; --line:#24404f;
+  --sea:#7fc3e4; --sky:#1b3747; --sun:#ffd26b; --sun-soft:#3a3013; --coral:#f79b82; --coral-soft:#3b2620; --mint:#6fd1a9;
+  --todo:#3a2f10; --todo-ink:#f5d888; --todo-line:#a8862e; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6}
+.wrap{max-width:640px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--f-display);font-weight:600;margin:0;text-wrap:balance}
+h1{font-size:clamp(32px,8vw,42px);line-height:1.05}
+h2{font-size:24px;line-height:1.2}
+h3{font-size:17px;font-weight:600}
+p{margin:0}
+.muted{color:var(--muted)}
+a{color:var(--sea);font-weight:700}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--coral);outline-offset:2px;border-radius:8px}
+
+/* hero */
+.hero{background:var(--sky);border-radius:0 0 32px 32px;overflow:hidden}
+.hero-inner{padding-block:28px 0;display:flex;flex-direction:column;gap:8px}
+.hello{font-weight:800;color:var(--sea);font-size:14px;letter-spacing:.04em}
+.sub{color:var(--muted);max-width:52ch}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.chip{background:var(--card);border-radius:999px;padding:4px 12px;font-size:13px;font-weight:700;color:var(--ink)}
+.bay{display:block;width:100%;height:auto;margin-top:12px}
+
+/* status */
+.status{margin-top:-18px;position:relative;background:var(--card);border-radius:var(--r);padding:14px 16px;display:flex;gap:12px;align-items:center;box-shadow:0 6px 20px -12px rgba(20,60,90,.35)}
+.dot{width:12px;height:12px;border-radius:50%;background:var(--mint);flex:none;box-shadow:0 0 0 4px color-mix(in srgb,var(--mint) 25%,transparent)}
+.dot.quiet{background:var(--coral);box-shadow:0 0 0 4px color-mix(in srgb,var(--coral) 25%,transparent)}
+.status p{font-size:14px}
+
+/* quick actions */
+.section-title{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+.qa{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.qa a,.qa button{background:var(--card);border:0;border-radius:18px;padding:14px 8px 12px;display:flex;flex-direction:column;align-items:center;gap:6px;text-decoration:none;color:var(--ink);font-weight:700;font-size:13px;cursor:pointer;text-align:center;line-height:1.25}
+.qa a:hover,.qa button:hover{transform:translateY(-2px)}
+.qa a,.qa button{transition:transform .15s}
+.ico{width:44px;height:44px;border-radius:14px;display:grid;place-items:center}
+.ico svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.i1{background:var(--sky);color:var(--sea)} .i2{background:var(--sun-soft);color:var(--todo-ink)} .i3{background:var(--coral-soft);color:var(--coral)}
+
+/* ask */
+.ask{background:var(--card);border-radius:var(--r);padding:18px;display:flex;flex-direction:column;gap:12px}
+.ask-row{display:flex;gap:8px}
+.ask input{flex:1;min-width:0;font:inherit;border:2px solid var(--line);background:var(--bg);color:var(--ink);border-radius:14px;padding:12px 14px}
+.ask input:focus{border-color:var(--sea);outline:none}
+.suggest{display:flex;flex-wrap:wrap;gap:6px}
+.suggest button{border:1.5px solid var(--line);background:transparent;border-radius:999px;padding:4px 12px;font-size:13px;font-weight:700;cursor:pointer;color:var(--sea)}
+.answers{display:flex;flex-direction:column;gap:8px}
+.ans{background:var(--bg);border-radius:14px;padding:12px 14px;display:flex;flex-direction:column;gap:4px}
+.ans b{font-family:var(--f-display);font-weight:600}
+.ans a{font-size:14px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border:0;border-radius:14px;padding:11px 16px;font-weight:800;cursor:pointer;text-decoration:none;background:var(--sea);color:var(--bg)}
+.btn.alt{background:var(--sky);color:var(--sea)}
+.btn.wa{background:var(--mint);color:var(--bg)}
+
+/* sections */
+main{display:flex;flex-direction:column;gap:28px;padding-block:24px 8px}
+.block{display:flex;flex-direction:column;gap:12px;scroll-margin-top:16px}
+.tag{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--coral)}
+.card{background:var(--card);border-radius:var(--r);padding:16px 18px;display:flex;flex-direction:column;gap:10px}
+.rows{background:var(--card);border-radius:var(--r);overflow:hidden}
+.rows details{border-top:1px solid var(--line)}
+.rows details:first-child{border-top:0}
+.rows summary{list-style:none;cursor:pointer;padding:14px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px;font-weight:700}
+.rows summary::-webkit-details-marker{display:none}
+.rows summary::after{content:"+";font-family:var(--f-display);font-size:22px;color:var(--sea);line-height:1;flex:none}
+.rows details[open] summary::after{content:"–"}
+.rows .body{padding:0 18px 16px;color:var(--muted)}
+.todo{background:var(--todo);color:var(--todo-ink);border:1px dashed var(--todo-line);border-radius:6px;padding:0 6px;font-weight:700;font-size:.92em}
+
+/* stepper */
+.stepper{background:var(--card);border-radius:var(--r);padding:18px;display:flex;flex-direction:column;gap:14px}
+.prog{display:flex;gap:6px}
+.prog span{flex:1;height:6px;border-radius:6px;background:var(--line)}
+.prog span.on{background:var(--sea)}
+.step-num{font-weight:800;color:var(--sea);font-size:13px}
+.photo{border:2px dashed var(--line);border-radius:16px;padding:22px;text-align:center;font-size:13px;color:var(--muted)}
+.nav-row{display:flex;justify-content:space-between;gap:8px}
+
+/* picks */
+.filters{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.filters button{border:0;background:var(--card);border-radius:999px;padding:6px 14px;font-weight:700;font-size:14px;cursor:pointer;white-space:nowrap}
+.filters button[aria-pressed="true"]{background:var(--sea);color:var(--bg)}
+.picks{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.pick{background:var(--card);border-radius:18px;padding:14px 16px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.pick .cat{font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--coral)}
+.pick p{color:var(--muted);font-size:15px}
+
+/* extras */
+.extra{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-top:1px solid var(--line);cursor:pointer}
+.extra:first-of-type{border-top:0}
+.extra input,.check input{width:22px;height:22px;accent-color:var(--sea);flex:none;margin-top:2px}
+.extra span{display:flex;flex-direction:column;flex:1;min-width:0}
+.extra small{color:var(--muted);font-size:14px}
+.price{font-weight:800;color:var(--sea);white-space:nowrap}
+
+/* checkout */
+.bar{height:10px;border-radius:10px;background:var(--line);overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--mint);transition:width .3s}
+.check{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.check label{display:flex;gap:12px;align-items:flex-start;cursor:pointer}
+.check input:checked+span{color:var(--muted);text-decoration:line-through}
+.done{background:var(--sun-soft);border-radius:16px;padding:12px 14px;font-weight:700}
+
+.time-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.time-row input{font:inherit;border:2px solid var(--line);background:var(--bg);color:var(--ink);border-radius:12px;padding:9px 12px}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:999px;font-weight:700;font-size:14px;z-index:20}
+footer{padding-block:24px 48px;text-align:center;color:var(--muted);font-size:14px}
+.legend{font-size:13px;color:var(--muted)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* language switcher */
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.langs{display:flex;gap:6px}
+.langs button{display:flex;align-items:center;gap:6px;border:2px solid transparent;background:var(--card);border-radius:999px;padding:4px 10px 4px 5px;font-weight:800;font-size:13px;cursor:pointer;color:var(--ink)}
+.langs button[aria-pressed="true"]{border-color:var(--sea)}
+.flag{width:24px;height:16px;border-radius:4px;overflow:hidden;display:block;flex:none;box-shadow:0 0 0 1px var(--line)}
+.flag svg{width:100%;height:100%;display:block}
+.copyNum{padding:3px 10px;font-size:13px;margin-left:4px}
+</style>
+</head>
+<body>
+
+
+<div class="hero">
+  <div class="wrap hero-inner">
+    <div class="topbar">
+      <span class="hello" id="hello"></span>
+      <div class="langs" id="langs" role="group" aria-label="Language"></div>
+    </div>
+    <h1>Urban Hub</h1>
+    <p class="sub" data-t="sub"></p>
+    <div class="chips" id="chips"></div>
+  </div>
+  <svg class="bay" viewBox="0 0 400 110" aria-hidden="true">
+    <circle cx="330" cy="38" r="20" fill="var(--sun)"/>
+    <g fill="var(--card)">
+      <rect x="64" y="34" width="26" height="52" rx="3"/>
+      <rect x="61" y="28" width="32" height="8" rx="2"/>
+      <rect x="66" y="20" width="22" height="10" rx="2"/>
+    </g>
+    <g fill="var(--sky)"><rect x="70" y="44" width="4" height="7" rx="2"/><rect x="80" y="44" width="4" height="7" rx="2"/><rect x="75" y="60" width="4" height="7" rx="2"/></g>
+    <path d="M230 78 l30 0 l-6 9 l-18 0 z" fill="var(--coral)"/><path d="M244 78 v-24 l14 20 z" fill="var(--card)"/>
+    <path d="M0 86 q25 -10 50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 V110 H0 z" fill="var(--sea)" opacity=".35"/>
+    <path d="M0 94 q25 -9 50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 V110 H0 z" fill="var(--sea)" opacity=".7"/>
+  </svg>
+</div>
+
+<div class="wrap">
+  <div class="status" role="status"><span class="dot" id="dot"></span><p id="statusText"></p></div>
+</div>
+
+<main class="wrap">
+
+<section class="block">
+  <h2 data-t="quickTitle"></h2>
+  <div class="qa">
+    <button type="button" id="qaWifi"><span class="ico i1"><svg viewBox="0 0 24 24"><path d="M2 9a15 15 0 0 1 20 0M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0"/><circle cx="12" cy="19.5" r=".8" fill="currentColor"/></svg></span><span data-t="qaWifi"></span></button>
+    <a href="https://www.google.com/maps/search/?api=1&query=Dialetti+17+Thessaloniki" target="_blank" rel="noopener"><span class="ico i2"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg></span><span data-t="qaDir"></span></a>
+    <a href="#door"><span class="ico i3"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><circle cx="15" cy="12" r="1" fill="currentColor"/></svg></span><span data-t="qaDoor"></span></a>
+    <a id="qaWa" href="#" target="_blank" rel="noopener"><span class="ico i1"><svg viewBox="0 0 24 24"><path d="M4 20l1.4-4A8 8 0 1 1 8 19z"/></svg></span><span data-t="qaMsg"></span></a>
+    <a href="#city"><span class="ico i2"><svg viewBox="0 0 24 24"><path d="M5 11h14l-1 8H6zM8 11V8a4 4 0 0 1 8 0v3"/></svg></span><span data-t="qaEat"></span></a>
+    <a href="#checkout"><span class="ico i3"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></span><span data-t="qaOut"></span></a>
+  </div>
+  <p class="legend">Wi-Fi: <b>Urban Hub 5G</b> · <span data-t="password"></span>: <b id="wifiPass"></b></p>
+</section>
+
+<section class="block">
+  <div class="ask">
+    <h2 data-t="askTitle"></h2>
+    <p class="muted" data-t="askHint"></p>
+    <form class="ask-row" id="askForm">
+      <input id="askInput" type="search" autocomplete="off" aria-label="Question">
+      <button class="btn" type="submit" data-t="askBtn"></button>
+    </form>
+    <div class="suggest" id="suggest"></div>
+    <div class="answers" id="answers" aria-live="polite"></div>
+  </div>
+</section>
+
+<section class="block" id="arrive">
+  <span class="tag" data-t="arriveTag"></span>
+  <h2 data-t="arriveTitle"></h2>
+  <div class="rows" data-rows="arrive"></div>
+  <div class="card">
+    <h3 data-t="arrCardTitle"></h3>
+    <div class="time-row"><label for="arrTime" class="muted" data-t="arrLabel"></label><input id="arrTime" type="time" value="15:00"><a class="btn wa" id="arrSend" href="#" target="_blank" rel="noopener" data-t="sendWa"></a></div>
+  </div>
+</section>
+
+<section class="block" id="door">
+  <span class="tag" data-t="doorTag"></span>
+  <h2 data-t="doorTitle"></h2>
+  <div class="stepper">
+    <div class="prog" id="prog"></div>
+    <span class="step-num" id="stepNum"></span>
+    <h3 id="stepTitle"></h3>
+    <p class="muted" id="stepText"></p>
+    <div class="photo" id="stepPhoto"></div>
+    <div class="nav-row"><button class="btn alt" type="button" id="prevStep" data-t="back"></button><button class="btn" type="button" id="nextStep"></button></div>
+  </div>
+  <p class="muted"><span data-t="stuck"></span> <a id="stuckWa" href="#" target="_blank" rel="noopener" data-t="stuckLink"></a></p>
+</section>
+
+<section class="block" id="home">
+  <span class="tag" data-t="homeTag"></span>
+  <h2 data-t="homeTitle"></h2>
+  <div class="rows" data-rows="home"></div>
+</section>
+
+<section class="block" id="rules">
+  <span class="tag" data-t="rulesTag"></span>
+  <h2 data-t="rulesTitle"></h2>
+  <div class="card" id="rulesCard"></div>
+</section>
+
+<section class="block" id="city">
+  <span class="tag" data-t="cityTag"></span>
+  <h2 data-t="cityTitle"></h2>
+  <p class="muted" data-t="cityIntro"></p>
+  <div class="filters" id="filters" role="group" aria-label="Filter"></div>
+  <div class="picks" id="picks"></div>
+  <div class="rows" data-rows="city"></div>
+</section>
+
+<section class="block" id="extras">
+  <span class="tag" data-t="extrasTag"></span>
+  <h2 data-t="extrasTitle"></h2>
+  <div class="card">
+    <div id="extrasList"></div>
+    <a class="btn wa" id="extrasSend" href="#" target="_blank" rel="noopener"></a>
+    <p class="legend" data-t="extrasNote"></p>
+  </div>
+</section>
+
+<section class="block" id="faq">
+  <span class="tag" data-t="faqTag"></span>
+  <h2>FAQ</h2>
+  <div class="rows" data-rows="faq"></div>
+</section>
+
+<section class="block" id="checkout">
+  <span class="tag" data-t="outTag"></span>
+  <h2 data-t="outTitle"></h2>
+  <div class="card">
+    <div class="bar"><i id="bar"></i></div>
+    <ul class="check" id="checkList"></ul>
+    <div class="done" id="doneBox" hidden><span data-t="doneText"></span> <a id="byeWa" href="#" target="_blank" rel="noopener" data-t="byeLink"></a><span data-t="doneReview"></span></div>
+  </div>
+</section>
+
+<section class="block" id="help">
+  <span class="tag" data-t="helpTag"></span>
+  <h2 data-t="helpTitle"></h2>
+  <div class="rows" data-rows="help"></div>
+</section>
+
+<section class="block" id="us">
+  <span class="tag" data-t="usTag"></span>
+  <h2 data-t="usTitle"></h2>
+  <div class="card"><p data-t="usText"></p></div>
+</section>
+
+<p class="legend"><span class="todo" data-t="yellow"></span> <span data-t="legend"></span></p>
+</main>
+
+<footer data-t="footer"></footer>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+// ===== Settings =====
+var HOST_PHONE = "306984211339";   // WhatsApp, digits only with country code
+var WIFI_PASS  = "NxaG8E6WMVpFC[J(";
+var PHONES = [["Maria","+30 698 421 1339"],["Nick","+30 694 429 6446"]];
+
+// ===== Languages: to add one, add an entry here and a matching block in TEXT (missing parts fall back to English) =====
+var FLAG_GR = '<svg viewBox="0 0 27 18"><rect width="27" height="18" fill="#0D5EAF"/><g fill="#fff"><rect y="2" width="27" height="2"/><rect y="6" width="27" height="2"/><rect y="10" width="27" height="2"/><rect y="14" width="27" height="2"/></g><rect width="10" height="10" fill="#0D5EAF"/><g fill="#fff"><rect x="4" width="2" height="10"/><rect y="4" width="10" height="2"/></g></svg>';
+var FLAG_GB = '<svg viewBox="0 0 60 30"><rect width="60" height="30" fill="#012169"/><path d="M0 0L60 30M60 0L0 30" stroke="#fff" stroke-width="6"/><path d="M0 0L60 30M60 0L0 30" stroke="#C8102E" stroke-width="2"/><path d="M30 0V30M0 15H60" stroke="#fff" stroke-width="10"/><path d="M30 0V30M0 15H60" stroke="#C8102E" stroke-width="6"/></svg>';
+var LANGS = [
+  {code:"en", label:"EN", flag:FLAG_GB},
+  {code:"el", label:"ΕΛ", flag:FLAG_GR}
+];
+
+var TODO = function(t){ return '<span class="todo">'+t+'</span>'; };
+var LUG_EN = "There are luggage lockers 5 minutes away: <b>Boxy Lockers</b>, Dim. Gounari 19.";
+var LUG_EL = "Υπάρχουν θυρίδες αποσκευών 5 λεπτά από το διαμέρισμα: <b>Boxy Lockers</b>, Δημ. Γούναρη 19.";
+
+var TEXT = {
+en: {
+  hello:["Καλημέρα! Good morning","Γεια σου! Good afternoon","Καλησπέρα! Good evening"],
+  sub:"Your little home in the centre of Thessaloniki. Hosted by Fenia and family. You'll mostly be chatting with Maria and Nick.",
+  chips:["50 m²","3rd floor · lift","King bed","Balcony","200 Mbps"],
+  statusNow:"It's <b>{t}</b> in Thessaloniki.", statusQuiet:"Quiet hours right now, please keep it cosy and calm 🤫", statusFree:"Enjoy the city! Next quiet hours: {n}.", from22:"from 22:00",
+  quickTitle:"Quick help", qaWifi:"Copy Wi-Fi code", qaDir:"Directions", qaDoor:"Getting in", qaMsg:"Message us", qaEat:"Eat & drink", qaOut:"Check-out",
+  password:"Password", copied:"copied", wifiLabel:"Wi-Fi password", numLabel:"Number",
+  askTitle:"Ask the guide", askHint:"Type anything: “parking”, “heating”, “late check-out”…", askPh:"What do you need?", askBtn:"Ask",
+  suggestions:["Wi-Fi","Parking","Heating","Late check-out","Where to eat"],
+  seeDetails:"See details →", notQuite:"Not quite it?", notFound:"We don't have that one written down yet", askWa:"Ask Maria on WhatsApp",
+  arriveTag:"Before you arrive", arriveTitle:"Getting here", arrCardTitle:"Tell us when you'll arrive", arrLabel:"Arrival time", sendWa:"Send on WhatsApp",
+  doorTag:"At Dialetti 17", doorTitle:"Getting in, step by step", back:"Back", next:"Next step", restart:"Start over", stepOf:"Step {a} of {b}",
+  stuck:"Stuck at the door?", stuckLink:"Message us and we'll talk you through it.",
+  homeTag:"Settling in", homeTitle:"The apartment",
+  rulesTag:"Keeping it lovely", rulesTitle:"House rules",
+  rules:[["Quiet hours: 14:00–17:00 and 22:00–07:00.","The afternoon rest is a Greek tradition, and our neighbours love you for it."],["No smoking inside.","The balcony is fine."],["No parties or extra overnight guests.","Only guests on the booking."],["Pets only if agreed beforehand.",""],["Something broke?","Accidents happen. Just tell us so we can fix it."]],
+  cityTag:"Exploring", cityTitle:"Our Thessaloniki", cityIntro:"The places we actually love, a few minutes from your door.", all:"All",
+  extrasTag:"Make it special", extrasTitle:"Extras", extrasNote:"We'll confirm availability before anything is charged.", extrasBtn:"Request on WhatsApp", extrasBtnN:"Request {n} extra(s) on WhatsApp",
+  faqTag:"Good to know",
+  outTag:"Last day", outTitle:"Check-out by 11:00",
+  checklist:["Dishes washed","Rubbish taken to the street bins","AC, lights and appliances off","Windows and balcony door closed","Keys back in the lockbox"],
+  doneText:"All done, thank you! 💛", byeLink:"Let us know you've left.", doneReview:" If you enjoyed your stay, a review means the world to a small family place like ours.",
+  helpTag:"Anytime", helpTitle:"Help & safety",
+  usTag:"Who we are", usTitle:"About us",
+  usText:"Urban Hub is our family's apartment. Our mum Fenia is the host you see on Airbnb, and we, her kids Maria and Nick, take care of everything day to day. We grew up here, and we still get excited about a good bougatsa, a sunset walk on the waterfront and finding a new favourite café. We want you to see Thessaloniki the way locals do, so ask us anything!",
+  yellow:"Yellow", legend:"= still to fill in before sharing with guests.",
+  footer:"Urban Hub · Dialetti 17, Thessaloniki · with love, Fenia & family",
+  wa:{ask:"Hi! I'm staying at Urban Hub and have a question: ", door:"Hi! I'm at the door of Urban Hub and need a little help getting in.", bye:"Hi! We've checked out of Urban Hub. Thank you for everything!", arrive:"Hi! We expect to arrive at Urban Hub around {t}.", q:"Hi! Question about Urban Hub: ", extras:"Hi! We'd love to add these extras to our Urban Hub stay: {x}.", extrasNone:"Hi! I'd like to ask about extras for our Urban Hub stay."},
+  rows:{
+    arrive:[
+      ["From the airport","Airport bus <b>01X</b> (or <b>01N</b> at night) to the centre. Get off at <b>Kamara</b> (5 min walk) or <b>Sintrivani</b> (6 min walk). Tickets cost €2: buy them on the OSETH app or from the ticket machine on the bus (the driver can help if you ask). A taxi or Uber takes around 25 minutes and costs about <b>€25–40</b>.",1],
+      ["From the train station","Easiest is the <b>metro</b>: ride to <b>Sintrivani</b>, then it's a 5-minute walk. Buses go the same way but take longer in traffic. An Uber or taxi takes 10–15 minutes and costs about <b>€8–15</b>. Coming from the KTEL bus station? "+TODO("Route to fill in")],
+      ["By car & parking","Street parking in the centre is hard to find. There are 3–4 paid garages a 5–10 minute walk away; message us and we'll recommend one. If you park on the street, check the line colours: <b>blue</b> spots are for residents only, <b>yellow</b> are for loading and unloading, and <b>white</b> are paid, so scan the code on the sign and pay on your phone."],
+      ["Arriving early / leaving late","We can't keep luggage in the apartment. "+LUG_EN+" Early check-in and late check-out are available as <a href=\"#extras\">extras</a>."]
+    ],
+    home:[
+      ["Air conditioning & heating","In summer, cool down with the AC: the remote is on the TV stand. In winter, the apartment is heated by radiators, so please use those rather than the AC. Please switch everything off when you go out."],
+      ["Hot water","Hot water is always on, no switches needed. Enjoy!"],
+      ["Kitchen & Nespresso","Fully equipped, with a Nespresso machine, kettle and toaster. We leave Nespresso capsules, sugar, milk for your coffee and a bottle of water."],
+      ["TV & Netflix","55\" smart TV with our Netflix account. Please log out of any personal accounts before you leave."],
+      ["Working from here","There's a desk in the bedroom and 200 Mbps symmetrical fibre, perfect for video calls."],
+      ["Balcony","A table and two chairs, perfect for morning coffee. Smoking is fine out here. Please close the balcony door when you go out."],
+      ["Books & board games","You'll find them in the TV cabinet. Enjoy!"],
+      ["Towels, bedding & supplies","Fresh towels and linen, hairdryer, iron and ironing board. Extra blankets and pillows are in the bedroom wardrobe. Shampoo, shower gel and toilet paper are provided. There's no washing machine, but there are self-service laundries nearby: the closest is <b>Self Service Laundry Thessaloniki</b> at Panagias Dexias 3 (8 min walk), and our favourite is <b>Urban Wash</b> (14 min walk). Need more towels? Extra sets are €5, or free if you stay more than 5 days (see <a href=\"#extras\">Extras</a>). Running low on anything else? Message us."],
+      ["Rubbish & recycling","Blue street bins are for recycling, green for everything else. The nearest ones are right outside the building. Please take your rubbish out when you leave."],
+      ["The toilet rule 🙂","Please don't flush paper. Use the bin next to the toilet, since Greek pipes are narrow."]
+    ],
+    city:[
+      ["Metro, buses & taxis","Metro: <b>Sintrivani</b>. Buses: <b>ΧΑΝΘ</b> stop (2 min) and <b>Kamara</b> (5 min). Use the free <b>OSETH</b> app for live times and tickets, or buy a ticket from the machine on the bus. Airport bus tickets (01X/01N) cost <b>€2</b> and have no reduced fare. FREENOW works for taxis, and RideMovi for bikes and scooters."],
+      ["Supermarkets","<b>AB Shop &amp; Go</b>, 3 min: small, but open until 22:00 and on Sundays.<br><b>Masoutis</b>, 4 min.<br><b>Sklavenitis</b>, 6 min."]
+    ],
+    faq:[
+      ["Is the tap water safe to drink?","Yes, it's safe. Many locals still prefer bottled water for the taste, and we leave you a bottle to start."],
+      ["Is the area safe at night?","Yes, it's a central, quiet residential street, with cafés and shops around the corner."],
+      ["Is there a cot or high chair?","Not at the moment, sorry. There's space in the bedroom for a travel cot if you bring one."],
+      ["Can I leave my luggage?","Not in the apartment, sorry, since we clean between guests. "+LUG_EN]
+    ],
+    help:[
+      ["Emergency numbers","<b>112</b>: European emergency line, in English (police, ambulance, fire)<br><b>166</b>: ambulance (EKAB)<br><b>100</b>: police<br><a href=\"https://www.gov.gr/en/sdg/healthcare/national-emergency-numbers/general/112\" target=\"_blank\" rel=\"noopener\">More on gov.gr</a>",1],
+      ["Your hosts","{phones}"],
+      ["Hospitals","Hospitals in Thessaloniki take turns being on call for emergencies. Call <b>112</b>, or <b>166</b> for an ambulance, and they'll direct you. You can also message us anytime."],
+      ["Night pharmacy","Pharmacies take turns staying open at night and on Sundays. See tonight's list on <a href=\"https://www.vrisko.gr/efimeries-farmakeion/thessaloniki/\" target=\"_blank\" rel=\"noopener\">vrisko.gr</a> (in Greek; look for “Θεσσαλονίκη”)."]
+    ]
+  },
+  steps:[
+    ["Find the glass door","At Dialetti 17, look for the building's glass entrance door. The lockbox is right next to it.","Photo: glass door + lockbox"],
+    ["Open the lockbox","We'll send you the code on your arrival day. Take the keys inside.","Photo: lockbox"],
+    ["Let yourself in","Use the key to open the glass door, then take the lift to the <b>3rd floor</b>.","Photo: the lift"],
+    ["Go to the door on the far right","Step out of the lift and open the door all the way on the right.","Photo: 3rd floor hallway"],
+    ["Welcome home!","Urban Hub is the door on your <b>left</b>. Wi-Fi is <b>Urban Hub 5G</b>. Make yourself comfortable 💛","Photo: apartment door"]
+  ],
+  picks:[
+    ["Breakfast","Giannis","The best bougatsa in town, in our opinion. Bougatsa is Thessaloniki's classic pastry: try it sweet with cream or savoury with cheese."],
+    ["Coffee","Cho Ban","Great coffee just a 2-minute walk away. It's mostly takeaway, so grab a freddo espresso and go."],
+    ["Coffee","The Urbanist","Our pick when you want to sit and enjoy your coffee. Excellent coffee and a few cosy tables."],
+    ["Dinner","Γιοκ Μπαλίκ (Yiok Balik)","An amazing spot just around the corner, one of our favourites."],
+    ["Sights","The waterfront (Nea Paralia)","From the White Tower toward the Umbrellas sculpture, best at sunset."],
+    ["Sights","Rotunda & Arch of Galerius","Roman monuments a short walk from the apartment."],
+    ["Sights","Ano Poli & the old walls","The old upper town, with the best view over the bay."]
+  ],
+  extras:[["late","Late check-out","Stay until 13:00, when no one arrives that day","€10"],["early","Early check-in","Arrive from 13:00, subject to availability","€10"],["towels","Extra towels","One set = 1 small + 1 large towel. Free for stays of more than 5 days, just ask!","€5 / set"],["welcome","Welcome pack","Local treats waiting for you on arrival","Ask us"]],
+  kb:[
+    ["Wi-Fi","wifi wi-fi internet password network connect","Network <b>Urban Hub 5G</b>, password <b>{wifi}</b>. Tap “Copy Wi-Fi code” in Quick help.",""],
+    ["Check-in time","check-in checkin arrive arrival time when","Check-in is from <b>15:00</b>. Early check-in from 13:00 is €10.","#door"],
+    ["Check-out time","check-out checkout leave departure time","Please check out by <b>11:00</b>. There's a handy checklist.","#checkout"],
+    ["Getting in / lockbox","door key keys lockbox code enter entrance building get in glass","Self check-in with the lockbox next to the glass door. Follow the step-by-step guide.","#door"],
+    ["Parking","parking park car garage","Garages 5–10 min away. On the street: blue = residents only, yellow = loading, white = paid (scan & pay).","#arrive"],
+    ["From the airport","airport bus taxi uber skg arrive","Bus 01X (01N at night), ticket €2 (OSETH app or the machine on the bus), or a ~25 min taxi/Uber (€25–40).","#arrive"],
+    ["Heating & AC","ac air conditioning heating heat cold hot remote temperature radiator","AC for cooling (remote on the TV stand). In winter, please heat with the radiators.","#home"],
+    ["Hot water","hot water shower boiler","Hot water is always on, no switches needed.","#home"],
+    ["Toilet paper","toilet paper flush bathroom","Please don't flush paper. Use the bin next to the toilet.","#home"],
+    ["Rubbish & recycling","trash rubbish garbage bin recycling","Blue street bins for recycling, green for everything else, right outside the building.","#home"],
+    ["TV & Netflix","tv netflix television movie","55\" smart TV with our Netflix. Please log out of personal accounts before leaving.","#home"],
+    ["Towels & supplies","towels bedding blanket pillow sheets hairdryer iron soap shampoo supplies","Fresh towels and linen, shampoo, shower gel, hairdryer and iron. Extra blankets are in the bedroom wardrobe. Extra towel sets are €5, or free for stays of more than 5 days.","#home"],
+    ["Laundry","washing machine laundry wash clothes laundromat","No washing machine. Closest laundry: Panagias Dexias 3 (8 min). Our favourite: Urban Wash (14 min).","#home"],
+    ["Board games & books","games board books read","In the TV cabinet.","#home"],
+    ["Coffee machine","coffee nespresso capsules kettle kitchen cook","Nespresso machine, capsules, sugar and milk are ready for you.","#home"],
+    ["Quiet hours","quiet noise loud hours music","14:00–17:00 and 22:00–07:00.","#rules"],
+    ["Smoking","smoke smoking cigarette balcony","No smoking inside; the balcony is fine.","#rules"],
+    ["Luggage","luggage bags suitcase store drop locker","Boxy Lockers at Dim. Gounari 19, 5 minutes away.","#faq"],
+    ["Late check-out","late checkout stay longer extend","Until 13:00 for €10, when there's no guest arriving that day.","#extras"],
+    ["Early check-in","early checkin arrive early","From 13:00 for €10, subject to availability.","#extras"],
+    ["Where to eat","eat food restaurant dinner lunch breakfast bougatsa souvlaki taverna hungry","Our personal favourites are in Our Thessaloniki.","#city"],
+    ["Coffee places","cafe café coffee freddo","Cho Ban for takeaway, The Urbanist to sit and enjoy.","#city"],
+    ["Metro & buses","metro subway bus transport ticket oseth scooter bike train station ktel","Metro: Sintrivani. Buses: ΧΑΝΘ (2 min) and Kamara (5 min). Buy tickets on the OSETH app.","#city"],
+    ["Supermarket","supermarket groceries shop food buy sunday","AB Shop & Go (3 min, open till 22:00 and Sundays), Masoutis (4 min), Sklavenitis (6 min).","#city"],
+    ["Pharmacy","pharmacy medicine chemist","Pharmacies take turns staying open at night; see Help & safety for tonight's list.","#help"],
+    ["Emergency","emergency police ambulance fire hospital doctor help","<b>112</b> emergency, <b>166</b> ambulance, <b>100</b> police.","#help"],
+    ["Tap water","tap water drink drinking","Yes, it's safe. Locals often prefer bottled for the taste.","#faq"]
+  ]
+},
+
+el: {
+  hello:["Καλημέρα!","Καλησπέρα!","Καλησπέρα!"],
+  sub:"Το δικό σας σπιτάκι στο κέντρο της Θεσσαλονίκης. Οικοδέσποινα η Φένια και η οικογένειά της. Θα μιλάτε κυρίως με τη Μαρία και τον Νίκο.",
+  chips:["50 τ.μ.","3ος όροφος · ασανσέρ","Διπλό king size","Μπαλκόνι","200 Mbps"],
+  statusNow:"Η ώρα στη Θεσσαλονίκη είναι <b>{t}</b>.", statusQuiet:"Τώρα είναι ώρες κοινής ησυχίας, παρακαλούμε χαμηλούς τόνους 🤫", statusFree:"Απολαύστε την πόλη! Επόμενες ώρες ησυχίας: {n}.", from22:"από τις 22:00",
+  quickTitle:"Γρήγορη βοήθεια", qaWifi:"Αντιγραφή κωδικού Wi-Fi", qaDir:"Οδηγίες χάρτη", qaDoor:"Είσοδος", qaMsg:"Στείλτε μας", qaEat:"Φαγητό & καφές", qaOut:"Αναχώρηση",
+  password:"Κωδικός", copied:"αντιγράφηκε", wifiLabel:"Ο κωδικός Wi-Fi", numLabel:"Ο αριθμός",
+  askTitle:"Ρωτήστε τον οδηγό", askHint:"Γράψτε ό,τι θέλετε: «πάρκινγκ», «θέρμανση», «αργή αναχώρηση»…", askPh:"Τι χρειάζεστε;", askBtn:"Ρώτα",
+  suggestions:["Wi-Fi","Πάρκινγκ","Θέρμανση","Αργή αναχώρηση","Πού να φάω"],
+  seeDetails:"Δείτε λεπτομέρειες →", notQuite:"Δεν βρήκατε αυτό που ψάχνατε;", notFound:"Δεν το έχουμε γράψει ακόμα", askWa:"Ρωτήστε τη Μαρία στο WhatsApp",
+  arriveTag:"Πριν φτάσετε", arriveTitle:"Πώς θα έρθετε", arrCardTitle:"Πείτε μας τι ώρα θα φτάσετε", arrLabel:"Ώρα άφιξης", sendWa:"Αποστολή στο WhatsApp",
+  doorTag:"Στη Dialetti 17", doorTitle:"Η είσοδος, βήμα βήμα", back:"Πίσω", next:"Επόμενο βήμα", restart:"Από την αρχή", stepOf:"Βήμα {a} από {b}",
+  stuck:"Κολλήσατε στην πόρτα;", stuckLink:"Στείλτε μας και θα σας καθοδηγήσουμε.",
+  homeTag:"Τακτοποίηση", homeTitle:"Το διαμέρισμα",
+  rulesTag:"Για να μείνει όμορφο", rulesTitle:"Κανόνες σπιτιού",
+  rules:[["Ώρες κοινής ησυχίας: 14:00–17:00 και 22:00–07:00.","Οι γείτονες σας ευχαριστούν!"],["Όχι κάπνισμα μέσα στο σπίτι.","Στο μπαλκόνι επιτρέπεται."],["Όχι πάρτι ή επιπλέον επισκέπτες για διανυκτέρευση.","Μόνο τα άτομα της κράτησης."],["Κατοικίδια μόνο αν το συμφωνήσουμε από πριν.",""],["Χάλασε κάτι;","Συμβαίνουν αυτά. Απλώς πείτε μας για να το φτιάξουμε."]],
+  cityTag:"Εξερεύνηση", cityTitle:"Η δική μας Θεσσαλονίκη", cityIntro:"Τα μέρη που πραγματικά αγαπάμε, λίγα λεπτά από την πόρτα σας.", all:"Όλα",
+  extrasTag:"Κάντε τη διαμονή ξεχωριστή", extrasTitle:"Έξτρα", extrasNote:"Θα επιβεβαιώσουμε τη διαθεσιμότητα πριν από οποιαδήποτε χρέωση.", extrasBtn:"Αίτημα στο WhatsApp", extrasBtnN:"Αίτημα για {n} έξτρα στο WhatsApp",
+  faqTag:"Καλό να ξέρετε",
+  outTag:"Τελευταία μέρα", outTitle:"Αναχώρηση έως τις 11:00",
+  checklist:["Πιάτα πλυμένα","Σκουπίδια στους κάδους του δρόμου","Κλιματιστικό, φώτα και συσκευές κλειστά","Παράθυρα και πόρτα μπαλκονιού κλειστά","Κλειδιά πίσω στη θυρίδα (lockbox)"],
+  doneText:"Έτοιμα, σας ευχαριστούμε! 💛", byeLink:"Ενημερώστε μας ότι φύγατε.", doneReview:" Αν σας άρεσε η διαμονή, μια κριτική σημαίνει πολλά για ένα μικρό οικογενειακό κατάλυμα σαν το δικό μας.",
+  helpTag:"Οποιαδήποτε ώρα", helpTitle:"Βοήθεια & ασφάλεια",
+  usTag:"Ποιοι είμαστε", usTitle:"Λίγα λόγια για εμάς",
+  usText:"Το Urban Hub είναι το διαμέρισμα της οικογένειάς μας. Η μαμά μας, η Φένια, είναι η οικοδέσποινα που βλέπετε στο Airbnb, και εμείς, τα παιδιά της, η Μαρία και ο Νίκος, φροντίζουμε για όλα καθημερινά. Μεγαλώσαμε εδώ και ακόμα ενθουσιαζόμαστε με μια καλή μπουγάτσα, μια βόλτα στην παραλία το ηλιοβασίλεμα και ένα καινούργιο αγαπημένο καφέ. Θέλουμε να δείτε τη Θεσσαλονίκη όπως τη ζουν οι ντόπιοι, οπότε ρωτήστε μας ό,τι θέλετε!",
+  yellow:"Κίτρινο", legend:"= μένει να συμπληρωθεί πριν το στείλουμε στους επισκέπτες.",
+  footer:"Urban Hub · Dialetti 17, Θεσσαλονίκη · με αγάπη, Φένια & οικογένεια",
+  wa:{ask:"Γεια σας! Μένω στο Urban Hub και έχω μια ερώτηση: ", door:"Γεια σας! Είμαι στην πόρτα του Urban Hub και χρειάζομαι λίγη βοήθεια για να μπω.", bye:"Γεια σας! Φύγαμε από το Urban Hub. Σας ευχαριστούμε για όλα!", arrive:"Γεια σας! Υπολογίζουμε να φτάσουμε στο Urban Hub γύρω στις {t}.", q:"Γεια σας! Ερώτηση για το Urban Hub: ", extras:"Γεια σας! Θα θέλαμε να προσθέσουμε στη διαμονή μας: {x}.", extrasNone:"Γεια σας! Θα ήθελα να ρωτήσω για τα έξτρα της διαμονής."},
+  rows:{
+    arrive:[
+      ["Από το αεροδρόμιο","Λεωφορείο <b>01X</b> (ή <b>01N</b> τη νύχτα) για το κέντρο. Κατεβείτε στην <b>Καμάρα</b> (5 λεπτά με τα πόδια) ή στο <b>Σιντριβάνι</b> (6 λεπτά). Το εισιτήριο κοστίζει €2 και το αγοράζετε από την εφαρμογή ΟΣΕΘ ή από το μηχάνημα μέσα στο λεωφορείο (ο οδηγός μπορεί να σας βοηθήσει). Με ταξί ή Uber η διαδρομή είναι περίπου 25 λεπτά και κοστίζει γύρω στα <b>€25–40</b>.",1],
+      ["Από τον σιδηροδρομικό σταθμό","Ο πιο εύκολος τρόπος είναι το <b>μετρό</b> μέχρι το <b>Σιντριβάνι</b> και μετά 5 λεπτά με τα πόδια. Τα λεωφορεία κάνουν την ίδια διαδρομή, αλλά αργούν λόγω κίνησης. Με Uber ή ταξί είναι 10–15 λεπτά και περίπου <b>€8–15</b>. Έρχεστε από το ΚΤΕΛ; "+TODO("Διαδρομή προς συμπλήρωση")],
+      ["Με αυτοκίνητο & πάρκινγκ","Στο κέντρο είναι δύσκολο να βρείτε θέση στον δρόμο. Υπάρχουν 3–4 ιδιωτικά πάρκινγκ με πληρωμή, 5–10 λεπτά με τα πόδια· στείλτε μας και θα σας προτείνουμε ένα. Αν παρκάρετε στον δρόμο, προσέξτε τις γραμμές: οι <b>μπλε</b> θέσεις είναι μόνο για μόνιμους κατοίκους, οι <b>κίτρινες</b> για φορτοεκφόρτωση και οι <b>λευκές</b> είναι επί πληρωμή: σκανάρετε τον κωδικό στην πινακίδα και πληρώνετε από το κινητό."],
+      ["Νωρίς άφιξη / αργή αναχώρηση","Δεν μπορούμε να κρατήσουμε αποσκευές στο διαμέρισμα. "+LUG_EL+" Νωρίτερη άφιξη και αργότερη αναχώρηση υπάρχουν στα <a href=\"#extras\">έξτρα</a>."]
+    ],
+    home:[
+      ["Κλιματισμός & θέρμανση","Το καλοκαίρι δροσιστείτε με το κλιματιστικό: το τηλεχειριστήριο είναι στο έπιπλο της τηλεόρασης. Τον χειμώνα το σπίτι ζεσταίνεται με καλοριφέρ, οπότε προτιμήστε αυτά αντί για το κλιματιστικό. Παρακαλούμε κλείνετε τα πάντα όταν βγαίνετε."],
+      ["Ζεστό νερό","Το ζεστό νερό είναι πάντα διαθέσιμο, δεν χρειάζεται να ανάψετε κάτι."],
+      ["Κουζίνα & Nespresso","Πλήρως εξοπλισμένη, με μηχανή Nespresso, βραστήρα και τοστιέρα. Σας αφήνουμε κάψουλες Nespresso, ζάχαρη, γάλα για τον καφέ και ένα μπουκάλι νερό."],
+      ["Τηλεόραση & Netflix","Smart TV 55\" με τον δικό μας λογαριασμό Netflix. Παρακαλούμε αποσυνδεθείτε από τυχόν προσωπικούς λογαριασμούς πριν φύγετε."],
+      ["Δουλειά από εδώ","Υπάρχει γραφείο στο υπνοδωμάτιο και οπτική ίνα 200 Mbps, ιδανική για βιντεοκλήσεις."],
+      ["Μπαλκόνι","Τραπέζι και δύο καρέκλες, τέλειο για τον πρωινό καφέ. Εδώ επιτρέπεται το κάπνισμα. Παρακαλούμε κλείνετε την μπαλκονόπορτα όταν βγαίνετε."],
+      ["Βιβλία & επιτραπέζια","Θα τα βρείτε στο έπιπλο της τηλεόρασης. Καλή διασκέδαση!"],
+      ["Πετσέτες, κλινοσκεπάσματα & είδη","Καθαρές πετσέτες και σεντόνια, πιστολάκι, σίδερο και σιδερώστρα. Επιπλέον κουβέρτες και μαξιλάρια υπάρχουν στη ντουλάπα του υπνοδωματίου. Σαμπουάν, αφρόλουτρο και χαρτί υγείας παρέχονται. Δεν υπάρχει πλυντήριο ρούχων, αλλά κοντά υπάρχουν self-service πλυντήρια: το πιο κοντινό είναι το <b>Self Service Laundry Thessaloniki</b> στην Παναγίας Δεξιάς 3 (8 λεπτά), και το αγαπημένο μας το <b>Urban Wash</b> (14 λεπτά). Χρειάζεστε κι άλλες πετσέτες; Επιπλέον σετ €5, ή δωρεάν για κρατήσεις άνω των 5 ημερών (δείτε τα <a href=\"#extras\">Έξτρα</a>). Τελειώνει κάτι άλλο; Στείλτε μας."],
+      ["Σκουπίδια & ανακύκλωση","Οι μπλε κάδοι του δρόμου είναι για ανακύκλωση και οι πράσινοι για όλα τα υπόλοιπα. Οι πιο κοντινοί είναι ακριβώς έξω από την πολυκατοικία. Παρακαλούμε πετάξτε τα σκουπίδια σας όταν φεύγετε."],
+      ["Η τουαλέτα 🙂","Παρακαλούμε μην πετάτε χαρτί στη λεκάνη. Χρησιμοποιήστε το καλαθάκι δίπλα της."]
+    ],
+    city:[
+      ["Μετρό, λεωφορεία & ταξί","Μετρό: <b>Σιντριβάνι</b>. Λεωφορεία: στάση <b>ΧΑΝΘ</b> (2 λεπτά) και <b>Καμάρα</b> (5 λεπτά). Η δωρεάν εφαρμογή <b>ΟΣΕΘ</b> δείχνει τους χρόνους άφιξης και πουλάει εισιτήρια, ή μπορείτε να κόψετε εισιτήριο από το μηχάνημα μέσα στο λεωφορείο. Το εισιτήριο για το αεροδρόμιο (01X/01N) κοστίζει <b>€2</b> και δεν έχει μειωμένο. Για ταξί υπάρχει το FREENOW και για ποδήλατα και πατίνια το RideMovi."],
+      ["Σούπερ μάρκετ","<b>ΑΒ Shop &amp; Go</b>, 3 λεπτά: μικρό, αλλά ανοιχτό έως τις 22:00 και τις Κυριακές.<br><b>Μασούτης</b>, 4 λεπτά.<br><b>Σκλαβενίτης</b>, 6 λεπτά."]
+    ],
+    faq:[
+      ["Πίνεται το νερό της βρύσης;","Ναι, είναι ασφαλές. Πολλοί ντόπιοι προτιμούν εμφιαλωμένο για τη γεύση, και σας αφήνουμε ένα μπουκάλι για αρχή."],
+      ["Είναι ασφαλής η περιοχή το βράδυ;","Ναι, είναι ένας κεντρικός, ήσυχος δρόμος κατοικιών, με καφέ και μαγαζιά στη γωνία."],
+      ["Υπάρχει παιδικό κρεβατάκι ή καρεκλάκι φαγητού;","Προς το παρόν όχι, συγγνώμη. Υπάρχει χώρος στο υπνοδωμάτιο για ένα πτυσσόμενο κρεβατάκι, αν φέρετε δικό σας."],
+      ["Μπορώ να αφήσω τις αποσκευές μου;","Όχι στο διαμέρισμα, γιατί καθαρίζουμε ανάμεσα στους επισκέπτες. "+LUG_EL]
+    ],
+    help:[
+      ["Αριθμοί έκτακτης ανάγκης","<b>112</b>: Ευρωπαϊκός αριθμός έκτακτης ανάγκης (αστυνομία, ασθενοφόρο, πυροσβεστική)<br><b>166</b>: ασθενοφόρο (ΕΚΑΒ)<br><b>100</b>: αστυνομία<br><a href=\"https://www.gov.gr/sdg/healthcare/national-emergency-numbers/general/112\" target=\"_blank\" rel=\"noopener\">Περισσότερα στο gov.gr</a>",1],
+      ["Οι οικοδεσπότες σας","{phones}"],
+      ["Νοσοκομεία","Τα νοσοκομεία της Θεσσαλονίκης εφημερεύουν εκ περιτροπής. Καλέστε το <b>112</b> ή το <b>166</b> για ασθενοφόρο και θα σας κατευθύνουν. Μπορείτε επίσης να μας στείλετε οποιαδήποτε ώρα."],
+      ["Εφημερεύοντα φαρμακεία","Τα φαρμακεία εφημερεύουν εκ περιτροπής τις νύχτες και τις Κυριακές. Δείτε τα σημερινά στο <a href=\"https://www.vrisko.gr/efimeries-farmakeion/thessaloniki/\" target=\"_blank\" rel=\"noopener\">vrisko.gr</a>."]
+    ]
+  },
+  steps:[
+    ["Βρείτε τη γυάλινη πόρτα","Στη Dialetti 17, βρείτε τη γυάλινη είσοδο της πολυκατοικίας. Η θυρίδα κλειδιών (lockbox) είναι ακριβώς δίπλα.","Φωτογραφία: γυάλινη πόρτα + θυρίδα"],
+    ["Ανοίξτε τη θυρίδα","Θα σας στείλουμε τον κωδικό την ημέρα της άφιξης. Πάρτε τα κλειδιά από μέσα.","Φωτογραφία: θυρίδα"],
+    ["Μπείτε μέσα","Ανοίξτε τη γυάλινη πόρτα με το κλειδί και πάρτε το ασανσέρ για τον <b>3ο όροφο</b>.","Φωτογραφία: ασανσέρ"],
+    ["Η πόρτα τέρμα δεξιά","Βγαίνοντας από το ασανσέρ, ανοίξτε την πόρτα που βρίσκεται τέρμα δεξιά.","Φωτογραφία: διάδρομος 3ου ορόφου"],
+    ["Καλώς ήρθατε!","Το Urban Hub είναι η πόρτα στα <b>αριστερά</b> σας. Wi-Fi: <b>Urban Hub 5G</b>. Νιώστε σαν στο σπίτι σας 💛","Φωτογραφία: πόρτα διαμερίσματος"]
+  ],
+  picks:[
+    ["Πρωινό","Γιάννης","Η καλύτερη μπουγάτσα της πόλης, κατά τη γνώμη μας. Δοκιμάστε τη με κρέμα ή με τυρί."],
+    ["Καφές","Cho Ban","Εξαιρετικός καφές, μόλις 2 λεπτά με τα πόδια. Είναι κυρίως take away, οπότε πάρτε έναν freddo espresso και συνεχίστε."],
+    ["Καφές","The Urbanist","Η επιλογή μας όταν θέλετε να κάτσετε. Πολύ καλός καφές και μερικά ζεστά τραπεζάκια."],
+    ["Φαγητό","Γιοκ Μπαλίκ","Ένα υπέροχο μέρος ακριβώς στη γωνία, από τα αγαπημένα μας."],
+    ["Αξιοθέατα","Νέα Παραλία","Από τον Λευκό Πύργο μέχρι τις Ομπρέλες, ιδανικά το ηλιοβασίλεμα."],
+    ["Αξιοθέατα","Ροτόντα & Καμάρα","Ρωμαϊκά μνημεία σε μικρή απόσταση από το διαμέρισμα."],
+    ["Αξιοθέατα","Άνω Πόλη & Κάστρα","Η παλιά πόλη, με την καλύτερη θέα στον Θερμαϊκό."]
+  ],
+  extras:[["late","Αργή αναχώρηση","Μείνετε έως τις 13:00, όταν δεν έρχεται άλλος επισκέπτης","€10"],["early","Νωρίς άφιξη","Από τις 13:00, ανάλογα με τη διαθεσιμότητα","€10"],["towels","Επιπλέον πετσέτες","Ένα σετ = 1 μικρή + 1 μεγάλη πετσέτα. Δωρεάν για κρατήσεις άνω των 5 ημερών, απλώς ζητήστε τις!","€5 / σετ"],["welcome","Πακέτο καλωσορίσματος","Τοπικές λιχουδιές σας περιμένουν όταν φτάσετε","Ρωτήστε μας"]],
+  kb:[
+    ["Wi-Fi","wifi ιντερνετ κωδικος δικτυο συνδεση","Δίκτυο <b>Urban Hub 5G</b>, κωδικός <b>{wifi}</b>. Πατήστε «Αντιγραφή κωδικού Wi-Fi» στη Γρήγορη βοήθεια.",""],
+    ["Ώρα άφιξης","αφιξη check-in checkin ωρα ποτε ερχομαι","Η άφιξη είναι από τις <b>15:00</b>. Νωρίτερα από τις 13:00 με €10.","#door"],
+    ["Ώρα αναχώρησης","αναχωρηση check-out checkout φευγω ωρα","Αναχώρηση έως τις <b>11:00</b>. Υπάρχει και λίστα ελέγχου.","#checkout"],
+    ["Είσοδος / θυρίδα","πορτα κλειδι κλειδια θυριδα lockbox κωδικος εισοδος πολυκατοικια γυαλινη","Self check-in με τη θυρίδα δίπλα στη γυάλινη πόρτα. Ακολουθήστε τα βήματα.","#door"],
+    ["Πάρκινγκ","παρκινγκ παρκαρω αυτοκινητο αμαξι γκαραζ","Πάρκινγκ 5–10 λεπτά μακριά. Στον δρόμο: μπλε = μόνο κάτοικοι, κίτρινο = φορτοεκφόρτωση, λευκό = επί πληρωμή (σκανάρετε & πληρώνετε).","#arrive"],
+    ["Από το αεροδρόμιο","αεροδρομιο λεωφορειο ταξι uber","Λεωφορείο 01X (01N τη νύχτα), εισιτήριο €2 (εφαρμογή ΟΣΕΘ ή μηχάνημα στο λεωφορείο), ή ταξί/Uber ~25 λεπτά (€25–40).","#arrive"],
+    ["Θέρμανση & κλιματισμός","θερμανση καλοριφερ κλιματιστικο air condition κρυο ζεστη τηλεχειριστηριο","Κλιματιστικό για δροσιά (τηλεχειριστήριο στο έπιπλο της TV). Τον χειμώνα, καλοριφέρ.","#home"],
+    ["Ζεστό νερό","ζεστο νερο ντους μπανιο θερμοσιφωνας","Το ζεστό νερό είναι πάντα διαθέσιμο.","#home"],
+    ["Τουαλέτα","τουαλετα χαρτι λεκανη μπανιο","Μην πετάτε χαρτί στη λεκάνη· χρησιμοποιήστε το καλαθάκι.","#home"],
+    ["Σκουπίδια","σκουπιδια καδος ανακυκλωση","Μπλε κάδοι για ανακύκλωση, πράσινοι για τα υπόλοιπα, ακριβώς έξω από την πολυκατοικία.","#home"],
+    ["Τηλεόραση & Netflix","τηλεοραση tv netflix ταινια","Smart TV 55\" με Netflix. Αποσυνδεθείτε από προσωπικούς λογαριασμούς πριν φύγετε.","#home"],
+    ["Πετσέτες & είδη","πετσετες σεντονια κουβερτα μαξιλαρι πιστολακι σιδερο σαμπουαν αφρολουτρο","Πετσέτες, σεντόνια, σαμπουάν, αφρόλουτρο, πιστολάκι και σίδερο. Κουβέρτες στη ντουλάπα του υπνοδωματίου. Επιπλέον σετ πετσέτες €5, ή δωρεάν για κρατήσεις άνω των 5 ημερών.","#home"],
+    ["Πλυντήριο","πλυντηριο ρουχα πλυσιμο","Δεν υπάρχει πλυντήριο. Το πιο κοντινό self-service: Παναγίας Δεξιάς 3 (8 λεπτά). Αγαπημένο μας: Urban Wash (14 λεπτά).","#home"],
+    ["Επιτραπέζια & βιβλία","επιτραπεζια παιχνιδια βιβλια","Στο έπιπλο της τηλεόρασης.","#home"],
+    ["Καφετιέρα","καφες nespresso καψουλες βραστηρας κουζινα","Μηχανή Nespresso, κάψουλες, ζάχαρη και γάλα σας περιμένουν.","#home"],
+    ["Ώρες ησυχίας","ησυχια θορυβος μουσικη ωρες","14:00–17:00 και 22:00–07:00.","#rules"],
+    ["Κάπνισμα","καπνισμα τσιγαρο μπαλκονι","Όχι μέσα στο σπίτι· στο μπαλκόνι επιτρέπεται.","#rules"],
+    ["Αποσκευές","αποσκευες βαλιτσες τσαντες θυριδες","Boxy Lockers, Δημ. Γούναρη 19, 5 λεπτά μακριά.","#faq"],
+    ["Αργή αναχώρηση","αργη αναχωρηση αργοτερα παραταση","Έως τις 13:00 με €10, όταν δεν έρχεται άλλος επισκέπτης.","#extras"],
+    ["Νωρίς άφιξη","νωρις αφιξη νωριτερα","Από τις 13:00 με €10, ανάλογα με τη διαθεσιμότητα.","#extras"],
+    ["Πού να φάω","φαγητο φαω εστιατοριο ταβερνα πρωινο μπουγατσα σουβλακι πεινάω","Τα αγαπημένα μας είναι στην ενότητα «Η δική μας Θεσσαλονίκη».","#city"],
+    ["Καφετέριες","καφε καφετερια freddo","Cho Ban για take away, The Urbanist για να κάτσετε.","#city"],
+    ["Μετρό & λεωφορεία","μετρο λεωφορειο συγκοινωνια εισιτηριο οσεθ πατινι ποδηλατο σταθμος κτελ τρενο","Μετρό: Σιντριβάνι. Λεωφορεία: ΧΑΝΘ (2 λεπτά) και Καμάρα (5 λεπτά). Εισιτήρια στην εφαρμογή ΟΣΕΘ.","#city"],
+    ["Σούπερ μάρκετ","σουπερ μαρκετ ψωνια κυριακη","ΑΒ Shop & Go (3 λεπτά, ανοιχτό έως 22:00 και Κυριακές), Μασούτης (4 λεπτά), Σκλαβενίτης (6 λεπτά).","#city"],
+    ["Φαρμακείο","φαρμακειο φαρμακα","Δείτε τα εφημερεύοντα στη Βοήθεια & ασφάλεια.","#help"],
+    ["Έκτακτη ανάγκη","εκτακτη αναγκη αστυνομια ασθενοφορο πυροσβεστικη νοσοκομειο γιατρος βοηθεια","<b>112</b> έκτακτη ανάγκη, <b>166</b> ασθενοφόρο, <b>100</b> αστυνομία.","#help"],
+    ["Νερό βρύσης","νερο βρυση πινεται","Ναι, είναι ασφαλές. Πολλοί προτιμούν εμφιαλωμένο για τη γεύση.","#faq"]
+  ]
+}
+};
+
+// ===== engine =====
+var lang = "en";
+function L(){ return TEXT[lang] || TEXT.en; }
+function t(k){ var v = L()[k]; return v !== undefined ? v : TEXT.en[k]; }
+function fmt(s, o){ return s.replace(/\{(\w+)\}/g, function(_, k){ return o[k] !== undefined ? o[k] : ""; }); }
+function $(id){ return document.getElementById(id); }
+function wa(text){ return "https://wa.me/" + HOST_PHONE + "?text=" + encodeURIComponent(text); }
+function toast(s){ var el=$("toast"); el.textContent=s; el.hidden=false; clearTimeout(toast.t); toast.t=setTimeout(function(){el.hidden=true},1800); }
+function copy(text, label){
+  var msg = label + " " + t("copied");
+  try{ navigator.clipboard.writeText(text).then(function(){toast(msg)},function(){toast(text)}); }catch(e){ toast(text); }
+}
+function phonesHtml(){ return PHONES.map(function(p,i){ return p[0]+': <b>'+p[1]+'</b> <button class="btn alt copyNum" type="button" data-i="'+i+'">'+(lang==="el"?"Αντιγραφή":"Copy")+'</button>'; }).join("<br>"); }
+
+function renderStatic(){
+  document.documentElement.lang = lang;
+  [].forEach.call(document.querySelectorAll("[data-t]"), function(el){ el.innerHTML = t(el.getAttribute("data-t")); });
+  $("chips").innerHTML = t("chips").map(function(c){ return '<span class="chip">'+c+'</span>'; }).join("");
+  $("askInput").placeholder = t("askPh");
+  $("wifiPass").textContent = WIFI_PASS;
+  [].forEach.call(document.querySelectorAll("[data-rows]"), function(box){
+    var list = (L().rows && L().rows[box.getAttribute("data-rows")]) || TEXT.en.rows[box.getAttribute("data-rows")];
+    box.innerHTML = list.map(function(r){ return '<details'+(r[2]?' open':'')+'><summary>'+r[0]+'</summary><div class="body">'+r[1].replace("{phones}", phonesHtml())+'</div></details>'; }).join("");
+  });
+  [].forEach.call(document.querySelectorAll(".copyNum"), function(b){ b.addEventListener("click", function(){ copy(PHONES[+b.dataset.i][1], t("numLabel")); }); });
+  $("rulesCard").innerHTML = t("rules").map(function(r){ return '<p><b>'+r[0]+'</b>'+(r[1]?' <span class="muted">'+r[1]+'</span>':'')+'</p>'; }).join("");
+  $("qaWa").href = wa(t("wa").ask);
+  $("stuckWa").href = wa(t("wa").door);
+  $("byeWa").href = wa(t("wa").bye);
+  arr();
+  status();
+  renderSuggest(); renderAnswers($("askInput").value);
+  showStep(); renderFilters(); renderPicks(); renderExtras(); renderChecklist();
+  [].forEach.call($("langs").children, function(b){ b.setAttribute("aria-pressed", b.dataset.code===lang); });
+}
+
+function status(){
+  var now = new Date();
+  var h = +new Intl.DateTimeFormat("en-GB",{hour:"numeric",hourCycle:"h23",timeZone:"Europe/Athens"}).format(now);
+  var tm = new Intl.DateTimeFormat("en-GB",{hour:"2-digit",minute:"2-digit",timeZone:"Europe/Athens"}).format(now);
+  $("hello").textContent = t("hello")[h<12?0:h<18?1:2];
+  var quiet = (h>=14 && h<17) || h>=22 || h<7;
+  $("dot").classList.toggle("quiet", quiet);
+  $("statusText").innerHTML = fmt(t("statusNow"),{t:tm}) + " " + (quiet ? t("statusQuiet") : fmt(t("statusFree"),{n: h<14 ? "14:00–17:00" : t("from22")}));
+}
+function arr(){ $("arrSend").href = wa(fmt(t("wa").arrive,{t:$("arrTime").value})); }
+
+// ask
+function norm(s){ return s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,""); }
+var STOP = ["the","is","are","can","do","does","how","what","where","when","there","to","in","a","an","my","we","our","of","for","it","any","you","have","get","i","το","τα","η","ο","οι","να","και","που","πως","πού","τι","ειναι","εχει","υπαρχει","μου","σας","με","για","στο","στη","στην","θα"];
+function search(q){
+  var words = norm(q).split(/[^a-z0-9α-ω-]+/).filter(function(w){ return w.length>1 && STOP.indexOf(w)<0; });
+  return L().kb.map(function(e){
+    var hay = norm(e[1]+" "+e[0]).split(/\s+/), score=0;
+    words.forEach(function(w){ hay.forEach(function(h){ if(h===w) score+=3; else if(h.indexOf(w)===0 || (w.indexOf(h)===0 && h.length>3)) score+=1; }); });
+    return {e:e, score:score};
+  }).filter(function(r){ return r.score>0; }).sort(function(a,b){ return b.score-a.score; }).slice(0,3);
+}
+function renderAnswers(q){
+  var box=$("answers"); box.innerHTML="";
+  if(!q || !q.trim()) return;
+  var res = search(q);
+  res.forEach(function(r){
+    var d=document.createElement("div"); d.className="ans";
+    d.innerHTML = "<b>"+r.e[0]+"</b><span>"+r.e[2].replace("{wifi}", WIFI_PASS)+"</span>"+(r.e[3]?'<a href="'+r.e[3]+'">'+t("seeDetails")+'</a>':"");
+    box.appendChild(d);
+  });
+  var f=document.createElement("div"); f.className="ans";
+  f.innerHTML = (res.length ? "<span class='muted'>"+t("notQuite")+"</span>" : "<b>"+t("notFound")+"</b>") + '<a class="btn wa" target="_blank" rel="noopener" href="'+wa(t("wa").q+q)+'">'+t("askWa")+'</a>';
+  box.appendChild(f);
+}
+function renderSuggest(){
+  $("suggest").innerHTML="";
+  t("suggestions").forEach(function(s){
+    var b=document.createElement("button"); b.type="button"; b.textContent=s;
+    b.addEventListener("click", function(){ $("askInput").value=s; renderAnswers(s); });
+    $("suggest").appendChild(b);
+  });
+}
+
+// stepper
+var cur=0;
+function showStep(){
+  var S=t("steps"), s=S[cur];
+  if(!$("prog").children.length) S.forEach(function(){ $("prog").appendChild(document.createElement("span")); });
+  $("stepNum").textContent = fmt(t("stepOf"),{a:cur+1,b:S.length});
+  $("stepTitle").textContent=s[0]; $("stepText").innerHTML=s[1]; $("stepPhoto").textContent=s[2];
+  [].forEach.call($("prog").children, function(el,i){ el.classList.toggle("on", i<=cur); });
+  $("prevStep").style.visibility = cur===0 ? "hidden" : "visible";
+  $("nextStep").textContent = cur===S.length-1 ? t("restart") : t("next");
+}
+
+// picks
+var active=0; // index into categories (0 = all)
+function cats(){ var P=t("picks"); return [t("all")].concat(P.map(function(p){return p[0]}).filter(function(c,i,a){return a.indexOf(c)===i})); }
+function renderFilters(){
+  $("filters").innerHTML="";
+  cats().forEach(function(c,i){
+    var b=document.createElement("button"); b.type="button"; b.textContent=c; b.setAttribute("aria-pressed", i===active);
+    b.addEventListener("click", function(){ active=i; renderFilters(); renderPicks(); });
+    $("filters").appendChild(b);
+  });
+}
+function renderPicks(){
+  var c=cats()[active];
+  $("picks").innerHTML = t("picks").filter(function(p){ return active===0 || p[0]===c; }).map(function(p){
+    return '<div class="pick"><span class="cat">'+p[0]+'</span><h3>'+p[1]+'</h3><p>'+p[2]+'</p></div>';
+  }).join("");
+}
+
+// extras
+var extrasSel = {};
+function renderExtras(){
+  $("extrasList").innerHTML = t("extras").map(function(x){
+    return '<label class="extra"><input type="checkbox" id="x-'+x[0]+'"'+(extrasSel[x[0]]?' checked':'')+'><span><b>'+x[1]+'</b><small>'+x[2]+'</small></span><b class="price">'+x[3]+'</b></label>';
+  }).join("");
+  extrasLink();
+}
+function extrasLink(){
+  var sel = t("extras").filter(function(x){ return extrasSel[x[0]]; }).map(function(x){ return x[1]; });
+  $("extrasSend").href = wa(sel.length ? fmt(t("wa").extras,{x:sel.join(", ")}) : t("wa").extrasNone);
+  $("extrasSend").textContent = sel.length ? fmt(t("extrasBtnN"),{n:sel.length}) : t("extrasBtn");
+}
+$("extrasList").addEventListener("change", function(e){ extrasSel[e.target.id.slice(2)] = e.target.checked; extrasLink(); });
+
+// checkout (remembered on this phone)
+var checked = [];
+try{ checked = JSON.parse(localStorage.getItem("uh-checkout2")||"[]"); }catch(e){}
+function renderChecklist(){
+  $("checkList").innerHTML = t("checklist").map(function(c,i){ return '<li><label><input type="checkbox" id="c'+i+'"'+(checked.indexOf(i)>-1?' checked':'')+'><span>'+c+'</span></label></li>'; }).join("");
+  updCheck();
+}
+function updCheck(){
+  var n = checked.length, total = t("checklist").length;
+  $("bar").style.width = (n/total*100)+"%";
+  $("doneBox").hidden = n!==total;
+}
+$("checkList").addEventListener("change", function(e){
+  var i=+e.target.id.slice(1);
+  checked = checked.filter(function(x){return x!==i}); if(e.target.checked) checked.push(i);
+  try{ localStorage.setItem("uh-checkout2", JSON.stringify(checked)); }catch(err){}
+  updCheck();
+});
+
+// fixed listeners
+$("qaWifi").addEventListener("click", function(){ copy(WIFI_PASS, t("wifiLabel")); });
+$("arrTime").addEventListener("input", arr);
+$("askForm").addEventListener("submit", function(e){ e.preventDefault(); renderAnswers($("askInput").value); });
+$("askInput").addEventListener("input", function(){ renderAnswers(this.value); });
+$("nextStep").addEventListener("click", function(){ cur = cur===t("steps").length-1 ? 0 : cur+1; showStep(); });
+$("prevStep").addEventListener("click", function(){ if(cur>0){ cur--; showStep(); } });
+
+// language switcher
+LANGS.forEach(function(l){
+  var b=document.createElement("button"); b.type="button"; b.dataset.code=l.code;
+  b.innerHTML = '<span class="flag">'+l.flag+'</span>'+l.label;
+  b.addEventListener("click", function(){ setLang(l.code); });
+  $("langs").appendChild(b);
+});
+function setLang(c){
+  if(!TEXT[c]) c="en";
+  lang=c; active=0;
+  try{ localStorage.setItem("uh-lang", c); }catch(e){}
+  renderStatic();
+}
+(function(){
+  var start="en", h=(location.hash||"").slice(1);
+  if(TEXT[h]) start=h;
+  else { try{ var s=localStorage.getItem("uh-lang"); if(s && TEXT[s]) start=s; else if((navigator.language||"").toLowerCase().indexOf("el")===0) start="el"; }catch(e){} }
+  setLang(start);
+})();
+setInterval(status, 60000);
+</script>
+
+</body>
+</html>
