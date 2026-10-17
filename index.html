@@ -288,7 +288,6 @@ footer{padding-block:24px 48px;text-align:center;color:var(--muted);font-size:14
   <div class="card"><p data-t="usText"></p></div>
 </section>
 
-<p class="legend"><span class="todo" data-t="yellow"></span> <span data-t="legend"></span></p>
 </main>
 
 <footer data-t="footer"></footer>
@@ -344,7 +343,7 @@ en: {
   rows:{
     arrive:[
       ["From the airport","Airport bus <b>01X</b> (or <b>01N</b> at night) to the centre. Get off at <b>Kamara</b> (5 min walk) or <b>Sintrivani</b> (6 min walk). Tickets cost €2: buy them on the OSETH app or from the ticket machine on the bus (the driver can help if you ask). A taxi or Uber takes around 25 minutes and costs about <b>€25–40</b>.",1],
-      ["From the train station","Easiest is the <b>metro</b>: ride to <b>Sintrivani</b>, then it's a 5-minute walk. Buses go the same way but take longer in traffic. An Uber or taxi takes 10–15 minutes and costs about <b>€8–15</b>. Coming from the KTEL bus station? "+TODO("Route to fill in")],
+      ["From the train station","Easiest is the <b>metro</b>: ride to <b>Sintrivani</b>, then it's a 5-minute walk. Buses go the same way but take longer in traffic. An Uber or taxi takes 10–15 minutes and costs about <b>€8–15</b>."],
       ["By car & parking","Street parking in the centre is hard to find. There are 3–4 paid garages a 5–10 minute walk away; message us and we'll recommend one. If you park on the street, check the line colours: <b>blue</b> spots are for residents only, <b>yellow</b> are for loading and unloading, and <b>white</b> are paid, so scan the code on the sign and pay on your phone."],
       ["Arriving early / leaving late","We can't keep luggage in the apartment. "+LUG_EN+" Early check-in and late check-out are available as <a href=\"#extras\">extras</a>."]
     ],
@@ -456,7 +455,7 @@ el: {
   rows:{
     arrive:[
       ["Από το αεροδρόμιο","Λεωφορείο <b>01X</b> (ή <b>01N</b> τη νύχτα) για το κέντρο. Κατεβείτε στην <b>Καμάρα</b> (5 λεπτά με τα πόδια) ή στο <b>Σιντριβάνι</b> (6 λεπτά). Το εισιτήριο κοστίζει €2 και το αγοράζετε από την εφαρμογή ΟΣΕΘ ή από το μηχάνημα μέσα στο λεωφορείο (ο οδηγός μπορεί να σας βοηθήσει). Με ταξί ή Uber η διαδρομή είναι περίπου 25 λεπτά και κοστίζει γύρω στα <b>€25–40</b>.",1],
-      ["Από τον σιδηροδρομικό σταθμό","Ο πιο εύκολος τρόπος είναι το <b>μετρό</b> μέχρι το <b>Σιντριβάνι</b> και μετά 5 λεπτά με τα πόδια. Τα λεωφορεία κάνουν την ίδια διαδρομή, αλλά αργούν λόγω κίνησης. Με Uber ή ταξί είναι 10–15 λεπτά και περίπου <b>€8–15</b>. Έρχεστε από το ΚΤΕΛ; "+TODO("Διαδρομή προς συμπλήρωση")],
+      ["Από τον σιδηροδρομικό σταθμό","Ο πιο εύκολος τρόπος είναι το <b>μετρό</b> μέχρι το <b>Σιντριβάνι</b> και μετά 5 λεπτά με τα πόδια. Τα λεωφορεία κάνουν την ίδια διαδρομή, αλλά αργούν λόγω κίνησης. Με Uber ή ταξί είναι 10–15 λεπτά και περίπου <b>€8–15</b>."],
       ["Με αυτοκίνητο & πάρκινγκ","Στο κέντρο είναι δύσκολο να βρείτε θέση στον δρόμο. Υπάρχουν 3–4 ιδιωτικά πάρκινγκ με πληρωμή, 5–10 λεπτά με τα πόδια· στείλτε μας και θα σας προτείνουμε ένα. Αν παρκάρετε στον δρόμο, προσέξτε τις γραμμές: οι <b>μπλε</b> θέσεις είναι μόνο για μόνιμους κατοίκους, οι <b>κίτρινες</b> για φορτοεκφόρτωση και οι <b>λευκές</b> είναι επί πληρωμή: σκανάρετε τον κωδικό στην πινακίδα και πληρώνετε από το κινητό."],
       ["Νωρίς άφιξη / αργή αναχώρηση","Δεν μπορούμε να κρατήσουμε αποσκευές στο διαμέρισμα. "+LUG_EL+" Νωρίτερη άφιξη και αργότερη αναχώρηση υπάρχουν στα <a href=\"#extras\">έξτρα</a>."]
     ],
@@ -624,7 +623,7 @@ function showStep(){
   var S=t("steps"), s=S[cur];
   if(!$("prog").children.length) S.forEach(function(){ $("prog").appendChild(document.createElement("span")); });
   $("stepNum").textContent = fmt(t("stepOf"),{a:cur+1,b:S.length});
-  $("stepTitle").textContent=s[0]; $("stepText").innerHTML=s[1]; $("stepPhoto").textContent=s[2];
+  $("stepTitle").textContent=s[0]; $("stepText").innerHTML=s[1]; $("stepPhoto").hidden = !s[3]; $("stepPhoto").innerHTML = s[3] ? '<img src="'+s[3]+'" alt="'+s[2]+'">' : "";
   [].forEach.call($("prog").children, function(el,i){ el.classList.toggle("on", i<=cur); });
   $("prevStep").style.visibility = cur===0 ? "hidden" : "visible";
   $("nextStep").textContent = cur===S.length-1 ? t("restart") : t("next");
