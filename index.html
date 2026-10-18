@@ -113,6 +113,8 @@ main{display:flex;flex-direction:column;gap:28px;padding-block:24px 8px}
 .pick{background:var(--card);border-radius:18px;padding:14px 16px;display:flex;flex-direction:column;gap:4px;min-width:0}
 .pick .cat{font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--coral)}
 .pick p{color:var(--muted);font-size:15px}
+.pick h3 a{color:inherit;text-decoration:underline;text-decoration-color:var(--coral);text-decoration-thickness:2px;text-underline-offset:3px}
+.pick h3 a span{color:var(--coral);font-size:.85em}
 
 /* extras */
 .extra{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-top:1px solid var(--line);cursor:pointer}
@@ -391,10 +393,10 @@ en: {
     ["Welcome home!","Urban Hub is the door on your <b>left</b>. Open it with the remaining key. Wi-Fi is <b>Urban Hub 5G</b>. Make yourself comfortable 💛","Apartment door",["img/hallway.jpg","img/apartment-key.jpg"]]
   ],
   picks:[
-    ["Breakfast","Giannis","The best bougatsa in town, in our opinion. Bougatsa is Thessaloniki's classic pastry: try it sweet with cream or savoury with cheese."],
-    ["Coffee","Cho Ban","Great coffee just a 2-minute walk away. It's mostly takeaway, so grab a freddo espresso and go."],
-    ["Coffee","The Urbanist","Our pick when you want to sit and enjoy your coffee. Excellent coffee and a few cosy tables."],
-    ["Dinner","Γιοκ Μπαλίκ (Yiok Balik)","An amazing spot just around the corner, one of our favourites."],
+    ["Breakfast","Giannis","The best bougatsa in town, in our opinion. Bougatsa is Thessaloniki's classic pastry: try it sweet with cream or savoury with cheese.","https://maps.app.goo.gl/1ysYACnNc3x9VQqHA"],
+    ["Coffee","Cho Ban","Great coffee just a 2-minute walk away. It's mostly takeaway, so grab a freddo espresso and go.","https://maps.app.goo.gl/LHWkP97qQ3ZGNdpD8"],
+    ["Coffee","The Urbanist","Our pick when you want to sit and enjoy your coffee. Excellent coffee and a few cosy tables.","https://maps.app.goo.gl/WaWj7T2TvGgBD1Mu7"],
+    ["Dinner","Γιοκ Μπαλίκ (Yiok Balik)","An amazing spot just around the corner, one of our favourites.","https://maps.app.goo.gl/1DFQqT7nDRwAFHSm8"],
     ["Sights","The waterfront (Nea Paralia)","From the White Tower toward the Umbrellas sculpture, best at sunset."],
     ["Sights","Rotunda & Arch of Galerius","Roman monuments a short walk from the apartment."],
     ["Sights","Ano Poli & the old walls","The old upper town, with the best view over the bay."]
@@ -503,10 +505,10 @@ el: {
     ["Καλώς ήρθατε!","Το Urban Hub είναι η πόρτα στα <b>αριστερά</b> σας. Ανοίγει με το τελευταίο κλειδί. Wi-Fi: <b>Urban Hub 5G</b>. Νιώστε σαν στο σπίτι σας 💛","Πόρτα διαμερίσματος",["img/hallway.jpg","img/apartment-key.jpg"]]
   ],
   picks:[
-    ["Πρωινό","Γιάννης","Η καλύτερη μπουγάτσα της πόλης, κατά τη γνώμη μας. Δοκιμάστε τη με κρέμα ή με τυρί."],
-    ["Καφές","Cho Ban","Εξαιρετικός καφές, μόλις 2 λεπτά με τα πόδια. Είναι κυρίως take away, οπότε πάρτε έναν freddo espresso και συνεχίστε."],
-    ["Καφές","The Urbanist","Η επιλογή μας όταν θέλετε να κάτσετε. Πολύ καλός καφές και μερικά ζεστά τραπεζάκια."],
-    ["Φαγητό","Γιοκ Μπαλίκ","Ένα υπέροχο μέρος ακριβώς στη γωνία, από τα αγαπημένα μας."],
+    ["Πρωινό","Γιάννης","Η καλύτερη μπουγάτσα της πόλης, κατά τη γνώμη μας. Δοκιμάστε τη με κρέμα ή με τυρί.","https://maps.app.goo.gl/1ysYACnNc3x9VQqHA"],
+    ["Καφές","Cho Ban","Εξαιρετικός καφές, μόλις 2 λεπτά με τα πόδια. Είναι κυρίως take away, οπότε πάρτε έναν freddo espresso και συνεχίστε.","https://maps.app.goo.gl/LHWkP97qQ3ZGNdpD8"],
+    ["Καφές","The Urbanist","Η επιλογή μας όταν θέλετε να κάτσετε. Πολύ καλός καφές και μερικά ζεστά τραπεζάκια.","https://maps.app.goo.gl/WaWj7T2TvGgBD1Mu7"],
+    ["Φαγητό","Γιοκ Μπαλίκ","Ένα υπέροχο μέρος ακριβώς στη γωνία, από τα αγαπημένα μας.","https://maps.app.goo.gl/1DFQqT7nDRwAFHSm8"],
     ["Αξιοθέατα","Νέα Παραλία","Από τον Λευκό Πύργο μέχρι τις Ομπρέλες, ιδανικά το ηλιοβασίλεμα."],
     ["Αξιοθέατα","Ροτόντα & Καμάρα","Ρωμαϊκά μνημεία σε μικρή απόσταση από το διαμέρισμα."],
     ["Αξιοθέατα","Άνω Πόλη & Κάστρα","Η παλιά πόλη, με την καλύτερη θέα στον Θερμαϊκό."]
@@ -661,7 +663,8 @@ function renderFilters(){
 function renderPicks(){
   var c=cats()[active];
   $("picks").innerHTML = t("picks").filter(function(p){ return active===0 || p[0]===c; }).map(function(p){
-    return '<div class="pick"><span class="cat">'+p[0]+'</span><h3>'+p[1]+'</h3><p>'+p[2]+'</p></div>';
+    var name = p[3] ? '<a href="'+p[3]+'" target="_blank" rel="noopener">'+p[1]+' <span aria-hidden="true">↗</span></a>' : p[1];
+    return '<div class="pick"><span class="cat">'+p[0]+'</span><h3>'+name+'</h3><p>'+p[2]+'</p></div>';
   }).join("");
 }
 
