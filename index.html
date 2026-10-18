@@ -105,6 +105,9 @@ main{display:flex;flex-direction:column;gap:28px;padding-block:24px 8px}
 .prog span.on{background:var(--sea)}
 .step-num{font-weight:800;color:var(--sea);font-size:13px}
 .photo{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px}
+.howto{margin:8px 0;padding-left:20px;display:flex;flex-direction:column;gap:4px}
+.thermo{display:grid;grid-template-columns:3fr 2fr;gap:8px;margin:10px 0;align-items:center}
+.thermo img{width:100%;border-radius:12px;background:#fff;padding:6px}
 .photo img{display:block;width:100%;max-height:360px;object-fit:cover;border-radius:16px;background:var(--line)}
 .nav-row{display:flex;justify-content:space-between;gap:8px}
 
@@ -361,7 +364,7 @@ en: {
       ["Arriving early / leaving late","We can't keep luggage in the apartment. "+LUG_EN+" Early check-in and late check-out are available as <a href=\"#extras\">extras</a>."]
     ],
     home:[
-      ["Air conditioning & heating","In summer, cool down with the AC: the remote is on the TV stand. In winter, the apartment is heated by radiators, so please use those rather than the AC. Please switch everything off when you go out."],
+      ["Air conditioning & heating","<b>Summer:</b> cool down with the AC. The remote is on the TV stand.<br><b>Winter:</b> the apartment is heated by radiators, so please use those rather than the AC. They are controlled by the <b>Stege thermostat</b> on the wall:<ol class=\"howto\"><li>Press <b>−</b> or <b>+</b> to set the temperature you want.</li><li>Press the <b>⏱/⏩</b> button (below the circle) <b>twice</b> until the screen shows <b>HOLD</b>.</li><li>Press the <b>centre button □</b> to confirm, or just wait 15 seconds.</li></ol>You don't need to touch the white receiver box with the two switches. Only if you want to turn the heating off completely, flip the <b>small switch on its left side</b> to <b>0</b>.<div class=\"thermo\"><img src=\"img/thermostat.jpg\" alt=\"Thermostat\" loading=\"lazy\"><img src=\"img/thermostat-receiver.jpg\" alt=\"Receiver\" loading=\"lazy\"></div>Please switch everything off when you go out."],
       ["Hot water","Hot water is always on, no switches needed. Enjoy!"],
       ["Kitchen & Nespresso","Fully equipped, with a Nespresso machine, kettle and toaster. We leave espresso capsules, sugar, milk for your coffee and a bottle of water."],
       ["TV & Netflix","55\" smart TV with our Netflix account. Please log out of any personal accounts before you leave."],
@@ -419,7 +422,7 @@ en: {
     ["Getting in / lockbox","door key keys lockbox code enter entrance building get in glass","Self check-in with the grey lockbox on the wall left of the glass door. We'll send you the code on WhatsApp on your arrival day.","#door"],
     ["Parking","parking park car garage","Paid garages nearby: TIF-HELEXPO “Angelaki”, Central Parking YMCA and TIF “Ioannis Vellidis”. On the street: blue = residents only, yellow = loading, white = paid (scan & pay).","#arrive"],
     ["From the airport","airport bus taxi uber skg arrive","Bus 01X (01N at night), ticket €2 (OSETH app or the machine on the bus), or a ~25 min taxi/Uber (€25–40).","#arrive"],
-    ["Heating & AC","ac air conditioning heating heat cold hot remote temperature radiator","AC for cooling (remote on the TV stand). In winter, please heat with the radiators.","#home"],
+    ["Heating & AC","ac air conditioning heating heat cold hot remote temperature radiator thermostat hold","AC for cooling (remote on the TV stand). In winter, use the radiators: set the temperature on the wall thermostat with − / +, press ⏱/⏩ twice until HOLD, then the centre button.","#home"],
     ["Hot water","hot water shower boiler","Hot water is always on, no switches needed.","#home"],
     ["Toilet paper","toilet paper flush bathroom","Please don't flush paper. Use the bin next to the toilet.","#home"],
     ["Rubbish & recycling","trash rubbish garbage bin recycling","Blue street bins for recycling, green for everything else, right outside the building.","#home"],
@@ -479,7 +482,7 @@ el: {
       ["Νωρίς άφιξη / αργή αναχώρηση","Δεν μπορούμε να κρατήσουμε αποσκευές στο διαμέρισμα. "+LUG_EL+" Νωρίτερη άφιξη και αργότερη αναχώρηση υπάρχουν στα <a href=\"#extras\">έξτρα</a>."]
     ],
     home:[
-      ["Κλιματισμός & θέρμανση","Το καλοκαίρι δροσιστείτε με το κλιματιστικό: το τηλεχειριστήριο είναι στο έπιπλο της τηλεόρασης. Τον χειμώνα το σπίτι ζεσταίνεται με καλοριφέρ, οπότε προτιμήστε αυτά αντί για το κλιματιστικό. Παρακαλούμε κλείνετε τα πάντα όταν βγαίνετε."],
+      ["Κλιματισμός & θέρμανση","<b>Καλοκαίρι:</b> δροσιστείτε με το κλιματιστικό. Το τηλεχειριστήριο είναι στο έπιπλο της τηλεόρασης.<br><b>Χειμώνας:</b> το σπίτι ζεσταίνεται με καλοριφέρ, οπότε προτιμήστε αυτά αντί για το κλιματιστικό. Ρυθμίζονται από τον <b>θερμοστάτη Stege</b> στον τοίχο:<ol class=\"howto\"><li>Πατήστε <b>−</b> ή <b>+</b> για να ορίσετε τη θερμοκρασία που θέλετε.</li><li>Πατήστε <b>δύο φορές</b> το κουμπί <b>⏱/⏩</b> (κάτω από τον κύκλο) μέχρι η οθόνη να δείξει <b>HOLD</b>.</li><li>Πατήστε το <b>κεντρικό κουμπί □</b> για επιβεβαίωση, ή περιμένετε 15 δευτερόλεπτα.</li></ol>Στον λευκό δέκτη με τους δύο διακόπτες δεν χρειάζεται να πατήσετε κάτι. Μόνο αν θέλετε να κλείσετε τελείως τη θέρμανση, γυρίστε το <b>μικρό πλαϊνό κουμπί αριστερά</b> στο <b>0</b>.<div class=\"thermo\"><img src=\"img/thermostat.jpg\" alt=\"Θερμοστάτης\" loading=\"lazy\"><img src=\"img/thermostat-receiver.jpg\" alt=\"Δέκτης\" loading=\"lazy\"></div>Παρακαλούμε κλείνετε τα πάντα όταν βγαίνετε."],
       ["Ζεστό νερό","Το ζεστό νερό είναι πάντα διαθέσιμο, δεν χρειάζεται να ανάψετε κάτι."],
       ["Κουζίνα & Nespresso","Πλήρως εξοπλισμένη, με μηχανή Nespresso, βραστήρα και τοστιέρα. Σας αφήνουμε κάψουλες espresso, ζάχαρη, γάλα για τον καφέ και ένα μπουκάλι νερό."],
       ["Τηλεόραση & Netflix","Smart TV 55\" με τον δικό μας λογαριασμό Netflix. Παρακαλούμε αποσυνδεθείτε από τυχόν προσωπικούς λογαριασμούς πριν φύγετε."],
@@ -537,7 +540,7 @@ el: {
     ["Είσοδος / θυρίδα","πορτα κλειδι κλειδια θυριδα lockbox κωδικος εισοδος πολυκατοικια γυαλινη","Self check-in με τη γκρι θυρίδα στον τοίχο αριστερά της γυάλινης πόρτας. Θα σας στείλουμε τον κωδικό στο WhatsApp την ημέρα της άφιξης.","#door"],
     ["Πάρκινγκ","παρκινγκ παρκαρω αυτοκινητο αμαξι γκαραζ","Πάρκινγκ κοντά: ΔΕΘ-HELEXPO «Αγγελάκη», Central Parking ΧΑΝΘ (YMCA) και ΔΕΘ «Ιωάννης Βελλίδης». Στον δρόμο: μπλε = μόνο κάτοικοι, κίτρινο = φορτοεκφόρτωση, λευκό = επί πληρωμή (σκανάρετε & πληρώνετε).","#arrive"],
     ["Από το αεροδρόμιο","αεροδρομιο λεωφορειο ταξι uber","Λεωφορείο 01X (01N τη νύχτα), εισιτήριο €2 (εφαρμογή ΟΣΕΘ ή μηχάνημα στο λεωφορείο), ή ταξί/Uber ~25 λεπτά (€25–40).","#arrive"],
-    ["Θέρμανση & κλιματισμός","θερμανση καλοριφερ κλιματιστικο air condition κρυο ζεστη τηλεχειριστηριο","Κλιματιστικό για δροσιά (τηλεχειριστήριο στο έπιπλο της TV). Τον χειμώνα, καλοριφέρ.","#home"],
+    ["Θέρμανση & κλιματισμός","θερμανση καλοριφερ κλιματιστικο air condition κρυο ζεστη τηλεχειριστηριο θερμοστατης","Κλιματιστικό για δροσιά (τηλεχειριστήριο στο έπιπλο της TV). Τον χειμώνα, καλοριφέρ: θερμοκρασία με − / + στον θερμοστάτη, δύο φορές ⏱/⏩ μέχρι HOLD, και μετά το κεντρικό κουμπί.","#home"],
     ["Ζεστό νερό","ζεστο νερο ντους μπανιο θερμοσιφωνας","Το ζεστό νερό είναι πάντα διαθέσιμο.","#home"],
     ["Τουαλέτα","τουαλετα χαρτι λεκανη μπανιο","Μην πετάτε χαρτί στη λεκάνη· χρησιμοποιήστε το καλαθάκι.","#home"],
     ["Σκουπίδια","σκουπιδια καδος ανακυκλωση","Μπλε κάδοι για ανακύκλωση, πράσινοι για τα υπόλοιπα, ακριβώς έξω από την πολυκατοικία.","#home"],
