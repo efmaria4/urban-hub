@@ -101,7 +101,8 @@ main{display:flex;flex-direction:column;gap:28px;padding-block:24px 8px}
 .prog span{flex:1;height:6px;border-radius:6px;background:var(--line)}
 .prog span.on{background:var(--sea)}
 .step-num{font-weight:800;color:var(--sea);font-size:13px}
-.photo{border:2px dashed var(--line);border-radius:16px;padding:22px;text-align:center;font-size:13px;color:var(--muted)}
+.photo{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px}
+.photo img{display:block;width:100%;max-height:360px;object-fit:cover;border-radius:16px;background:var(--line)}
 .nav-row{display:flex;justify-content:space-between;gap:8px}
 
 /* picks */
@@ -377,11 +378,13 @@ en: {
     ]
   },
   steps:[
-    ["Find the glass door","At Dialetti 17, look for the building's glass entrance door. The lockbox is right next to it.","Photo: glass door + lockbox"],
-    ["Open the lockbox","We'll send you the lockbox code on WhatsApp on your arrival day. Take the keys inside.","Photo: lockbox"],
-    ["Let yourself in","Use the key to open the glass door, then take the lift to the <b>3rd floor</b>.","Photo: the lift"],
-    ["Go to the door on the far right","Step out of the lift and open the door all the way on the right.","Photo: 3rd floor hallway"],
-    ["Welcome home!","Urban Hub is the door on your <b>left</b>. Wi-Fi is <b>Urban Hub 5G</b>. Make yourself comfortable 💛","Photo: apartment door"]
+    ["Find Dialetti 17","Look for the big white glass door with the number <b>17</b>, right next to the garage with the large black-and-white face mural and the red “PARKING” sign.","Building entrance",["img/building.jpg"]],
+    ["Find the lockbox","On the wall to the <b>left</b> of the glass door there are a few key boxes. Ours is the <b>grey one in the middle</b>.","Lockbox on the wall",["img/lockbox-wall.jpg"]],
+    ["Open the lockbox","Slide the cover <b>down</b> to reveal the number dials. Turn them to the code we sent you on WhatsApp, then push the <b>black button on the left</b> down and the box opens. Take the keys out.","Opening the lockbox",["img/lockbox-cover.jpg","img/lockbox-dials.jpg"]],
+    ["Open the glass door","Use the <b>small round key</b> to open the building's glass door.","Glass door key",["img/glass-door-key.jpg"]],
+    ["Take the lift to the 3rd floor","When you step out of the lift, turn <b>right</b>.","Lift on the 3rd floor",["img/lift.jpg"]],
+    ["Go to the door at the end","Walk to the door at the end of the corridor and open it with the <b>long key</b>.","Corridor door and long key",["img/corridor.jpg","img/corridor-key.jpg"]],
+    ["Welcome home!","Urban Hub is the door on your <b>left</b>. Open it with the remaining key. Wi-Fi is <b>Urban Hub 5G</b>. Make yourself comfortable 💛","Apartment door",["img/hallway.jpg","img/apartment-key.jpg"]]
   ],
   picks:[
     ["Breakfast","Giannis","The best bougatsa in town, in our opinion. Bougatsa is Thessaloniki's classic pastry: try it sweet with cream or savoury with cheese."],
@@ -397,7 +400,7 @@ en: {
     ["Wi-Fi","wifi wi-fi internet password network connect","Network <b>Urban Hub 5G</b>, password <b>{wifi}</b>. Tap “Copy Wi-Fi code” in Quick help.",""],
     ["Check-in time","check-in checkin arrive arrival time when","Check-in is from <b>15:00</b>. Early check-in from 13:00 is €10.","#door"],
     ["Check-out time","check-out checkout leave departure time","Please check out by <b>11:00</b>. There's a handy checklist.","#checkout"],
-    ["Getting in / lockbox","door key keys lockbox code enter entrance building get in glass","Self check-in with the lockbox next to the glass door. We'll send you the code on WhatsApp on your arrival day.","#door"],
+    ["Getting in / lockbox","door key keys lockbox code enter entrance building get in glass","Self check-in with the grey lockbox on the wall left of the glass door. We'll send you the code on WhatsApp on your arrival day.","#door"],
     ["Parking","parking park car garage","Garages 5–10 min away. On the street: blue = residents only, yellow = loading, white = paid (scan & pay).","#arrive"],
     ["From the airport","airport bus taxi uber skg arrive","Bus 01X (01N at night), ticket €2 (OSETH app or the machine on the bus), or a ~25 min taxi/Uber (€25–40).","#arrive"],
     ["Heating & AC","ac air conditioning heating heat cold hot remote temperature radiator","AC for cooling (remote on the TV stand). In winter, please heat with the radiators.","#home"],
@@ -489,11 +492,13 @@ el: {
     ]
   },
   steps:[
-    ["Βρείτε τη γυάλινη πόρτα","Στη Dialetti 17, βρείτε τη γυάλινη είσοδο της πολυκατοικίας. Η θυρίδα κλειδιών (lockbox) είναι ακριβώς δίπλα.","Φωτογραφία: γυάλινη πόρτα + θυρίδα"],
-    ["Ανοίξτε τη θυρίδα","Θα σας στείλουμε τον κωδικό της θυρίδας στο WhatsApp την ημέρα της άφιξης. Πάρτε τα κλειδιά από μέσα.","Φωτογραφία: θυρίδα"],
-    ["Μπείτε μέσα","Ανοίξτε τη γυάλινη πόρτα με το κλειδί και πάρτε το ασανσέρ για τον <b>3ο όροφο</b>.","Φωτογραφία: ασανσέρ"],
-    ["Η πόρτα τέρμα δεξιά","Βγαίνοντας από το ασανσέρ, ανοίξτε την πόρτα που βρίσκεται τέρμα δεξιά.","Φωτογραφία: διάδρομος 3ου ορόφου"],
-    ["Καλώς ήρθατε!","Το Urban Hub είναι η πόρτα στα <b>αριστερά</b> σας. Wi-Fi: <b>Urban Hub 5G</b>. Νιώστε σαν στο σπίτι σας 💛","Φωτογραφία: πόρτα διαμερίσματος"]
+    ["Βρείτε το Dialetti 17","Ψάξτε τη μεγάλη λευκή γυάλινη πόρτα με τον αριθμό <b>17</b>, ακριβώς δίπλα στο γκαράζ με το μεγάλο ασπρόμαυρο πρόσωπο και την κόκκινη επιγραφή «PARKING».","Είσοδος πολυκατοικίας",["img/building.jpg"]],
+    ["Βρείτε τη θυρίδα","Στον τοίχο <b>αριστερά</b> της γυάλινης πόρτας υπάρχουν μερικές θυρίδες κλειδιών. Η δική μας είναι η <b>γκρι στη μέση</b>.","Θυρίδα στον τοίχο",["img/lockbox-wall.jpg"]],
+    ["Ανοίξτε τη θυρίδα","Σύρετε το καπάκι <b>προς τα κάτω</b> για να φανούν τα νούμερα. Βάλτε τον κωδικό που σας στείλαμε στο WhatsApp και πατήστε προς τα κάτω το <b>μαύρο κουμπί αριστερά</b> για να ανοίξει. Πάρτε τα κλειδιά.","Άνοιγμα θυρίδας",["img/lockbox-cover.jpg","img/lockbox-dials.jpg"]],
+    ["Ανοίξτε τη γυάλινη πόρτα","Με το <b>μικρό στρογγυλό κλειδί</b> ανοίγετε τη γυάλινη πόρτα της πολυκατοικίας.","Κλειδί γυάλινης πόρτας",["img/glass-door-key.jpg"]],
+    ["Ασανσέρ για τον 3ο όροφο","Βγαίνοντας από το ασανσέρ, στρίψτε <b>δεξιά</b>.","Ασανσέρ 3ου ορόφου",["img/lift.jpg"]],
+    ["Η πόρτα στο τέλος του διαδρόμου","Πηγαίνετε στην πόρτα στο τέλος του διαδρόμου και ανοίξτε τη με το <b>μακρύ κλειδί</b>.","Πόρτα διαδρόμου και μακρύ κλειδί",["img/corridor.jpg","img/corridor-key.jpg"]],
+    ["Καλώς ήρθατε!","Το Urban Hub είναι η πόρτα στα <b>αριστερά</b> σας. Ανοίγει με το τελευταίο κλειδί. Wi-Fi: <b>Urban Hub 5G</b>. Νιώστε σαν στο σπίτι σας 💛","Πόρτα διαμερίσματος",["img/hallway.jpg","img/apartment-key.jpg"]]
   ],
   picks:[
     ["Πρωινό","Γιάννης","Η καλύτερη μπουγάτσα της πόλης, κατά τη γνώμη μας. Δοκιμάστε τη με κρέμα ή με τυρί."],
@@ -509,7 +514,7 @@ el: {
     ["Wi-Fi","wifi ιντερνετ κωδικος δικτυο συνδεση","Δίκτυο <b>Urban Hub 5G</b>, κωδικός <b>{wifi}</b>. Πατήστε «Αντιγραφή κωδικού Wi-Fi» στη Γρήγορη βοήθεια.",""],
     ["Ώρα άφιξης","αφιξη check-in checkin ωρα ποτε ερχομαι","Η άφιξη είναι από τις <b>15:00</b>. Νωρίτερα από τις 13:00 με €10.","#door"],
     ["Ώρα αναχώρησης","αναχωρηση check-out checkout φευγω ωρα","Αναχώρηση έως τις <b>11:00</b>. Υπάρχει και λίστα ελέγχου.","#checkout"],
-    ["Είσοδος / θυρίδα","πορτα κλειδι κλειδια θυριδα lockbox κωδικος εισοδος πολυκατοικια γυαλινη","Self check-in με τη θυρίδα δίπλα στη γυάλινη πόρτα. Θα σας στείλουμε τον κωδικό στο WhatsApp την ημέρα της άφιξης.","#door"],
+    ["Είσοδος / θυρίδα","πορτα κλειδι κλειδια θυριδα lockbox κωδικος εισοδος πολυκατοικια γυαλινη","Self check-in με τη γκρι θυρίδα στον τοίχο αριστερά της γυάλινης πόρτας. Θα σας στείλουμε τον κωδικό στο WhatsApp την ημέρα της άφιξης.","#door"],
     ["Πάρκινγκ","παρκινγκ παρκαρω αυτοκινητο αμαξι γκαραζ","Πάρκινγκ 5–10 λεπτά μακριά. Στον δρόμο: μπλε = μόνο κάτοικοι, κίτρινο = φορτοεκφόρτωση, λευκό = επί πληρωμή (σκανάρετε & πληρώνετε).","#arrive"],
     ["Από το αεροδρόμιο","αεροδρομιο λεωφορειο ταξι uber","Λεωφορείο 01X (01N τη νύχτα), εισιτήριο €2 (εφαρμογή ΟΣΕΘ ή μηχάνημα στο λεωφορείο), ή ταξί/Uber ~25 λεπτά (€25–40).","#arrive"],
     ["Θέρμανση & κλιματισμός","θερμανση καλοριφερ κλιματιστικο air condition κρυο ζεστη τηλεχειριστηριο","Κλιματιστικό για δροσιά (τηλεχειριστήριο στο έπιπλο της TV). Τον χειμώνα, καλοριφέρ.","#home"],
@@ -623,7 +628,7 @@ function showStep(){
   var S=t("steps"), s=S[cur];
   if(!$("prog").children.length) S.forEach(function(){ $("prog").appendChild(document.createElement("span")); });
   $("stepNum").textContent = fmt(t("stepOf"),{a:cur+1,b:S.length});
-  $("stepTitle").textContent=s[0]; $("stepText").innerHTML=s[1]; $("stepPhoto").hidden = !s[3]; $("stepPhoto").innerHTML = s[3] ? '<img src="'+s[3]+'" alt="'+s[2]+'">' : "";
+  $("stepTitle").textContent=s[0]; $("stepText").innerHTML=s[1]; $("stepPhoto").hidden = !(s[3] && s[3].length); $("stepPhoto").innerHTML = (s[3]||[]).map(function(src){ return '<img src="'+src+'" alt="'+s[2]+'" loading="lazy">'; }).join("");
   [].forEach.call($("prog").children, function(el,i){ el.classList.toggle("on", i<=cur); });
   $("prevStep").style.visibility = cur===0 ? "hidden" : "visible";
   $("nextStep").textContent = cur===S.length-1 ? t("restart") : t("next");
