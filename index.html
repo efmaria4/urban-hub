@@ -297,7 +297,13 @@ footer{padding-block:24px 48px;text-align:center;color:var(--muted);font-size:14
 <script>
 // ===== Settings =====
 var HOST_PHONE = "306984211339";   // WhatsApp, digits only with country code
-var WIFI_PASS  = "NxaG8E6WMVpFC[J(";
+// Wi-Fi password and guest name come from the personal link sent by Hospitable:
+//   https://efmaria4.github.io/urban-hub/?g=%guest_first_name%&w=%wifi_token%
+// The password is NOT stored in this file. Without the link, the page shows "in the link we sent you".
+var QS = new URLSearchParams(location.search);
+var GUEST = (QS.get("g") || "").trim().slice(0, 40);
+var WIFI_PASS = null;
+try { if (QS.get("w")) WIFI_PASS = atob(QS.get("w").replace(/-/g, "+").replace(/_/g, "/")); } catch(e) { WIFI_PASS = null; }
 var PHONES = [["Maria","+30 698 421 1339"],["Nick","+30 694 429 6446"]];
 
 // ===== Languages: to add one, add an entry here and a matching block in TEXT (missing parts fall back to English) =====
@@ -319,7 +325,7 @@ en: {
   chips:["50 m²","3rd floor · lift","King bed","Balcony","200 Mbps"],
   statusNow:"It's <b>{t}</b> in Thessaloniki.", statusQuiet:"Quiet hours right now, please keep it cosy and calm 🤫", statusFree:"Enjoy the city! Next quiet hours: {n}.", from22:"from 22:00",
   quickTitle:"Quick help", qaWifi:"Copy Wi-Fi code", qaDir:"Directions", qaDoor:"Getting in", qaMsg:"Message us", qaEat:"Eat & drink", qaOut:"Check-out",
-  password:"Password", copied:"copied", wifiLabel:"Wi-Fi password", numLabel:"Number",
+  password:"Password", wifiHidden:"in the link we sent you", copied:"copied", wifiLabel:"Wi-Fi password", numLabel:"Number",
   askTitle:"Ask the guide", askHint:"Type anything: “parking”, “heating”, “late check-out”…", askPh:"What do you need?", askBtn:"Ask",
   suggestions:["Wi-Fi","Parking","Heating","Late check-out","Where to eat"],
   seeDetails:"See details →", notQuite:"Not quite it?", notFound:"We don't have that one written down yet", askWa:"Ask Maria on WhatsApp",
@@ -431,7 +437,7 @@ el: {
   chips:["50 τ.μ.","3ος όροφος · ασανσέρ","Διπλό king size","Μπαλκόνι","200 Mbps"],
   statusNow:"Η ώρα στη Θεσσαλονίκη είναι <b>{t}</b>.", statusQuiet:"Τώρα είναι ώρες κοινής ησυχίας, παρακαλούμε χαμηλούς τόνους 🤫", statusFree:"Απολαύστε την πόλη! Επόμενες ώρες ησυχίας: {n}.", from22:"από τις 22:00",
   quickTitle:"Γρήγορη βοήθεια", qaWifi:"Αντιγραφή κωδικού Wi-Fi", qaDir:"Οδηγίες χάρτη", qaDoor:"Είσοδος", qaMsg:"Στείλτε μας", qaEat:"Φαγητό & καφές", qaOut:"Αναχώρηση",
-  password:"Κωδικός", copied:"αντιγράφηκε", wifiLabel:"Ο κωδικός Wi-Fi", numLabel:"Ο αριθμός",
+  password:"Κωδικός", wifiHidden:"στο link που σας στείλαμε", copied:"αντιγράφηκε", wifiLabel:"Ο κωδικός Wi-Fi", numLabel:"Ο αριθμός",
   askTitle:"Ρωτήστε τον οδηγό", askHint:"Γράψτε ό,τι θέλετε: «πάρκινγκ», «θέρμανση», «αργή αναχώρηση»…", askPh:"Τι χρειάζεστε;", askBtn:"Ρώτα",
   suggestions:["Wi-Fi","Πάρκινγκ","Θέρμανση","Αργή αναχώρηση","Πού να φάω"],
   seeDetails:"Δείτε λεπτομέρειες →", notQuite:"Δεν βρήκατε αυτό που ψάχνατε;", notFound:"Δεν το έχουμε γράψει ακόμα", askWa:"Ρωτήστε τη Μαρία στο WhatsApp",
@@ -557,7 +563,7 @@ function renderStatic(){
   [].forEach.call(document.querySelectorAll("[data-t]"), function(el){ el.innerHTML = t(el.getAttribute("data-t")); });
   $("chips").innerHTML = t("chips").map(function(c){ return '<span class="chip">'+c+'</span>'; }).join("");
   $("askInput").placeholder = t("askPh");
-  $("wifiPass").textContent = WIFI_PASS;
+  $("wifiPass").textContent = WIFI_PASS || t("wifiHidden");
   [].forEach.call(document.querySelectorAll("[data-rows]"), function(box){
     var list = (L().rows && L().rows[box.getAttribute("data-rows")]) || TEXT.en.rows[box.getAttribute("data-rows")];
     box.innerHTML = list.map(function(r){ return '<details'+(r[2]?' open':'')+'><summary>'+r[0]+'</summary><div class="body">'+r[1].replace("{phones}", phonesHtml())+'</div></details>'; }).join("");
@@ -586,7 +592,8 @@ function status(){
   new Intl.DateTimeFormat("en-GB",{hour:"numeric",minute:"numeric",month:"numeric",hourCycle:"h23",timeZone:"Europe/Athens"}).formatToParts(now).forEach(function(x){ parts[x.type]=+x.value; });
   var h = parts.hour, m = h*60 + parts.minute;
   var tm = new Intl.DateTimeFormat("en-GB",{hour:"2-digit",minute:"2-digit",timeZone:"Europe/Athens"}).format(now);
-  $("hello").textContent = t("hello")[h<12?0:h<18?1:2];
+  var hi = t("hello")[h<12?0:h<18?1:2];
+  $("hello").textContent = GUEST ? hi.replace(/!?$/, ", " + GUEST + "!") : hi;
   var q = quietHours(parts.month);
   var quiet = (m>=q.aft[0] && m<q.aft[1]) || m>=q.night[0] || m<q.night[1];
   $("dot").classList.toggle("quiet", quiet);
@@ -612,7 +619,7 @@ function renderAnswers(q){
   var res = search(q);
   res.forEach(function(r){
     var d=document.createElement("div"); d.className="ans";
-    d.innerHTML = "<b>"+r.e[0]+"</b><span>"+r.e[2].replace("{wifi}", WIFI_PASS)+"</span>"+(r.e[3]?'<a href="'+r.e[3]+'">'+t("seeDetails")+'</a>':"");
+    d.innerHTML = "<b>"+r.e[0]+"</b><span>"+r.e[2].replace("{wifi}", WIFI_PASS || t("wifiHidden"))+"</span>"+(r.e[3]?'<a href="'+r.e[3]+'">'+t("seeDetails")+'</a>':"");
     box.appendChild(d);
   });
   var f=document.createElement("div"); f.className="ans";
@@ -693,7 +700,7 @@ $("checkList").addEventListener("change", function(e){
 });
 
 // fixed listeners
-$("qaWifi").addEventListener("click", function(){ copy(WIFI_PASS, t("wifiLabel")); });
+$("qaWifi").addEventListener("click", function(){ if (WIFI_PASS) copy(WIFI_PASS, t("wifiLabel")); else toast(t("wifiLabel") + ": " + t("wifiHidden")); });
 $("arrTime").addEventListener("input", arr);
 $("askForm").addEventListener("submit", function(e){ e.preventDefault(); renderAnswers($("askInput").value); });
 $("askInput").addEventListener("input", function(){ renderAnswers(this.value); });
