@@ -95,6 +95,7 @@ main{display:flex;flex-direction:column;gap:28px;padding-block:24px 8px}
 .rows summary::after{content:"+";font-family:var(--f-display);font-size:22px;color:var(--sea);line-height:1;flex:none}
 .rows details[open] summary::after{content:"–"}
 .rows .body{padding:0 18px 16px;color:var(--muted)}
+.rows .body a{color:var(--sea);text-decoration:underline;text-decoration-color:var(--coral);text-underline-offset:3px}
 .todo{background:var(--todo);color:var(--todo-ink);border:1px dashed var(--todo-line);border-radius:6px;padding:0 6px;font-weight:700;font-size:.92em}
 
 /* stepper */
@@ -355,7 +356,7 @@ en: {
     arrive:[
       ["From the airport","Airport bus <b>01X</b> (or <b>01N</b> at night) to the centre. Get off at <b>Kamara</b> (5 min walk) or <b>Sintrivani</b> (6 min walk). Tickets cost €2: buy them on the OSETH app or from the ticket machine on the bus (the driver can help if you ask). A taxi or Uber takes around 25 minutes and costs about <b>€25–40</b>.",1],
       ["From the train station","Easiest is the <b>metro</b>: ride to <b>Sintrivani</b>, then it's a 5-minute walk. Buses go the same way but take longer in traffic. An Uber or taxi takes 10–15 minutes and costs about <b>€8–15</b>."],
-      ["By car & parking","Street parking in the centre is hard to find. There are 3–4 paid garages a 5–10 minute walk away; message us and we'll recommend one. If you park on the street, check the line colours: <b>blue</b> spots are for residents only, <b>yellow</b> are for loading and unloading, and <b>white</b> are paid, so scan the code on the sign and pay on your phone."],
+      ["By car & parking","Street parking in the centre is hard to find. These paid garages are close to the apartment:<br><br><b><a href='https://maps.app.goo.gl/FS41PtGwxJ95PocG8' target='_blank' rel='noopener'>TIF-HELEXPO Parking “Angelaki” ↗</a></b><br>The official TIF-HELEXPO car park at the corner of Angelaki and Al. Svolou streets. €5 for the first hour, up to €15 for 12 hours, then +€0.50 per hour.<br><br><b><a href='https://maps.app.goo.gl/73bQcN32ajmQS6Fg9' target='_blank' rel='noopener'>Central Parking YMCA ↗</a></b><br>A large multi-level underground garage right in the heart of Thessaloniki. €3 for the first 30 minutes, up to €20 for a full day.<br><br><b><a href='https://maps.app.goo.gl/iyQzF8kYESqcM48f9' target='_blank' rel='noopener'>TIF Parking “Ioannis Vellidis” ↗</a></b><br>A fully covered underground car park run by HELEXPO, directly beneath the Ioannis Vellidis Convention Center at the corner of Leof. Stratou and Leof. 3is Septemvriou. €5 for the first hour, up to €15 for 12 hours, then +€0.50 per hour.<br><br>If you park on the street, check the line colours: <b>blue</b> spots are for residents only, <b>yellow</b> are for loading and unloading, and <b>white</b> are paid, so scan the code on the sign and pay on your phone."],
       ["Arriving early / leaving late","We can't keep luggage in the apartment. "+LUG_EN+" Early check-in and late check-out are available as <a href=\"#extras\">extras</a>."]
     ],
     home:[
@@ -415,7 +416,7 @@ en: {
     ["Check-in time","check-in checkin arrive arrival time when","Check-in is from <b>15:00</b>. Early check-in from 13:00 is €10.","#door"],
     ["Check-out time","check-out checkout leave departure time","Please check out by <b>11:00</b>. There's a handy checklist.","#checkout"],
     ["Getting in / lockbox","door key keys lockbox code enter entrance building get in glass","Self check-in with the grey lockbox on the wall left of the glass door. We'll send you the code on WhatsApp on your arrival day.","#door"],
-    ["Parking","parking park car garage","Garages 5–10 min away. On the street: blue = residents only, yellow = loading, white = paid (scan & pay).","#arrive"],
+    ["Parking","parking park car garage","Paid garages nearby: TIF-HELEXPO “Angelaki”, Central Parking YMCA and TIF “Ioannis Vellidis”. On the street: blue = residents only, yellow = loading, white = paid (scan & pay).","#arrive"],
     ["From the airport","airport bus taxi uber skg arrive","Bus 01X (01N at night), ticket €2 (OSETH app or the machine on the bus), or a ~25 min taxi/Uber (€25–40).","#arrive"],
     ["Heating & AC","ac air conditioning heating heat cold hot remote temperature radiator","AC for cooling (remote on the TV stand). In winter, please heat with the radiators.","#home"],
     ["Hot water","hot water shower boiler","Hot water is always on, no switches needed.","#home"],
@@ -473,7 +474,7 @@ el: {
     arrive:[
       ["Από το αεροδρόμιο","Λεωφορείο <b>01X</b> (ή <b>01N</b> τη νύχτα) για το κέντρο. Κατεβείτε στην <b>Καμάρα</b> (5 λεπτά με τα πόδια) ή στο <b>Σιντριβάνι</b> (6 λεπτά). Το εισιτήριο κοστίζει €2 και το αγοράζετε από την εφαρμογή ΟΣΕΘ ή από το μηχάνημα μέσα στο λεωφορείο (ο οδηγός μπορεί να σας βοηθήσει). Με ταξί ή Uber η διαδρομή είναι περίπου 25 λεπτά και κοστίζει γύρω στα <b>€25–40</b>.",1],
       ["Από τον σιδηροδρομικό σταθμό","Ο πιο εύκολος τρόπος είναι το <b>μετρό</b> μέχρι το <b>Σιντριβάνι</b> και μετά 5 λεπτά με τα πόδια. Τα λεωφορεία κάνουν την ίδια διαδρομή, αλλά αργούν λόγω κίνησης. Με Uber ή ταξί είναι 10–15 λεπτά και περίπου <b>€8–15</b>."],
-      ["Με αυτοκίνητο & πάρκινγκ","Στο κέντρο είναι δύσκολο να βρείτε θέση στον δρόμο. Υπάρχουν 3–4 ιδιωτικά πάρκινγκ με πληρωμή, 5–10 λεπτά με τα πόδια· στείλτε μας και θα σας προτείνουμε ένα. Αν παρκάρετε στον δρόμο, προσέξτε τις γραμμές: οι <b>μπλε</b> θέσεις είναι μόνο για μόνιμους κατοίκους, οι <b>κίτρινες</b> για φορτοεκφόρτωση και οι <b>λευκές</b> είναι επί πληρωμή: σκανάρετε τον κωδικό στην πινακίδα και πληρώνετε από το κινητό."],
+      ["Με αυτοκίνητο & πάρκινγκ","Στο κέντρο είναι δύσκολο να βρείτε θέση στον δρόμο. Κοντά στο διαμέρισμα υπάρχουν αυτά τα πάρκινγκ με πληρωμή:<br><br><b><a href='https://maps.app.goo.gl/FS41PtGwxJ95PocG8' target='_blank' rel='noopener'>Πάρκινγκ ΔΕΘ-HELEXPO «Αγγελάκη» ↗</a></b><br>Το επίσημο πάρκινγκ της ΔΕΘ-HELEXPO, στη γωνία Αγγελάκη και Αλ. Σβώλου. €5 η πρώτη ώρα, έως €15 για 12 ώρες και μετά +€0,50 την ώρα.<br><br><b><a href='https://maps.app.goo.gl/73bQcN32ajmQS6Fg9' target='_blank' rel='noopener'>Central Parking ΧΑΝΘ (YMCA) ↗</a></b><br>Μεγάλο υπόγειο πάρκινγκ πολλών επιπέδων, στην καρδιά της Θεσσαλονίκης. €3 τα πρώτα 30 λεπτά, έως €20 για ολόκληρη μέρα.<br><br><b><a href='https://maps.app.goo.gl/iyQzF8kYESqcM48f9' target='_blank' rel='noopener'>Πάρκινγκ ΔΕΘ «Ιωάννης Βελλίδης» ↗</a></b><br>Πλήρως στεγασμένο υπόγειο πάρκινγκ της HELEXPO, ακριβώς κάτω από το Συνεδριακό Κέντρο «Ιωάννης Βελλίδης», στη γωνία Λεωφ. Στρατού και Λεωφ. 3ης Σεπτεμβρίου. €5 η πρώτη ώρα, έως €15 για 12 ώρες και μετά +€0,50 την ώρα.<br><br>Αν παρκάρετε στον δρόμο, προσέξτε τις γραμμές: οι <b>μπλε</b> θέσεις είναι μόνο για μόνιμους κατοίκους, οι <b>κίτρινες</b> για φορτοεκφόρτωση και οι <b>λευκές</b> είναι επί πληρωμή: σκανάρετε τον κωδικό στην πινακίδα και πληρώνετε από το κινητό."],
       ["Νωρίς άφιξη / αργή αναχώρηση","Δεν μπορούμε να κρατήσουμε αποσκευές στο διαμέρισμα. "+LUG_EL+" Νωρίτερη άφιξη και αργότερη αναχώρηση υπάρχουν στα <a href=\"#extras\">έξτρα</a>."]
     ],
     home:[
@@ -533,7 +534,7 @@ el: {
     ["Ώρα άφιξης","αφιξη check-in checkin ωρα ποτε ερχομαι","Η άφιξη είναι από τις <b>15:00</b>. Νωρίτερα από τις 13:00 με €10.","#door"],
     ["Ώρα αναχώρησης","αναχωρηση check-out checkout φευγω ωρα","Αναχώρηση έως τις <b>11:00</b>. Υπάρχει και λίστα ελέγχου.","#checkout"],
     ["Είσοδος / θυρίδα","πορτα κλειδι κλειδια θυριδα lockbox κωδικος εισοδος πολυκατοικια γυαλινη","Self check-in με τη γκρι θυρίδα στον τοίχο αριστερά της γυάλινης πόρτας. Θα σας στείλουμε τον κωδικό στο WhatsApp την ημέρα της άφιξης.","#door"],
-    ["Πάρκινγκ","παρκινγκ παρκαρω αυτοκινητο αμαξι γκαραζ","Πάρκινγκ 5–10 λεπτά μακριά. Στον δρόμο: μπλε = μόνο κάτοικοι, κίτρινο = φορτοεκφόρτωση, λευκό = επί πληρωμή (σκανάρετε & πληρώνετε).","#arrive"],
+    ["Πάρκινγκ","παρκινγκ παρκαρω αυτοκινητο αμαξι γκαραζ","Πάρκινγκ κοντά: ΔΕΘ-HELEXPO «Αγγελάκη», Central Parking ΧΑΝΘ (YMCA) και ΔΕΘ «Ιωάννης Βελλίδης». Στον δρόμο: μπλε = μόνο κάτοικοι, κίτρινο = φορτοεκφόρτωση, λευκό = επί πληρωμή (σκανάρετε & πληρώνετε).","#arrive"],
     ["Από το αεροδρόμιο","αεροδρομιο λεωφορειο ταξι uber","Λεωφορείο 01X (01N τη νύχτα), εισιτήριο €2 (εφαρμογή ΟΣΕΘ ή μηχάνημα στο λεωφορείο), ή ταξί/Uber ~25 λεπτά (€25–40).","#arrive"],
     ["Θέρμανση & κλιματισμός","θερμανση καλοριφερ κλιματιστικο air condition κρυο ζεστη τηλεχειριστηριο","Κλιματιστικό για δροσιά (τηλεχειριστήριο στο έπιπλο της TV). Τον χειμώνα, καλοριφέρ.","#home"],
     ["Ζεστό νερό","ζεστο νερο ντους μπανιο θερμοσιφωνας","Το ζεστό νερό είναι πάντα διαθέσιμο.","#home"],
