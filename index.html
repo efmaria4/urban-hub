@@ -147,6 +147,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .filters button{border:0;background:var(--card);border-radius:999px;padding:6px 14px;font-weight:700;font-size:14px;cursor:pointer;white-space:nowrap}
 .filters button[aria-pressed="true"]{background:var(--sea);color:var(--bg)}
 .picks{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.more{align-self:center}
 .pick{background:var(--card);border-radius:18px;padding:14px 16px;display:flex;flex-direction:column;gap:4px;min-width:0}
 .pick .cat{font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--coral)}
 .pick p{color:var(--muted);font-size:15px}
@@ -292,6 +293,7 @@ footer{padding-block:24px 48px;text-align:center;color:var(--muted);font-size:14
   <p class="muted" data-t="cityIntro"></p>
   <div class="filters" id="filters" role="group" aria-label="Filter"></div>
   <div class="picks" id="picks"></div>
+  <button class="btn alt more" id="picksMore" type="button" hidden></button>
   <div class="rows" data-rows="city"></div>
 </section>
 
@@ -371,7 +373,7 @@ en: {
   chips:["50 m²","3rd floor · lift","King bed","Balcony","200 Mbps"],
   statusNow:"It's <b>{t}</b> in Thessaloniki.", statusQuiet:"Quiet hours right now, please keep it cosy and calm 🤫", statusFree:"Enjoy the city! Next quiet hours: {n}.", from22:"from 22:00",
   quickTitle:"Quick help", qaWifi:"Copy Wi-Fi code", qaDir:"Directions", qaDoor:"Getting in", qaMsg:"Message us", qaEat:"Eat & drink", qaOut:"Check-out",
-  password:"Password", toTop:"↑ Back to top", nav:["Wi-Fi","Getting in","Apartment","Rules","Food & city","Extras","Check-out","Help"], facts:[["Check-in","from 15:00"],["Check-out","by 11:00"],["Wi-Fi","Tap to copy"]], install:"Add to home screen", offline:"Once opened, this guide also works without internet.", wifiHidden:"in the link we sent you", copied:"copied", wifiLabel:"Wi-Fi password", numLabel:"Number",
+  password:"Password", toTop:"↑ Back to top", showMore:"Show {n} more places", showLess:"Show fewer", nav:["Wi-Fi","Getting in","Apartment","Rules","Food & city","Extras","Check-out","Help"], facts:[["Check-in","from 15:00"],["Check-out","by 11:00"],["Wi-Fi","Tap to copy"]], install:"Add to home screen", offline:"Once opened, this guide also works without internet.", wifiHidden:"in the link we sent you", copied:"copied", wifiLabel:"Wi-Fi password", numLabel:"Number",
   askTitle:"Ask the guide", askHint:"Type anything: “parking”, “heating”, “late check-out”…", askPh:"What do you need?", askBtn:"Ask",
   suggestions:["Wi-Fi","Parking","Heating","Late check-out","Where to eat"],
   seeDetails:"See details →", notQuite:"Not quite it?", notFound:"We don't have that one written down yet", askWa:"Ask Maria on WhatsApp",
@@ -489,7 +491,7 @@ el: {
   chips:["50 τ.μ.","3ος όροφος · ασανσέρ","Διπλό king size","Μπαλκόνι","200 Mbps"],
   statusNow:"Η ώρα στη Θεσσαλονίκη είναι <b>{t}</b>.", statusQuiet:"Τώρα είναι ώρες κοινής ησυχίας, παρακαλούμε χαμηλούς τόνους 🤫", statusFree:"Απολαύστε την πόλη! Επόμενες ώρες ησυχίας: {n}.", from22:"από τις 22:00",
   quickTitle:"Γρήγορη βοήθεια", qaWifi:"Αντιγραφή κωδικού Wi-Fi", qaDir:"Οδηγίες χάρτη", qaDoor:"Είσοδος", qaMsg:"Στείλτε μας", qaEat:"Φαγητό & καφές", qaOut:"Αναχώρηση",
-  password:"Κωδικός", toTop:"↑ Επιστροφή στην αρχή", nav:["Wi-Fi","Είσοδος","Διαμέρισμα","Κανόνες","Φαγητό & πόλη","Έξτρα","Αναχώρηση","Βοήθεια"], facts:[["Άφιξη","από 15:00"],["Αναχώρηση","έως 11:00"],["Wi-Fi","Αντιγραφή"]], install:"Προσθήκη στην αρχική οθόνη", offline:"Αφού τον ανοίξετε μία φορά, ο οδηγός λειτουργεί και χωρίς internet.", wifiHidden:"στο link που σας στείλαμε", copied:"αντιγράφηκε", wifiLabel:"Ο κωδικός Wi-Fi", numLabel:"Ο αριθμός",
+  password:"Κωδικός", toTop:"↑ Επιστροφή στην αρχή", showMore:"Δείτε άλλα {n} μέρη", showLess:"Λιγότερα", nav:["Wi-Fi","Είσοδος","Διαμέρισμα","Κανόνες","Φαγητό & πόλη","Έξτρα","Αναχώρηση","Βοήθεια"], facts:[["Άφιξη","από 15:00"],["Αναχώρηση","έως 11:00"],["Wi-Fi","Αντιγραφή"]], install:"Προσθήκη στην αρχική οθόνη", offline:"Αφού τον ανοίξετε μία φορά, ο οδηγός λειτουργεί και χωρίς internet.", wifiHidden:"στο link που σας στείλαμε", copied:"αντιγράφηκε", wifiLabel:"Ο κωδικός Wi-Fi", numLabel:"Ο αριθμός",
   askTitle:"Ρωτήστε τον οδηγό", askHint:"Γράψτε ό,τι θέλετε: «πάρκινγκ», «θέρμανση», «αργή αναχώρηση»…", askPh:"Τι χρειάζεστε;", askBtn:"Ρώτα",
   suggestions:["Wi-Fi","Πάρκινγκ","Θέρμανση","Αργή αναχώρηση","Πού να φάω"],
   seeDetails:"Δείτε λεπτομέρειες →", notQuite:"Δεν βρήκατε αυτό που ψάχνατε;", notFound:"Δεν το έχουμε γράψει ακόμα", askWa:"Ρωτήστε τη Μαρία στο WhatsApp",
@@ -717,17 +719,31 @@ function renderFilters(){
   $("filters").innerHTML="";
   cats().forEach(function(c,i){
     var b=document.createElement("button"); b.type="button"; b.textContent=c; b.setAttribute("aria-pressed", i===active);
-    b.addEventListener("click", function(){ active=i; renderFilters(); renderPicks(); });
+    b.addEventListener("click", function(){ picksOpen=false; active=i; renderFilters(); renderPicks(); });
     $("filters").appendChild(b);
   });
 }
+// show our top places first; the rest open with "Show more" (order in the list = priority)
+var PICKS_SHOWN = 4, picksOpen = false;
 function renderPicks(){
   var c=cats()[active];
-  $("picks").innerHTML = t("picks").filter(function(p){ return active===0 || p[0]===c; }).map(function(p){
+  var list = t("picks").filter(function(p){ return active===0 || p[0]===c; });
+  var extra = list.length - PICKS_SHOWN;
+  var btn = $("picksMore");
+  btn.hidden = extra <= 0;
+  btn.textContent = picksOpen ? t("showLess") : fmt(t("showMore"), {n: extra});
+  btn.setAttribute("aria-expanded", picksOpen ? "true" : "false");
+  if (!picksOpen) list = list.slice(0, PICKS_SHOWN);
+  $("picks").innerHTML = list.map(function(p){
     var name = p[3] ? '<a href="'+p[3]+'" target="_blank" rel="noopener">'+p[1]+' <span aria-hidden="true">↗</span></a>' : p[1];
     return '<div class="pick"><span class="cat">'+p[0]+'</span><h3>'+name+'</h3><p>'+p[2]+'</p></div>';
   }).join("");
 }
+
+$("picksMore").addEventListener("click", function(){
+  var wasOpen = picksOpen; picksOpen = !picksOpen; renderPicks();
+  if (wasOpen) $("city").scrollIntoView({behavior:"smooth"});
+});
 
 // extras
 var extrasSel = {};
