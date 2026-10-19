@@ -151,6 +151,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .pick{background:var(--card);border-radius:18px;padding:14px 16px;display:flex;flex-direction:column;gap:4px;min-width:0}
 .pick .cat{font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--coral)}
 .pick p{color:var(--muted);font-size:15px}
+.pill{display:inline-block;font-size:12px;font-weight:800;color:var(--sea);background:var(--sky);border-radius:999px;padding:1px 8px;margin-right:2px;white-space:nowrap}
 .trip-more{align-self:flex-start;margin-top:6px;border:0;background:var(--sky);color:var(--sea);font:inherit;font-weight:800;font-size:13px;border-radius:999px;padding:5px 12px;cursor:pointer}
 .pick.has-trip{cursor:pointer;transition:transform .15s}
 .pick.has-trip:active{transform:scale(.98)}
@@ -478,14 +479,14 @@ en: {
   ],
   picks:[
     ["Breakfast","Giannis","The best bougatsa in town, in our opinion. Bougatsa is Thessaloniki's classic pastry: try it sweet with cream or savoury with cheese.","https://maps.app.goo.gl/1ysYACnNc3x9VQqHA"],
-    ["Breakfast","Mon Kooloor","Fresh koulouri, the sesame bread ring every local grabs on the way to work. Perfect with your coffee. Egnatia Street.","https://maps.app.goo.gl/9Hqn3XyN7hQoH5Wp8"],
+    ["Breakfast","Mon Kooloor","<span class=\"pill\">🥡 To go</span> Fresh koulouri, the sesame bread ring every local grabs on the way to work. Perfect with your coffee. Egnatia Street.","https://maps.app.goo.gl/9Hqn3XyN7hQoH5Wp8"],
     ["Coffee","Cho Ban","Great coffee just a 2-minute walk away. It's mostly takeaway, so grab a freddo espresso and go.","https://maps.app.goo.gl/LHWkP97qQ3ZGNdpD8"],
     ["Coffee","The Urbanist","Our pick when you want to sit and enjoy your coffee. Excellent coffee and a few cosy tables.","https://maps.app.goo.gl/WaWj7T2TvGgBD1Mu7"],
-    ["Brunch","Estrella","The brunch classic. Try the bougatsan: bougatsa meets croissant.","https://maps.app.goo.gl/UEYD8xUfPompuiY98"],
-    ["Brunch","Brunchsin","Cosy and calm, for a slow morning.","https://maps.app.goo.gl/NSDhDFkbSbgBoTn79"],
-    ["Brunch","Las Ramblas","Relaxed brunch with friends.","https://maps.app.goo.gl/d8eW7pQ4SNU1MCSCA"],
-    ["Brunch","Mandarini","Young, casual and laid-back. No dress code, just good vibes.","https://maps.app.goo.gl/oa1uNFBNs4onNXuD8"],
-    ["Brunch","Rubik's Superfood & Coffee","The healthy pick: bowls, superfoods, great coffee.","https://maps.app.goo.gl/ddFfFKi6FLoFtpb26"],
+    ["Breakfast","Estrella","<span class=\"pill\">🍽️ Sit-down</span> The brunch classic. Try the bougatsan: bougatsa meets croissant.","https://maps.app.goo.gl/UEYD8xUfPompuiY98"],
+    ["Breakfast","Brunchsin","<span class=\"pill\">🍽️ Sit-down</span> Cosy and calm, for a slow morning.","https://maps.app.goo.gl/NSDhDFkbSbgBoTn79"],
+    ["Breakfast","Las Ramblas","<span class=\"pill\">🍽️ Sit-down</span> Relaxed brunch with friends.","https://maps.app.goo.gl/d8eW7pQ4SNU1MCSCA"],
+    ["Breakfast","Mandarini","<span class=\"pill\">🍽️ Sit-down</span> Young, casual and laid-back. No dress code, just good vibes.","https://maps.app.goo.gl/oa1uNFBNs4onNXuD8"],
+    ["Breakfast","Rubik's Superfood & Coffee","<span class=\"pill\">🍽️ Sit-down</span> The healthy pick: bowls, superfoods, great coffee.","https://maps.app.goo.gl/ddFfFKi6FLoFtpb26"],
     ["Food","Γιοκ Μπαλίκ (Yiok Balik)","An amazing spot just around the corner, one of our favourites.","https://maps.app.goo.gl/1DFQqT7nDRwAFHSm8"],
     ["Food","Sun Do Each","Toasted sourdough sandwiches piled high with good cold cuts and cheese. Perfect quick lunch. Plateia Ippodromiou.","https://maps.app.goo.gl/2JaEh3V4CiWynYgA7"],
     ["Food","Kenedi Burgers & Fries","Juicy smash burgers, handmade fries and vanilla ice cream to finish.","https://maps.app.goo.gl/BV4TtzZkUapMLeSn6"],
@@ -612,14 +613,14 @@ el: {
   ],
   picks:[
     ["Πρωινό","Γιάννης","Η καλύτερη μπουγάτσα της πόλης, κατά τη γνώμη μας. Δοκιμάστε τη με κρέμα ή με τυρί.","https://maps.app.goo.gl/1ysYACnNc3x9VQqHA"],
-    ["Πρωινό","Mon Kooloor","Φρέσκο κουλούρι Θεσσαλονίκης, αυτό που παίρνει κάθε ντόπιος πηγαίνοντας στη δουλειά. Τέλειο με τον καφέ σας. Εγνατία.","https://maps.app.goo.gl/9Hqn3XyN7hQoH5Wp8"],
+    ["Πρωινό","Mon Kooloor","<span class=\"pill\">🥡 Στο χέρι</span> Φρέσκο κουλούρι Θεσσαλονίκης, αυτό που παίρνει κάθε ντόπιος πηγαίνοντας στη δουλειά. Τέλειο με τον καφέ σας. Εγνατία.","https://maps.app.goo.gl/9Hqn3XyN7hQoH5Wp8"],
     ["Καφές","Cho Ban","Εξαιρετικός καφές, μόλις 2 λεπτά με τα πόδια. Είναι κυρίως take away, οπότε πάρτε έναν freddo espresso και συνεχίστε.","https://maps.app.goo.gl/LHWkP97qQ3ZGNdpD8"],
     ["Καφές","The Urbanist","Η επιλογή μας όταν θέλετε να κάτσετε. Πολύ καλός καφές και μερικά ζεστά τραπεζάκια.","https://maps.app.goo.gl/WaWj7T2TvGgBD1Mu7"],
-    ["Brunch","Estrella","Το κλασικό brunch. Δοκιμάστε το bougatsan: μπουγάτσα και κρουασάν μαζί.","https://maps.app.goo.gl/UEYD8xUfPompuiY98"],
-    ["Brunch","Brunchsin","Ζεστό και ήσυχο, για χαλαρό πρωινό.","https://maps.app.goo.gl/NSDhDFkbSbgBoTn79"],
-    ["Brunch","Las Ramblas","Χαλαρό brunch με φίλους.","https://maps.app.goo.gl/d8eW7pQ4SNU1MCSCA"],
-    ["Brunch","Mandarini","Νεανικό και χύμα, με ωραία ατμόσφαιρα.","https://maps.app.goo.gl/oa1uNFBNs4onNXuD8"],
-    ["Brunch","Rubik's Superfood & Coffee","Η υγιεινή επιλογή: bowls, superfoods, εξαιρετικός καφές.","https://maps.app.goo.gl/ddFfFKi6FLoFtpb26"],
+    ["Πρωινό","Estrella","<span class=\"pill\">🍽️ Για να κάτσετε</span> Το κλασικό brunch. Δοκιμάστε το bougatsan: μπουγάτσα και κρουασάν μαζί.","https://maps.app.goo.gl/UEYD8xUfPompuiY98"],
+    ["Πρωινό","Brunchsin","<span class=\"pill\">🍽️ Για να κάτσετε</span> Ζεστό και ήσυχο, για χαλαρό πρωινό.","https://maps.app.goo.gl/NSDhDFkbSbgBoTn79"],
+    ["Πρωινό","Las Ramblas","<span class=\"pill\">🍽️ Για να κάτσετε</span> Χαλαρό brunch με φίλους.","https://maps.app.goo.gl/d8eW7pQ4SNU1MCSCA"],
+    ["Πρωινό","Mandarini","<span class=\"pill\">🍽️ Για να κάτσετε</span> Νεανικό και χύμα, με ωραία ατμόσφαιρα.","https://maps.app.goo.gl/oa1uNFBNs4onNXuD8"],
+    ["Πρωινό","Rubik's Superfood & Coffee","<span class=\"pill\">🍽️ Για να κάτσετε</span> Η υγιεινή επιλογή: bowls, superfoods, εξαιρετικός καφές.","https://maps.app.goo.gl/ddFfFKi6FLoFtpb26"],
     ["Φαγητό","Γιοκ Μπαλίκ","Ένα υπέροχο μέρος ακριβώς στη γωνία, από τα αγαπημένα μας.","https://maps.app.goo.gl/1DFQqT7nDRwAFHSm8"],
     ["Φαγητό","Sun Do Each","Τοστ σε προζυμένιο ψωμί, γεμάτα με καλά αλλαντικά και τυριά. Τέλειο για γρήγορο μεσημεριανό. Πλατεία Ιπποδρομίου.","https://maps.app.goo.gl/2JaEh3V4CiWynYgA7"],
     ["Φαγητό","Kenedi Burgers & Fries","Ζουμερά smash burgers, χειροποίητες πατάτες και παγωτό βανίλια για το τέλος.","https://maps.app.goo.gl/BV4TtzZkUapMLeSn6"],
