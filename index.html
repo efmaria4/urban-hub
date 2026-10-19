@@ -4,7 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="description" content="Guest guide for Urban Hub, Thessaloniki">
-<meta name="theme-color" content="#dcedf7">
+<meta name="theme-color" content="#ece2d4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#2b251f" media="(prefers-color-scheme: dark)">
 <link rel="icon" type="image/svg+xml" href="img/icon.svg">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <link rel="manifest" href="manifest.webmanifest">
@@ -25,22 +26,22 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Montserrat:wght@400;500&family=Nunito:wght@400;600;700;800&display=swap">
 <style>
-/* Layout: phone-first "app" — illustrated bay header, quick-action grid, ask box, then soft rounded sections in arrival order. Thermaikos sky, sunny yellow, coral. */
+/* Layout: phone-first "app" — illustrated bay header, quick-action grid, ask box, then soft rounded sections in arrival order. Warm beige matching the Urban Hub logo; soft blue only for the sea. */
 :root{
-  --bg:#f2f7fb; --card:#ffffff; --ink:#1d3341; --muted:#5f7685; --line:#dbe7ef;
-  --sea:#2f7396; --sky:#dcedf7; --sun:#ffc94d; --sun-soft:#fff3cf; --coral:#ef7f63; --coral-soft:#fde6df; --mint:#3fa57f; --taupe:#9a8572;
+  --bg:#f6f1ea; --card:#fffdf9; --ink:#2b2622; --muted:#7a6e62; --line:#e9e0d4;
+  --sea:#8a6a4f; --sky:#ece2d4; --sun:#f2c46b; --sun-soft:#f8ecd2; --coral:#c27a5a; --coral-soft:#f5e3d8; --mint:#4f9a78; --taupe:#9a8572; --wave:#9fb5bd;
   --todo:#fff1c2; --todo-ink:#7a5a00; --todo-line:#e9be4a;
   --f-display:"Fredoka", "Nunito", system-ui, sans-serif;
   --f-body:"Nunito", system-ui, -apple-system, "Segoe UI", sans-serif;
   --r:22px;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#0e1b24; --card:#152733; --ink:#e7f1f7; --muted:#9db4c2; --line:#24404f;
-  --sea:#7fc3e4; --sky:#1b3747; --sun:#ffd26b; --sun-soft:#3a3013; --coral:#f79b82; --coral-soft:#3b2620; --mint:#6fd1a9; --taupe:#c4ad96;
+  --bg:#1b1815; --card:#26221e; --ink:#f1ebe3; --muted:#b3a698; --line:#3a332c;
+  --sea:#d6b896; --sky:#2b251f; --sun:#f2c46b; --sun-soft:#3a3122; --coral:#e09a7a; --coral-soft:#3b2a22; --mint:#7cc4a2; --taupe:#c4ad96; --wave:#5f7f8a;
   --todo:#3a2f10; --todo-ink:#f5d888; --todo-line:#a8862e; color-scheme:dark}}
 :root[data-theme="dark"]{
-  --bg:#0e1b24; --card:#152733; --ink:#e7f1f7; --muted:#9db4c2; --line:#24404f;
-  --sea:#7fc3e4; --sky:#1b3747; --sun:#ffd26b; --sun-soft:#3a3013; --coral:#f79b82; --coral-soft:#3b2620; --mint:#6fd1a9; --taupe:#c4ad96;
+  --bg:#1b1815; --card:#26221e; --ink:#f1ebe3; --muted:#b3a698; --line:#3a332c;
+  --sea:#d6b896; --sky:#2b251f; --sun:#f2c46b; --sun-soft:#3a3122; --coral:#e09a7a; --coral-soft:#3b2a22; --mint:#7cc4a2; --taupe:#c4ad96; --wave:#5f7f8a;
   --todo:#3a2f10; --todo-ink:#f5d888; --todo-line:#a8862e; color-scheme:dark}
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6}
@@ -240,8 +241,8 @@ footer{padding-block:24px 48px;text-align:center;color:var(--muted);font-size:14
     </g>
     <g fill="var(--sky)"><rect x="70" y="44" width="4" height="7" rx="2"/><rect x="80" y="44" width="4" height="7" rx="2"/><rect x="75" y="60" width="4" height="7" rx="2"/></g>
     <path d="M230 78 l30 0 l-6 9 l-18 0 z" fill="var(--coral)"/><path d="M244 78 v-24 l14 20 z" fill="var(--card)"/>
-    <path d="M0 86 q25 -10 50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 V110 H0 z" fill="var(--sea)" opacity=".35"/>
-    <path d="M0 94 q25 -9 50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 V110 H0 z" fill="var(--sea)" opacity=".7"/>
+    <path d="M0 86 q25 -10 50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 V110 H0 z" fill="var(--wave)" opacity=".45"/>
+    <path d="M0 94 q25 -9 50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 V110 H0 z" fill="var(--wave)" opacity=".85"/>
   </svg>
 </div>
 
