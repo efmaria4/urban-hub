@@ -4,6 +4,21 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="description" content="Guest guide for Urban Hub, Thessaloniki">
+<meta name="theme-color" content="#dcedf7">
+<link rel="icon" type="image/svg+xml" href="img/icon.svg">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Urban Hub">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Urban Hub">
+<meta property="og:title" content="Urban Hub · Guest Guide">
+<meta property="og:description" content="Getting in, Wi-Fi, house tips and our favourite spots in Thessaloniki.">
+<meta property="og:url" content="https://efmaria4.github.io/urban-hub/">
+<meta property="og:image" content="https://efmaria4.github.io/urban-hub/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,-apple-system,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>Urban Hub Guest Guide</title>
 <meta name="claude:viewport-fit-sides" content="cover">
@@ -84,7 +99,23 @@ button{font:inherit;color:inherit}
 
 /* sections */
 main{display:flex;flex-direction:column;gap:28px;padding-block:24px 8px}
-.block{display:flex;flex-direction:column;gap:12px;scroll-margin-top:16px}
+.block{display:flex;flex-direction:column;gap:12px;scroll-margin-top:72px}
+/* key facts in the header */
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:6px}
+.fact{background:var(--card);border:0;border-radius:14px;padding:8px 10px;display:flex;flex-direction:column;align-items:flex-start;text-align:left;font:inherit;color:var(--ink);min-width:0;cursor:default}
+button.fact{cursor:pointer}
+.fact small{font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.fact b{font-family:var(--f-display);font-weight:600;font-size:16px;line-height:1.3;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+/* sticky jump menu */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.jump{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--bg);border-bottom:1px solid var(--line);margin-top:14px}
+.jump .wrap{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-block:10px}
+.jump .wrap::-webkit-scrollbar{display:none}
+.jump a{flex:none;white-space:nowrap;text-decoration:none;font-weight:800;font-size:13px;color:var(--ink);background:var(--card);border-radius:999px;padding:6px 12px}
+.jump a[aria-current="true"]{background:var(--sea);color:var(--bg)}
+/* floating back-to-top */
+.fab{position:fixed;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:15;width:46px;height:46px;border-radius:50%;border:0;background:var(--sea);color:var(--bg);font-size:22px;font-weight:800;line-height:1;box-shadow:0 6px 18px -6px rgba(20,60,90,.55);cursor:pointer}
+.install{align-self:flex-start}
 .tag{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--coral)}
 .card{background:var(--card);border-radius:var(--r);padding:16px 18px;display:flex;flex-direction:column;gap:10px}
 .rows{background:var(--card);border-radius:var(--r);overflow:hidden}
@@ -166,6 +197,7 @@ footer{padding-block:24px 48px;text-align:center;color:var(--muted);font-size:14
     </div>
     <h1>Urban Hub</h1>
     <p class="sub" data-t="sub"></p>
+    <div class="facts" id="facts"></div>
     <div class="chips" id="chips"></div>
   </div>
   <svg class="bay" viewBox="0 0 400 110" aria-hidden="true">
@@ -186,9 +218,11 @@ footer{padding-block:24px 48px;text-align:center;color:var(--muted);font-size:14
   <div class="status" role="status"><span class="dot" id="dot"></span><p id="statusText"></p></div>
 </div>
 
+<nav class="jump" aria-label="Sections"><div class="wrap" id="jump"></div></nav>
+
 <main class="wrap">
 
-<section class="block">
+<section class="block" id="quick">
   <h2 data-t="quickTitle"></h2>
   <div class="qa">
     <button type="button" id="qaWifi"><span class="ico i1"><svg viewBox="0 0 24 24"><path d="M2 9a15 15 0 0 1 20 0M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0"/><circle cx="12" cy="19.5" r=".8" fill="currentColor"/></svg></span><span data-t="qaWifi"></span></button>
@@ -199,6 +233,8 @@ footer{padding-block:24px 48px;text-align:center;color:var(--muted);font-size:14
     <a href="#checkout"><span class="ico i3"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></span><span data-t="qaOut"></span></a>
   </div>
   <p class="legend">Wi-Fi: <b>Urban Hub 5G</b> · <span data-t="password"></span>: <b id="wifiPass"></b></p>
+  <p class="legend" data-t="offline"></p>
+  <button class="btn alt install" id="installBtn" type="button" hidden data-t="install"></button>
 </section>
 
 <section class="block">
@@ -301,6 +337,7 @@ footer{padding-block:24px 48px;text-align:center;color:var(--muted);font-size:14
 
 <footer data-t="footer"></footer>
 <div class="toast" id="toast" hidden></div>
+<button class="fab" id="fab" type="button" aria-label="Back to top" hidden>↑</button>
 
 <script>
 // ===== Settings =====
@@ -334,7 +371,7 @@ en: {
   chips:["50 m²","3rd floor · lift","King bed","Balcony","200 Mbps"],
   statusNow:"It's <b>{t}</b> in Thessaloniki.", statusQuiet:"Quiet hours right now, please keep it cosy and calm 🤫", statusFree:"Enjoy the city! Next quiet hours: {n}.", from22:"from 22:00",
   quickTitle:"Quick help", qaWifi:"Copy Wi-Fi code", qaDir:"Directions", qaDoor:"Getting in", qaMsg:"Message us", qaEat:"Eat & drink", qaOut:"Check-out",
-  password:"Password", toTop:"↑ Back to top", wifiHidden:"in the link we sent you", copied:"copied", wifiLabel:"Wi-Fi password", numLabel:"Number",
+  password:"Password", toTop:"↑ Back to top", nav:["Wi-Fi","Getting in","Apartment","Rules","Food & city","Extras","Check-out","Help"], facts:[["Check-in","from 15:00"],["Check-out","by 11:00"],["Wi-Fi","Tap to copy"]], install:"Add to home screen", offline:"Once opened, this guide also works without internet.", wifiHidden:"in the link we sent you", copied:"copied", wifiLabel:"Wi-Fi password", numLabel:"Number",
   askTitle:"Ask the guide", askHint:"Type anything: “parking”, “heating”, “late check-out”…", askPh:"What do you need?", askBtn:"Ask",
   suggestions:["Wi-Fi","Parking","Heating","Late check-out","Where to eat"],
   seeDetails:"See details →", notQuite:"Not quite it?", notFound:"We don't have that one written down yet", askWa:"Ask Maria on WhatsApp",
@@ -404,12 +441,12 @@ en: {
     ["Coffee","Cho Ban","Great coffee just a 2-minute walk away. It's mostly takeaway, so grab a freddo espresso and go.","https://maps.app.goo.gl/LHWkP97qQ3ZGNdpD8"],
     ["Coffee","The Urbanist","Our pick when you want to sit and enjoy your coffee. Excellent coffee and a few cosy tables.","https://maps.app.goo.gl/WaWj7T2TvGgBD1Mu7"],
     ["Food","Γιοκ Μπαλίκ (Yiok Balik)","An amazing spot just around the corner, one of our favourites.","https://maps.app.goo.gl/1DFQqT7nDRwAFHSm8"],
-    ["Food","Sun Do Each","Sun Do Each is a highly popular, trendy street food spot in Thessaloniki, Greece. Located at Plateia Ippodromiou 12, it brands itself as an \"Art Between Bread\" concept, focusing on elevated, premium toasted sourdough sandwiches layered with artisanal cold cuts, local cheeses, and distinct homemade chili or fruit jams.","https://maps.app.goo.gl/2JaEh3V4CiWynYgA7"],
-    ["Food","Kenedi Burgers & Fries","Kenedi Burgers & Fries is a popular American-style diner and street food spot located in the center of Thessaloniki, Greece. Known for its authentic, juicy smash burgers cooked on a cast-iron griddle, handmade crispy fries, and vanilla ice cream, it delivers a true American-diner experience.","https://maps.app.goo.gl/BV4TtzZkUapMLeSn6"],
-    ["Food","The Heavy Melon (To Vary Peponi)","If you're looking for a proper meal, The Heavy Melon (To Vary Peponi) is one of the best-loved, warmest spots for creative Greek and Mediterranean cooking in the centre of Thessaloniki, right next to Navarinou Square. Chef Vasilis Kostakis's kitchen combines traditional ingredients from all over Greece with modern techniques.","https://maps.app.goo.gl/pCRyXLriVMcEK3kj7"],
-    ["Food","Brusco Meze Bar","Brusco Meze Bar is a highly-rated, traditional Greek mezedopoleio located in the historic Ano Poli (Upper Town / Kastra) district of Thessaloniki. Nestled right against the old city walls and castle ruins, it is beloved by locals and travelers alike for its cozy terrace, relaxed neighborhood atmosphere, and superb value.","https://maps.app.goo.gl/3X2cD4geAFE6C56h6"],
-    ["Food","Tarantino Sandwiches & Fries","Tarantino Sandwiches & Fries is one of the most iconic and highly-rated street-food hubs in Thessaloniki, located in the lively Ladadika district. It channels an authentic, high-energy American counter-service vibe—complete with loud hip-hop/funk beats, heavy-hitting gourmet burgers, and a great selection of local Greek craft beers.","https://maps.app.goo.gl/qUySSXq3FZBUpx6V9"],
-    ["Food","Pizza Hood","Pizza Hood is a wildly popular, urban street-food pizzeria located in the trendy Ano Ladadika district of Thessaloniki. Embracing a \"pizza for the people\" philosophy, they are famous for serving authentic Neapolitan-style pizzas crafted with slow-fermented sourdough (matured for over 12 hours) and baked to blistered perfection in a high-heat oven.","https://maps.app.goo.gl/wai8cWZPgPcRGc5C7"],
+    ["Food","Sun Do Each","Toasted sourdough sandwiches piled high with good cold cuts and cheese. Perfect quick lunch. Plateia Ippodromiou.","https://maps.app.goo.gl/2JaEh3V4CiWynYgA7"],
+    ["Food","Kenedi Burgers & Fries","Juicy smash burgers, handmade fries and vanilla ice cream to finish.","https://maps.app.goo.gl/BV4TtzZkUapMLeSn6"],
+    ["Food","The Heavy Melon (To Vary Peponi)","For a proper sit-down dinner: creative Greek and Mediterranean dishes, warm and cosy. Next to Navarinou Square.","https://maps.app.goo.gl/pCRyXLriVMcEK3kj7"],
+    ["Food","Brusco Meze Bar","Traditional Greek meze right by the old city walls in Ano Poli. Relaxed and local. Order lots of small plates to share.","https://maps.app.goo.gl/3X2cD4geAFE6C56h6"],
+    ["Food","Tarantino Sandwiches & Fries","Loud, fun and always busy. Big sandwiches, burgers and Greek craft beers in Ladadika.","https://maps.app.goo.gl/qUySSXq3FZBUpx6V9"],
+    ["Food","Pizza Hood","Proper Neapolitan pizza with a slow-fermented dough. Ano Ladadika.","https://maps.app.goo.gl/wai8cWZPgPcRGc5C7"],
     ["Sights","The waterfront (Nea Paralia)","From the White Tower toward the Umbrellas sculpture, best at sunset."],
     ["Sights","Rotunda & Arch of Galerius","Roman monuments a short walk from the apartment."],
     ["Sights","Ano Poli & the old walls","The old upper town, with the best view over the bay."]
@@ -452,7 +489,7 @@ el: {
   chips:["50 τ.μ.","3ος όροφος · ασανσέρ","Διπλό king size","Μπαλκόνι","200 Mbps"],
   statusNow:"Η ώρα στη Θεσσαλονίκη είναι <b>{t}</b>.", statusQuiet:"Τώρα είναι ώρες κοινής ησυχίας, παρακαλούμε χαμηλούς τόνους 🤫", statusFree:"Απολαύστε την πόλη! Επόμενες ώρες ησυχίας: {n}.", from22:"από τις 22:00",
   quickTitle:"Γρήγορη βοήθεια", qaWifi:"Αντιγραφή κωδικού Wi-Fi", qaDir:"Οδηγίες χάρτη", qaDoor:"Είσοδος", qaMsg:"Στείλτε μας", qaEat:"Φαγητό & καφές", qaOut:"Αναχώρηση",
-  password:"Κωδικός", toTop:"↑ Επιστροφή στην αρχή", wifiHidden:"στο link που σας στείλαμε", copied:"αντιγράφηκε", wifiLabel:"Ο κωδικός Wi-Fi", numLabel:"Ο αριθμός",
+  password:"Κωδικός", toTop:"↑ Επιστροφή στην αρχή", nav:["Wi-Fi","Είσοδος","Διαμέρισμα","Κανόνες","Φαγητό & πόλη","Έξτρα","Αναχώρηση","Βοήθεια"], facts:[["Άφιξη","από 15:00"],["Αναχώρηση","έως 11:00"],["Wi-Fi","Αντιγραφή"]], install:"Προσθήκη στην αρχική οθόνη", offline:"Αφού τον ανοίξετε μία φορά, ο οδηγός λειτουργεί και χωρίς internet.", wifiHidden:"στο link που σας στείλαμε", copied:"αντιγράφηκε", wifiLabel:"Ο κωδικός Wi-Fi", numLabel:"Ο αριθμός",
   askTitle:"Ρωτήστε τον οδηγό", askHint:"Γράψτε ό,τι θέλετε: «πάρκινγκ», «θέρμανση», «αργή αναχώρηση»…", askPh:"Τι χρειάζεστε;", askBtn:"Ρώτα",
   suggestions:["Wi-Fi","Πάρκινγκ","Θέρμανση","Αργή αναχώρηση","Πού να φάω"],
   seeDetails:"Δείτε λεπτομέρειες →", notQuite:"Δεν βρήκατε αυτό που ψάχνατε;", notFound:"Δεν το έχουμε γράψει ακόμα", askWa:"Ρωτήστε τη Μαρία στο WhatsApp",
@@ -522,12 +559,12 @@ el: {
     ["Καφές","Cho Ban","Εξαιρετικός καφές, μόλις 2 λεπτά με τα πόδια. Είναι κυρίως take away, οπότε πάρτε έναν freddo espresso και συνεχίστε.","https://maps.app.goo.gl/LHWkP97qQ3ZGNdpD8"],
     ["Καφές","The Urbanist","Η επιλογή μας όταν θέλετε να κάτσετε. Πολύ καλός καφές και μερικά ζεστά τραπεζάκια.","https://maps.app.goo.gl/WaWj7T2TvGgBD1Mu7"],
     ["Φαγητό","Γιοκ Μπαλίκ","Ένα υπέροχο μέρος ακριβώς στη γωνία, από τα αγαπημένα μας.","https://maps.app.goo.gl/1DFQqT7nDRwAFHSm8"],
-    ["Φαγητό","Sun Do Each","Το Sun Do Each είναι ένα πολύ δημοφιλές, μοντέρνο street food στέκι στη Θεσσαλονίκη, στην Πλατεία Ιπποδρομίου 12. Παρουσιάζεται ως «Art Between Bread» και εστιάζει σε premium φρυγανισμένα σάντουιτς με ψωμί προζυμιού, εκλεκτά αλλαντικά, τοπικά τυριά και ιδιαίτερες σπιτικές μαρμελάδες τσίλι ή φρούτων.","https://maps.app.goo.gl/2JaEh3V4CiWynYgA7"],
-    ["Φαγητό","Kenedi Burgers & Fries","Το Kenedi Burgers & Fries είναι ένα δημοφιλές diner αμερικανικού στυλ και street food στέκι στο κέντρο της Θεσσαλονίκης. Είναι γνωστό για τα αυθεντικά, ζουμερά smash burgers που ψήνονται σε μαντέμι, τις χειροποίητες τραγανές πατάτες και το παγωτό βανίλια, και προσφέρει μια αληθινή εμπειρία αμερικάνικου diner.","https://maps.app.goo.gl/BV4TtzZkUapMLeSn6"],
-    ["Φαγητό","Το βαρύ πεπόνι","Αν ψάχνετε για φαγητό, το Βαρύ Πεπόνι (The Heavy Melon) είναι ένα από τα πιο αγαπημένα και ζεστά στέκια για δημιουργική ελληνική και μεσογειακή κουζίνα στο κέντρο της Θεσσαλονίκης, ακριβώς δίπλα στην Πλατεία Ναβαρίνου. Η κουζίνα του σεφ Βασίλη Κωστάκη συνδυάζει παραδοσιακές πρώτες ύλες από όλη την Ελλάδα με σύγχρονες τεχνικές.","https://maps.app.goo.gl/pCRyXLriVMcEK3kj7"],
-    ["Φαγητό","Brusco Meze Bar","Το Brusco Meze Bar είναι ένα παραδοσιακό ελληνικό μεζεδοπωλείο με πολύ καλές κριτικές, στην ιστορική Άνω Πόλη (Κάστρα) της Θεσσαλονίκης. Βρίσκεται ακριβώς δίπλα στα παλιά τείχη και τα ερείπια του κάστρου, και το αγαπούν ντόπιοι και επισκέπτες για τη ζεστή βεράντα του, τη χαλαρή ατμόσφαιρα της γειτονιάς και τις εξαιρετικές τιμές.","https://maps.app.goo.gl/3X2cD4geAFE6C56h6"],
-    ["Φαγητό","Tarantino Sandwiches & Fries","Το Tarantino Sandwiches & Fries είναι από τα πιο εμβληματικά και αγαπημένα street food στέκια της Θεσσαλονίκης, στα ζωντανά Λαδάδικα. Έχει αυθεντική, γεμάτη ενέργεια αμερικάνικη ατμόσφαιρα: δυνατή hip-hop και funk μουσική, γενναία gourmet burgers και μεγάλη επιλογή από ελληνικές craft μπίρες.","https://maps.app.goo.gl/qUySSXq3FZBUpx6V9"],
-    ["Φαγητό","Pizza Hood","Η Pizza Hood είναι μια πολύ δημοφιλής, urban street food πιτσαρία στα Άνω Λαδάδικα της Θεσσαλονίκης. Με φιλοσοφία «pizza for the people», είναι γνωστή για τις αυθεντικές ναπολιτάνικες πίτσες με προζύμι αργής ωρίμανσης (πάνω από 12 ώρες), ψημένες τέλεια σε φούρνο υψηλής θερμοκρασίας.","https://maps.app.goo.gl/wai8cWZPgPcRGc5C7"],
+    ["Φαγητό","Sun Do Each","Τοστ σε προζυμένιο ψωμί, γεμάτα με καλά αλλαντικά και τυριά. Τέλειο για γρήγορο μεσημεριανό. Πλατεία Ιπποδρομίου.","https://maps.app.goo.gl/2JaEh3V4CiWynYgA7"],
+    ["Φαγητό","Kenedi Burgers & Fries","Ζουμερά smash burgers, χειροποίητες πατάτες και παγωτό βανίλια για το τέλος.","https://maps.app.goo.gl/BV4TtzZkUapMLeSn6"],
+    ["Φαγητό","Το βαρύ πεπόνι","Για κανονικό φαγητό καθιστοί: δημιουργική ελληνική και μεσογειακή κουζίνα, ζεστό και φιλόξενο. Δίπλα στην πλατεία Ναυαρίνου.","https://maps.app.goo.gl/pCRyXLriVMcEK3kj7"],
+    ["Φαγητό","Brusco Meze Bar","Παραδοσιακοί μεζέδες δίπλα στα τείχη, στην Άνω Πόλη. Χαλαρή, γειτονική ατμόσφαιρα. Παραγγείλτε πολλά πιατάκια να μοιραστείτε.","https://maps.app.goo.gl/3X2cD4geAFE6C56h6"],
+    ["Φαγητό","Tarantino Sandwiches & Fries","Δυνατή μουσική, κέφι και πάντα κόσμος. Μεγάλα σάντουιτς, burgers και ελληνικές craft μπίρες, στα Λαδάδικα.","https://maps.app.goo.gl/qUySSXq3FZBUpx6V9"],
+    ["Φαγητό","Pizza Hood","Αυθεντική ναπολιτάνικη πίτσα με ζύμη αργής ωρίμανσης. Άνω Λαδάδικα.","https://maps.app.goo.gl/wai8cWZPgPcRGc5C7"],
     ["Αξιοθέατα","Νέα Παραλία","Από τον Λευκό Πύργο μέχρι τις Ομπρέλες, ιδανικά το ηλιοβασίλεμα."],
     ["Αξιοθέατα","Ροτόντα & Καμάρα","Ρωμαϊκά μνημεία σε μικρή απόσταση από το διαμέρισμα."],
     ["Αξιοθέατα","Άνω Πόλη & Κάστρα","Η παλιά πόλη, με την καλύτερη θέα στον Θερμαϊκό."]
@@ -582,6 +619,11 @@ function phonesHtml(){ return PHONES.map(function(p,i){ return p[0]+': <b>'+p[1]
 function renderStatic(){
   document.documentElement.lang = lang;
   [].forEach.call(document.querySelectorAll("[data-t]"), function(el){ el.innerHTML = t(el.getAttribute("data-t")); });
+  var F = t("facts");
+  $("facts").innerHTML = '<div class="fact"><small>'+F[0][0]+'</small><b>'+F[0][1]+'</b></div><div class="fact"><small>'+F[1][0]+'</small><b>'+F[1][1]+'</b></div><button class="fact" type="button" id="factWifi"><small>'+F[2][0]+'</small><b>'+F[2][1]+'</b></button>';
+  $("factWifi").addEventListener("click", function(){ if (WIFI_PASS) copy(WIFI_PASS, t("wifiLabel")); });
+  $("jump").innerHTML = t("nav").map(function(label, i){ return '<a href="#'+JUMP[i]+'" data-sec="'+JUMP[i]+'">'+label+'</a>'; }).join("");
+  markActive();
   $("chips").innerHTML = t("chips").map(function(c){ return '<span class="chip">'+c+'</span>'; }).join("");
   $("askInput").placeholder = t("askPh");
   $("wifiPass").textContent = WIFI_PASS || t("wifiHidden");
@@ -721,12 +763,32 @@ $("checkList").addEventListener("change", function(e){
   updCheck();
 });
 
-// back-to-top button at the end of each section
-[].forEach.call(document.querySelectorAll("main section.block[id]"), function(sec){
-  var b=document.createElement("button"); b.type="button"; b.className="totop"; b.setAttribute("data-t","toTop");
-  b.addEventListener("click", function(){ window.scrollTo({top:0, behavior:"smooth"}); });
-  sec.appendChild(b);
-});
+// jump menu: highlight the section on screen and keep its chip visible
+var JUMP = ["quick","door","home","rules","city","extras","checkout","help"];
+var activeSec = "quick";
+function markActive(){
+  var bar = $("jump");
+  [].forEach.call(bar.children, function(el){
+    var on = el.getAttribute("data-sec") === activeSec;
+    el.setAttribute("aria-current", on ? "true" : "false");
+    if (on) { var l = el.offsetLeft - 16; if (l < bar.scrollLeft || el.offsetLeft + el.offsetWidth > bar.scrollLeft + bar.clientWidth) bar.scrollTo({left: Math.max(0, l), behavior: "smooth"}); }
+  });
+}
+function onScroll(){
+  var y = window.scrollY + 90, cur = JUMP[0];
+  JUMP.forEach(function(id){ var el = $(id); if (el && el.offsetTop <= y) cur = id; });
+  if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight - 4) cur = JUMP[JUMP.length-1];
+  if (cur !== activeSec) { activeSec = cur; markActive(); }
+  $("fab").hidden = window.scrollY < 700;
+}
+window.addEventListener("scroll", onScroll, {passive:true});
+$("fab").addEventListener("click", function(){ window.scrollTo({top:0, behavior:"smooth"}); });
+
+// install / offline (works on the live site; ignored where service workers aren't allowed)
+var installEvt = null;
+window.addEventListener("beforeinstallprompt", function(e){ e.preventDefault(); installEvt = e; $("installBtn").hidden = false; });
+$("installBtn").addEventListener("click", function(){ if (!installEvt) return; installEvt.prompt(); installEvt = null; $("installBtn").hidden = true; });
+try { if ("serviceWorker" in navigator && location.protocol === "https:") navigator.serviceWorker.register("sw.js").catch(function(){}); } catch(e) {}
 
 // fixed listeners
 $("qaWifi").addEventListener("click", function(){ if (WIFI_PASS) copy(WIFI_PASS, t("wifiLabel")); else toast(t("wifiLabel") + ": " + t("wifiHidden")); });
