@@ -23,12 +23,12 @@
 <title>Urban Hub Guest Guide</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Montserrat:wght@400;500&family=Nunito:wght@400;600;700;800&display=swap">
 <style>
 /* Layout: phone-first "app" — illustrated bay header, quick-action grid, ask box, then soft rounded sections in arrival order. Thermaikos sky, sunny yellow, coral. */
 :root{
   --bg:#f2f7fb; --card:#ffffff; --ink:#1d3341; --muted:#5f7685; --line:#dbe7ef;
-  --sea:#2f7396; --sky:#dcedf7; --sun:#ffc94d; --sun-soft:#fff3cf; --coral:#ef7f63; --coral-soft:#fde6df; --mint:#3fa57f;
+  --sea:#2f7396; --sky:#dcedf7; --sun:#ffc94d; --sun-soft:#fff3cf; --coral:#ef7f63; --coral-soft:#fde6df; --mint:#3fa57f; --taupe:#9a8572;
   --todo:#fff1c2; --todo-ink:#7a5a00; --todo-line:#e9be4a;
   --f-display:"Fredoka", "Nunito", system-ui, sans-serif;
   --f-body:"Nunito", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -36,17 +36,22 @@
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#0e1b24; --card:#152733; --ink:#e7f1f7; --muted:#9db4c2; --line:#24404f;
-  --sea:#7fc3e4; --sky:#1b3747; --sun:#ffd26b; --sun-soft:#3a3013; --coral:#f79b82; --coral-soft:#3b2620; --mint:#6fd1a9;
+  --sea:#7fc3e4; --sky:#1b3747; --sun:#ffd26b; --sun-soft:#3a3013; --coral:#f79b82; --coral-soft:#3b2620; --mint:#6fd1a9; --taupe:#c4ad96;
   --todo:#3a2f10; --todo-ink:#f5d888; --todo-line:#a8862e; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#0e1b24; --card:#152733; --ink:#e7f1f7; --muted:#9db4c2; --line:#24404f;
-  --sea:#7fc3e4; --sky:#1b3747; --sun:#ffd26b; --sun-soft:#3a3013; --coral:#f79b82; --coral-soft:#3b2620; --mint:#6fd1a9;
+  --sea:#7fc3e4; --sky:#1b3747; --sun:#ffd26b; --sun-soft:#3a3013; --coral:#f79b82; --coral-soft:#3b2620; --mint:#6fd1a9; --taupe:#c4ad96;
   --todo:#3a2f10; --todo-ink:#f5d888; --todo-line:#a8862e; color-scheme:dark}
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6}
 .wrap{max-width:640px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 h1,h2,h3{font-family:var(--f-display);font-weight:600;margin:0;text-wrap:balance}
 h1{font-size:clamp(32px,8vw,42px);line-height:1.05}
+.brand{display:flex;align-items:center;gap:14px;margin:4px 0 2px}
+.brand-mark{width:52px;height:auto;flex:none;color:var(--ink)}
+.brand-text{display:flex;flex-direction:column;gap:7px;min-width:0}
+.brand-name{font-family:"Montserrat",var(--f-body);font-weight:400;font-size:clamp(22px,6.4vw,28px);letter-spacing:.3em;line-height:1;color:var(--ink);white-space:nowrap}
+.brand-city{font-family:"Montserrat",var(--f-body);font-weight:500;font-size:10.5px;letter-spacing:.62em;line-height:1;color:var(--taupe);white-space:nowrap}
 h2{font-size:24px;line-height:1.2}
 h3{font-size:17px;font-weight:600}
 p{margin:0}
@@ -221,7 +226,7 @@ footer{padding-block:24px 48px;text-align:center;color:var(--muted);font-size:14
       <span class="hello" id="hello"></span>
       <div class="langs" id="langs" role="group" aria-label="Language"></div>
     </div>
-    <h1>Urban Hub</h1>
+    <h1 class="brand" aria-label="Urban Hub Thessaloniki"><svg class="brand-mark" viewBox="440 70 720 830" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="32" stroke-linejoin="miter" stroke-miterlimit="3"><path d="M800 478V701A161 161 0 0 1 478 701V305L808 98L1130 305V872"/><path d="M800 628H1130"/></g><path d="M776 385V296a26 26 0 0 1 52 0V385Z" fill="var(--taupe)"/></svg><span class="brand-text" aria-hidden="true"><span class="brand-name">URBAN HUB</span><span class="brand-city">THESSALONIKI</span></span></h1>
     <p class="sub" data-t="sub"></p>
     <div class="facts" id="facts"></div>
     <div class="chips" id="chips"></div>

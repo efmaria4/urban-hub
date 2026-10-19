@@ -1,7 +1,7 @@
 // Offline support for the Urban Hub guest guide.
 // The page is fetched fresh when online (so edits show up straight away) and served from cache when offline.
 // Bump VERSION whenever photos are added or removed so the cached copy is refreshed.
-const VERSION = "urbanhub-v1";
+const VERSION = "urbanhub-v2";
 const PRECACHE = [
   "./", "./index.html", "./manifest.webmanifest",
     "./img/apartment-key.jpg",   "./img/apple-touch-icon.png",   "./img/building.jpg",   "./img/corridor-key.jpg",   "./img/corridor.jpg",   "./img/hallway.jpg",   "./img/icon-192.png",   "./img/icon-512.png",   "./img/icon.svg",   "./img/lockbox-cover.jpg",   "./img/lockbox-dials.jpg",   "./img/lockbox-wall.jpg",   "./img/og.jpg",   "./img/thermostat-receiver.jpg",   "./img/thermostat.jpg", 
