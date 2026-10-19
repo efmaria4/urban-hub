@@ -152,11 +152,26 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .pick .cat{font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--coral)}
 .pick p{color:var(--muted);font-size:15px}
 .trip-more{align-self:flex-start;margin-top:6px;border:0;background:var(--sky);color:var(--sea);font:inherit;font-weight:800;font-size:13px;border-radius:999px;padding:5px 12px;cursor:pointer}
-.trip-panel{display:flex;flex-direction:column;gap:8px;margin-top:8px}
-.trip-imgs{display:grid;gap:6px}
+.pick.has-trip{cursor:pointer;transition:transform .15s}
+.pick.has-trip:active{transform:scale(.98)}
+body.modal-open{overflow:hidden}
+.trip-modal{position:fixed;inset:0;z-index:30;display:flex;align-items:center;justify-content:center;padding:calc(16px + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) calc(16px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));background:rgba(10,25,35,0);transition:background .25s}
+.trip-modal.show{background:rgba(10,25,35,.55)}
+.trip-card{position:relative;width:100%;max-width:520px;max-height:100%;overflow:auto;background:var(--card);border-radius:24px;box-shadow:0 20px 60px -20px rgba(0,0,0,.5);transition:transform .3s cubic-bezier(.2,.8,.2,1),opacity .25s;opacity:0}
+.trip-modal.show .trip-card{opacity:1}
+.trip-close{position:absolute;top:10px;right:10px;z-index:2;width:36px;height:36px;border-radius:50%;border:0;background:rgba(255,255,255,.9);color:#1d3341;font-size:24px;line-height:1;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+.trip-imgs{display:grid;gap:4px}
 .trip-imgs.n2{grid-template-columns:1fr 1fr}
-.trip-imgs img{display:block;width:100%;height:200px;object-fit:cover;border-radius:12px;background:var(--line)}
-.trip-imgs.n2 img{height:140px}
+.trip-imgs img{display:block;width:100%;height:260px;object-fit:cover;background:var(--line)}
+.trip-imgs.n2 img{height:200px}
+.trip-body{padding:16px 18px 20px;display:flex;flex-direction:column;gap:8px}
+.trip-body .cat{font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--coral)}
+.trip-body h3{font-size:22px}
+.trip-body p{color:var(--muted)}
+.trip-rows{display:flex;flex-direction:column;gap:8px}
+.trip-rows:empty{display:none}
+#tripMap{align-self:flex-start;margin-top:4px}
+@media (prefers-reduced-motion:reduce){.trip-card,.trip-modal{transition:none}}
 .trip-row{display:flex;flex-direction:column;font-size:14px}
 .trip-row b{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--sea)}
 .trip-row span{color:var(--muted)}
@@ -348,6 +363,19 @@ footer{padding-block:24px 48px;text-align:center;color:var(--muted);font-size:14
 </main>
 
 <footer data-t="footer"></footer>
+<div class="trip-modal" id="tripModal" hidden>
+  <div class="trip-card" id="tripCard" role="dialog" aria-modal="true" aria-labelledby="tripTitle">
+    <button class="trip-close" id="tripClose" type="button">×</button>
+    <div class="trip-imgs" id="tripImgs"></div>
+    <div class="trip-body">
+      <span class="cat" id="tripCat"></span>
+      <h3 id="tripTitle"></h3>
+      <p id="tripDesc"></p>
+      <div id="tripRows" class="trip-rows"></div>
+      <a class="btn" id="tripMap" href="#" target="_blank" rel="noopener"></a>
+    </div>
+  </div>
+</div>
 <div class="toast" id="toast" hidden></div>
 <button class="fab" id="fab" type="button" aria-label="Back to top" hidden>↑</button>
 
@@ -383,7 +411,7 @@ en: {
   chips:["50 m²","3rd floor · lift","King bed","Balcony","200 Mbps"],
   statusNow:"It's <b>{t}</b> in Thessaloniki.", statusQuiet:"Quiet hours right now, please keep it cosy and calm 🤫", statusFree:"Enjoy the city! Next quiet hours: {n}.", from22:"from 22:00",
   quickTitle:"Quick help", qaWifi:"Copy Wi-Fi code", qaDir:"Directions", qaDoor:"Getting in", qaMsg:"Message us", qaEat:"Eat & drink", qaOut:"Check-out",
-  password:"Password", toTop:"↑ Back to top", tripMore:"More info ▾", tripLess:"Less info ▴", tripDist:"How far", tripGet:"Getting there", tripTip:"Our tip", planHelp:"Questions, or need help planning a day out?", planLink:"Message us, we're happy to help!", showMore:"Show {n} more places", showLess:"Show fewer", nav:["Wi-Fi","Getting in","Apartment","Rules","Food & city","Extras","Check-out","Help"], facts:[["Check-in","from 15:00"],["Check-out","by 11:00"],["Wi-Fi","Tap to copy"]], install:"Add to home screen", offline:"Once opened, this guide also works without internet.", wifiHidden:"in the link we sent you", copied:"copied", wifiLabel:"Wi-Fi password", numLabel:"Number",
+  password:"Password", toTop:"↑ Back to top", tripMore:"More info", tripMap:"Open in Maps ↗", close:"Close", tripDist:"How far", tripGet:"Getting there", tripTip:"Our tip", planHelp:"Questions, or need help planning a day out?", planLink:"Message us, we're happy to help!", showMore:"Show {n} more places", showLess:"Show fewer", nav:["Wi-Fi","Getting in","Apartment","Rules","Food & city","Extras","Check-out","Help"], facts:[["Check-in","from 15:00"],["Check-out","by 11:00"],["Wi-Fi","Tap to copy"]], install:"Add to home screen", offline:"Once opened, this guide also works without internet.", wifiHidden:"in the link we sent you", copied:"copied", wifiLabel:"Wi-Fi password", numLabel:"Number",
   askTitle:"Ask the guide", askHint:"Type anything: “parking”, “heating”, “late check-out”…", askPh:"What do you need?", askBtn:"Ask",
   suggestions:["Wi-Fi","Parking","Heating","Late check-out","Where to eat"],
   seeDetails:"See details →", notQuite:"Not quite it?", notFound:"We don't have that one written down yet", askWa:"Ask Maria on WhatsApp",
@@ -512,7 +540,7 @@ el: {
   chips:["50 τ.μ.","3ος όροφος · ασανσέρ","Διπλό king size","Μπαλκόνι","200 Mbps"],
   statusNow:"Η ώρα στη Θεσσαλονίκη είναι <b>{t}</b>.", statusQuiet:"Τώρα είναι ώρες κοινής ησυχίας, παρακαλούμε χαμηλούς τόνους 🤫", statusFree:"Απολαύστε την πόλη! Επόμενες ώρες ησυχίας: {n}.", from22:"από τις 22:00",
   quickTitle:"Γρήγορη βοήθεια", qaWifi:"Αντιγραφή κωδικού Wi-Fi", qaDir:"Οδηγίες χάρτη", qaDoor:"Είσοδος", qaMsg:"Στείλτε μας", qaEat:"Φαγητό & καφές", qaOut:"Αναχώρηση",
-  password:"Κωδικός", toTop:"↑ Επιστροφή στην αρχή", tripMore:"Περισσότερα ▾", tripLess:"Λιγότερα ▴", tripDist:"Απόσταση", tripGet:"Πώς θα πάτε", tripTip:"Η συμβουλή μας", planHelp:"Έχετε ερωτήσεις ή θέλετε βοήθεια για μια εκδρομή;", planLink:"Στείλτε μας, θα χαρούμε να βοηθήσουμε!", showMore:"Δείτε άλλα {n} μέρη", showLess:"Λιγότερα", nav:["Wi-Fi","Είσοδος","Διαμέρισμα","Κανόνες","Φαγητό & πόλη","Έξτρα","Αναχώρηση","Βοήθεια"], facts:[["Άφιξη","από 15:00"],["Αναχώρηση","έως 11:00"],["Wi-Fi","Αντιγραφή"]], install:"Προσθήκη στην αρχική οθόνη", offline:"Αφού τον ανοίξετε μία φορά, ο οδηγός λειτουργεί και χωρίς internet.", wifiHidden:"στο link που σας στείλαμε", copied:"αντιγράφηκε", wifiLabel:"Ο κωδικός Wi-Fi", numLabel:"Ο αριθμός",
+  password:"Κωδικός", toTop:"↑ Επιστροφή στην αρχή", tripMore:"Περισσότερα", tripMap:"Άνοιγμα στον χάρτη ↗", close:"Κλείσιμο", tripDist:"Απόσταση", tripGet:"Πώς θα πάτε", tripTip:"Η συμβουλή μας", planHelp:"Έχετε ερωτήσεις ή θέλετε βοήθεια για μια εκδρομή;", planLink:"Στείλτε μας, θα χαρούμε να βοηθήσουμε!", showMore:"Δείτε άλλα {n} μέρη", showLess:"Λιγότερα", nav:["Wi-Fi","Είσοδος","Διαμέρισμα","Κανόνες","Φαγητό & πόλη","Έξτρα","Αναχώρηση","Βοήθεια"], facts:[["Άφιξη","από 15:00"],["Αναχώρηση","έως 11:00"],["Wi-Fi","Αντιγραφή"]], install:"Προσθήκη στην αρχική οθόνη", offline:"Αφού τον ανοίξετε μία φορά, ο οδηγός λειτουργεί και χωρίς internet.", wifiHidden:"στο link που σας στείλαμε", copied:"αντιγράφηκε", wifiLabel:"Ο κωδικός Wi-Fi", numLabel:"Ο αριθμός",
   askTitle:"Ρωτήστε τον οδηγό", askHint:"Γράψτε ό,τι θέλετε: «πάρκινγκ», «θέρμανση», «αργή αναχώρηση»…", askPh:"Τι χρειάζεστε;", askBtn:"Ρώτα",
   suggestions:["Wi-Fi","Πάρκινγκ","Θέρμανση","Αργή αναχώρηση","Πού να φάω"],
   seeDetails:"Δείτε λεπτομέρειες →", notQuite:"Δεν βρήκατε αυτό που ψάχνατε;", notFound:"Δεν το έχουμε γράψει ακόμα", askWa:"Ρωτήστε τη Μαρία στο WhatsApp",
@@ -766,16 +794,44 @@ var TRIP_INFO = {
   "https://www.google.com/maps/search/?api=1&query=Litochoro": {img:["img/trips/olympus-1.jpg", "img/trips/olympus-2.jpg"], en:{dist:"", get:"", tip:""}, el:{dist:"", get:"", tip:""}},
   "https://www.google.com/maps/search/?api=1&query=Palaios+Panteleimonas": {img:["img/trips/panteleimonas.jpg"], en:{dist:"", get:"", tip:""}, el:{dist:"", get:"", tip:""}}
 };
-var tripOpen = {};
-function tripPanel(link){
-  var d = TRIP_INFO[link]; if (!d) return "";
+function openTrip(link, fromEl){
+  var d = TRIP_INFO[link]; if (!d) return;
+  var row = t("picks").filter(function(p){ return p[3] === link; })[0]; if (!row) return;
   var txt = d[lang] || d.en, rows = "";
   [["dist", t("tripDist")], ["get", t("tripGet")], ["tip", t("tripTip")]].forEach(function(r){
     if (txt[r[0]]) rows += '<div class="trip-row"><b>'+r[1]+'</b><span>'+txt[r[0]]+'</span></div>';
   });
-  var imgs = d.img.map(function(src){ return '<img src="'+src+'" alt="" loading="lazy">'; }).join("");
-  if (!imgs && !rows) return "";
-  return '<div class="trip-panel" '+(tripOpen[link]?'':'hidden')+'>'+(imgs?'<div class="trip-imgs n'+d.img.length+'">'+imgs+'</div>':'')+rows+'</div>';
+  $("tripImgs").className = "trip-imgs n" + d.img.length;
+  $("tripImgs").innerHTML = d.img.map(function(src){ return '<img src="'+src+'" alt="">'; }).join("");
+  $("tripImgs").hidden = !d.img.length;
+  $("tripCat").textContent = row[0];
+  $("tripTitle").textContent = row[1];
+  $("tripDesc").innerHTML = row[2];
+  $("tripRows").innerHTML = rows;
+  $("tripMap").href = link; $("tripMap").textContent = t("tripMap");
+  $("tripClose").setAttribute("aria-label", t("close"));
+  var modal = $("tripModal"), card = $("tripCard");
+  modal.hidden = false; document.body.classList.add("modal-open");
+  // grow out of the card that was tapped
+  var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (fromEl && !reduce) {
+    var f = fromEl.getBoundingClientRect(), to = card.getBoundingClientRect();
+    var sc = Math.max(.3, f.width / to.width);
+    var dx = (f.left + f.width/2) - (to.left + to.width/2), dy = (f.top + f.height/2) - (to.top + to.height/2);
+    card.style.transition = "none"; modal.classList.remove("show");
+    card.style.transform = "translate("+dx+"px,"+dy+"px) scale("+sc+")";
+    card.offsetWidth;
+    card.style.transition = ""; card.style.transform = "";
+  }
+  requestAnimationFrame(function(){ modal.classList.add("show"); });
+  tripFrom = fromEl; $("tripClose").focus({preventScroll:true});
+}
+var tripFrom = null;
+function closeTrip(){
+  var modal = $("tripModal"); if (modal.hidden) return;
+  modal.classList.remove("show"); document.body.classList.remove("modal-open");
+  setTimeout(function(){ modal.hidden = true; }, 200);
+  if (tripFrom) { var b = tripFrom.querySelector(".trip-more"); if (b) b.focus({preventScroll:true}); }
 }
 
 // show our top places first; the rest open with "Show more" (order in the list = priority)
@@ -791,19 +847,18 @@ function renderPicks(){
   if (!picksOpen) list = list.slice(0, PICKS_SHOWN);
   $("picks").innerHTML = list.map(function(p){
     var name = p[3] ? '<a href="'+p[3]+'" target="_blank" rel="noopener">'+p[1]+' <span aria-hidden="true">↗</span></a>' : p[1];
-    var panel = p[3] ? tripPanel(p[3]) : '';
-    var more = panel ? '<button class="trip-more" type="button" data-link="'+p[3]+'" aria-expanded="'+(tripOpen[p[3]]?'true':'false')+'">'+(tripOpen[p[3]]?t("tripLess"):t("tripMore"))+'</button>' : '';
-    return '<div class="pick"><span class="cat">'+p[0]+'</span><h3>'+name+'</h3><p>'+p[2]+'</p>'+more+panel+'</div>';
+    var more = (p[3] && TRIP_INFO[p[3]]) ? '<button class="trip-more" type="button" data-link="'+p[3]+'">'+t("tripMore")+'</button>' : '';
+    return '<div class="pick'+(more?' has-trip':'')+'"'+(more?' data-link="'+p[3]+'"':'')+'><span class="cat">'+p[0]+'</span><h3>'+name+'</h3><p>'+p[2]+'</p>'+more+'</div>';
   }).join("");
 }
 
 $("picks").addEventListener("click", function(e){
-  var b = e.target.closest(".trip-more"); if (!b) return;
-  var link = b.getAttribute("data-link"); tripOpen[link] = !tripOpen[link];
-  var panel = b.nextElementSibling; panel.hidden = !tripOpen[link];
-  b.setAttribute("aria-expanded", tripOpen[link] ? "true" : "false");
-  b.textContent = tripOpen[link] ? t("tripLess") : t("tripMore");
+  if (e.target.closest("a")) return;
+  var card = e.target.closest(".pick.has-trip"); if (!card) return;
+  openTrip(card.getAttribute("data-link"), card);
 });
+$("tripModal").addEventListener("click", function(e){ if (e.target === this || e.target.closest("#tripClose")) closeTrip(); });
+document.addEventListener("keydown", function(e){ if (e.key === "Escape") closeTrip(); });
 $("picksMore").addEventListener("click", function(){
   var wasOpen = picksOpen; picksOpen = !picksOpen; renderPicks();
   if (wasOpen) $("city").scrollIntoView({behavior:"smooth"});
