@@ -389,7 +389,7 @@ var HOST_PHONE = "306984211339";   // WhatsApp, digits only with country code
 var QS = new URLSearchParams(location.search);
 var GUEST = (QS.get("g") || "").trim().slice(0, 40);
 if (GUEST.length < 3) GUEST = "";   // Airbnb cuts links at spaces/accents (e.g. "Gökçe" -> "G"), so skip names that came through too short
-var WIFI_PASS = "NxaG8E6WMVpFC[J}";
+var WIFI_PASS = "NxaG8E6WMVpFC[J{";
 try { if (QS.get("w")) WIFI_PASS = atob(QS.get("w").replace(/-/g, "+").replace(/_/g, "/")); } catch(e) {}
 var PHONES = [["Maria","+30 698 421 1339"],["Nick","+30 694 429 6446"]];
 
