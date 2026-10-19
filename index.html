@@ -286,10 +286,6 @@ footer{padding-block:24px 48px;text-align:center;color:var(--muted);font-size:14
   <span class="tag" data-t="arriveTag"></span>
   <h2 data-t="arriveTitle"></h2>
   <div class="rows" data-rows="arrive"></div>
-  <div class="card">
-    <h3 data-t="arrCardTitle"></h3>
-    <div class="time-row"><label for="arrTime" class="muted" data-t="arrLabel"></label><input id="arrTime" type="time" value="15:00"><a class="btn wa" id="arrSend" href="#" target="_blank" rel="noopener" data-t="sendWa"></a></div>
-  </div>
 </section>
 
 <section class="block" id="door">
@@ -716,7 +712,6 @@ function renderStatic(){
   $("planWa").href = wa(t("wa").ask);
   $("stuckWa").href = wa(t("wa").door);
   $("byeWa").href = wa(t("wa").bye);
-  arr();
   status();
   renderSuggest(); renderAnswers($("askInput").value);
   showStep(); renderFilters(); renderPicks(); renderExtras(); renderChecklist();
@@ -743,7 +738,6 @@ function status(){
   var next = m<q.aft[0] ? q.label[0] : q.label[1];
   $("statusText").innerHTML = fmt(t("statusNow"),{t:tm}) + " " + (quiet ? t("statusQuiet") : fmt(t("statusFree"),{n: next}));
 }
-function arr(){ $("arrSend").href = wa(fmt(t("wa").arrive,{t:$("arrTime").value})); }
 
 // ask
 function norm(s){ return s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,""); }
@@ -944,7 +938,6 @@ try { if ("serviceWorker" in navigator && location.protocol === "https:") naviga
 
 // fixed listeners
 $("qaWifi").addEventListener("click", function(){ if (WIFI_PASS) copy(WIFI_PASS, t("wifiLabel")); else toast(t("wifiLabel") + ": " + t("wifiHidden")); });
-$("arrTime").addEventListener("input", arr);
 $("askForm").addEventListener("submit", function(e){ e.preventDefault(); renderAnswers($("askInput").value); });
 $("askInput").addEventListener("input", function(){ renderAnswers(this.value); });
 $("nextStep").addEventListener("click", function(){ cur = cur===t("steps").length-1 ? 0 : cur+1; showStep(); });
