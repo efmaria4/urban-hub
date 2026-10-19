@@ -294,6 +294,7 @@ footer{padding-block:24px 48px;text-align:center;color:var(--muted);font-size:14
   <div class="filters" id="filters" role="group" aria-label="Filter"></div>
   <div class="picks" id="picks"></div>
   <button class="btn alt more" id="picksMore" type="button" hidden></button>
+  <p class="muted"><span data-t="planHelp"></span> <a id="planWa" href="#" target="_blank" rel="noopener" data-t="planLink"></a></p>
   <div class="rows" data-rows="city"></div>
 </section>
 
@@ -373,7 +374,7 @@ en: {
   chips:["50 m²","3rd floor · lift","King bed","Balcony","200 Mbps"],
   statusNow:"It's <b>{t}</b> in Thessaloniki.", statusQuiet:"Quiet hours right now, please keep it cosy and calm 🤫", statusFree:"Enjoy the city! Next quiet hours: {n}.", from22:"from 22:00",
   quickTitle:"Quick help", qaWifi:"Copy Wi-Fi code", qaDir:"Directions", qaDoor:"Getting in", qaMsg:"Message us", qaEat:"Eat & drink", qaOut:"Check-out",
-  password:"Password", toTop:"↑ Back to top", showMore:"Show {n} more places", showLess:"Show fewer", nav:["Wi-Fi","Getting in","Apartment","Rules","Food & city","Extras","Check-out","Help"], facts:[["Check-in","from 15:00"],["Check-out","by 11:00"],["Wi-Fi","Tap to copy"]], install:"Add to home screen", offline:"Once opened, this guide also works without internet.", wifiHidden:"in the link we sent you", copied:"copied", wifiLabel:"Wi-Fi password", numLabel:"Number",
+  password:"Password", toTop:"↑ Back to top", planHelp:"Questions, or need help planning a day out?", planLink:"Message us, we're happy to help!", showMore:"Show {n} more places", showLess:"Show fewer", nav:["Wi-Fi","Getting in","Apartment","Rules","Food & city","Extras","Check-out","Help"], facts:[["Check-in","from 15:00"],["Check-out","by 11:00"],["Wi-Fi","Tap to copy"]], install:"Add to home screen", offline:"Once opened, this guide also works without internet.", wifiHidden:"in the link we sent you", copied:"copied", wifiLabel:"Wi-Fi password", numLabel:"Number",
   askTitle:"Ask the guide", askHint:"Type anything: “parking”, “heating”, “late check-out”…", askPh:"What do you need?", askBtn:"Ask",
   suggestions:["Wi-Fi","Parking","Heating","Late check-out","Where to eat"],
   seeDetails:"See details →", notQuite:"Not quite it?", notFound:"We don't have that one written down yet", askWa:"Ask Maria on WhatsApp",
@@ -453,9 +454,16 @@ en: {
     ["Sweets","Trigona Elenidis","The famous trigona: crispy filo cones filled with cream. A Thessaloniki must.","https://maps.app.goo.gl/YC5rrRRmYX765nGK8"],
     ["Sweets","Terkenlis","A Thessaloniki classic for sweets. Try the tsoureki, the soft sweet brioche, plain or filled with chocolate.","https://maps.app.goo.gl/zpWNLhuaxu5W6SQMA"],
     ["Sweets","Chouréal","Choux pastries and profiteroles, light and generously filled.","https://maps.app.goo.gl/TnSq9LNWJmCgJCax7"],
+    ["Markets","Agora Modiano","The city's historic covered market, full of colour: olives, spices, cheese, fresh fish and little tavernas. Great for photos and local food to take home.","https://maps.app.goo.gl/fSczJaAxPCZucBgF7"],
     ["Sights","The waterfront (Nea Paralia)","From the White Tower toward the Umbrellas sculpture, best at sunset."],
     ["Sights","Rotunda & Arch of Galerius","Roman monuments a short walk from the apartment."],
-    ["Sights","Ano Poli & the old walls","The old upper town, with the best view over the bay."]
+    ["Sights","Ano Poli & the old walls","The old upper town, with the best view over the bay."],
+    ["Day trips","Halkidiki beaches","Crystal-clear water and pine forests, about 1–1.5 hours by car. In summer, KTEL Chalkidikis buses go from Thessaloniki to most beach villages.","https://www.google.com/maps/search/?api=1&query=Halkidiki"],
+    ["Day trips","Vergina (Aigai)","The Royal Tombs of Philip II, one of the most impressive museums in Greece, underground. About 1h15 by car, or train/bus to Veria and a short taxi.","https://www.google.com/maps/search/?api=1&query=Royal+Tombs+of+Aigai+Vergina"],
+    ["Day trips","Meteora","Monasteries on top of giant rock pillars. A full day: about 3.5 hours by car, or the train to Kalambaka, or an organised day tour.","https://www.google.com/maps/search/?api=1&query=Meteora"],
+    ["Day trips","Edessa waterfalls","Beautiful waterfalls right in the town, about 1.5 hours by car or 2 by train. Combine with the Pozar thermal baths nearby.","https://www.google.com/maps/search/?api=1&query=Edessa+Waterfalls"],
+    ["Day trips","Mount Olympus","Home of the Greek gods. Base yourself in Litochoro (about 1 hour away) and walk the Enipeas gorge trail.","https://www.google.com/maps/search/?api=1&query=Litochoro"],
+    ["Day trips","Palaios Panteleimonas","A stone village on the slopes of Olympus with tavernas in the square and views over the sea and Platamonas castle. About 1h15 by car.","https://www.google.com/maps/search/?api=1&query=Palaios+Panteleimonas"]
   ],
   extras:[["late","Late check-out","Stay until 13:00, when no one arrives that day","€10"],["early","Early check-in","Arrive from 13:00, subject to availability","€10"],["towels","Extra towels","One set = 1 small + 1 large towel. Free for stays of more than 5 days, just ask!","€5 / set"],["welcome","Welcome pack","Local treats waiting for you on arrival","Ask us"]],
   kb:[
@@ -495,7 +503,7 @@ el: {
   chips:["50 τ.μ.","3ος όροφος · ασανσέρ","Διπλό king size","Μπαλκόνι","200 Mbps"],
   statusNow:"Η ώρα στη Θεσσαλονίκη είναι <b>{t}</b>.", statusQuiet:"Τώρα είναι ώρες κοινής ησυχίας, παρακαλούμε χαμηλούς τόνους 🤫", statusFree:"Απολαύστε την πόλη! Επόμενες ώρες ησυχίας: {n}.", from22:"από τις 22:00",
   quickTitle:"Γρήγορη βοήθεια", qaWifi:"Αντιγραφή κωδικού Wi-Fi", qaDir:"Οδηγίες χάρτη", qaDoor:"Είσοδος", qaMsg:"Στείλτε μας", qaEat:"Φαγητό & καφές", qaOut:"Αναχώρηση",
-  password:"Κωδικός", toTop:"↑ Επιστροφή στην αρχή", showMore:"Δείτε άλλα {n} μέρη", showLess:"Λιγότερα", nav:["Wi-Fi","Είσοδος","Διαμέρισμα","Κανόνες","Φαγητό & πόλη","Έξτρα","Αναχώρηση","Βοήθεια"], facts:[["Άφιξη","από 15:00"],["Αναχώρηση","έως 11:00"],["Wi-Fi","Αντιγραφή"]], install:"Προσθήκη στην αρχική οθόνη", offline:"Αφού τον ανοίξετε μία φορά, ο οδηγός λειτουργεί και χωρίς internet.", wifiHidden:"στο link που σας στείλαμε", copied:"αντιγράφηκε", wifiLabel:"Ο κωδικός Wi-Fi", numLabel:"Ο αριθμός",
+  password:"Κωδικός", toTop:"↑ Επιστροφή στην αρχή", planHelp:"Έχετε ερωτήσεις ή θέλετε βοήθεια για μια εκδρομή;", planLink:"Στείλτε μας, θα χαρούμε να βοηθήσουμε!", showMore:"Δείτε άλλα {n} μέρη", showLess:"Λιγότερα", nav:["Wi-Fi","Είσοδος","Διαμέρισμα","Κανόνες","Φαγητό & πόλη","Έξτρα","Αναχώρηση","Βοήθεια"], facts:[["Άφιξη","από 15:00"],["Αναχώρηση","έως 11:00"],["Wi-Fi","Αντιγραφή"]], install:"Προσθήκη στην αρχική οθόνη", offline:"Αφού τον ανοίξετε μία φορά, ο οδηγός λειτουργεί και χωρίς internet.", wifiHidden:"στο link που σας στείλαμε", copied:"αντιγράφηκε", wifiLabel:"Ο κωδικός Wi-Fi", numLabel:"Ο αριθμός",
   askTitle:"Ρωτήστε τον οδηγό", askHint:"Γράψτε ό,τι θέλετε: «πάρκινγκ», «θέρμανση», «αργή αναχώρηση»…", askPh:"Τι χρειάζεστε;", askBtn:"Ρώτα",
   suggestions:["Wi-Fi","Πάρκινγκ","Θέρμανση","Αργή αναχώρηση","Πού να φάω"],
   seeDetails:"Δείτε λεπτομέρειες →", notQuite:"Δεν βρήκατε αυτό που ψάχνατε;", notFound:"Δεν το έχουμε γράψει ακόμα", askWa:"Ρωτήστε τη Μαρία στο WhatsApp",
@@ -575,9 +583,16 @@ el: {
     ["Γλυκά","Τρίγωνα Ελενίδη","Τα διάσημα τρίγωνα: τραγανό φύλλο γεμάτο κρέμα. Must της Θεσσαλονίκης.","https://maps.app.goo.gl/YC5rrRRmYX765nGK8"],
     ["Γλυκά","Τερκενλής","Κλασικό ζαχαροπλαστείο της Θεσσαλονίκης. Δοκιμάστε το τσουρέκι, σκέτο ή γεμιστό με σοκολάτα.","https://maps.app.goo.gl/zpWNLhuaxu5W6SQMA"],
     ["Γλυκά","Chouréal","Σου και προφιτερόλ, αφράτα και γεμάτα κρέμα.","https://maps.app.goo.gl/TnSq9LNWJmCgJCax7"],
+    ["Αγορές","Αγορά Μοδιάνο","Η ιστορική σκεπαστή αγορά της πόλης: ελιές, μπαχαρικά, τυριά, φρέσκο ψάρι και ταβερνάκια. Ιδανική για φωτογραφίες και τοπικά προϊόντα για το σπίτι.","https://maps.app.goo.gl/fSczJaAxPCZucBgF7"],
     ["Αξιοθέατα","Νέα Παραλία","Από τον Λευκό Πύργο μέχρι τις Ομπρέλες, ιδανικά το ηλιοβασίλεμα."],
     ["Αξιοθέατα","Ροτόντα & Καμάρα","Ρωμαϊκά μνημεία σε μικρή απόσταση από το διαμέρισμα."],
-    ["Αξιοθέατα","Άνω Πόλη & Κάστρα","Η παλιά πόλη, με την καλύτερη θέα στον Θερμαϊκό."]
+    ["Αξιοθέατα","Άνω Πόλη & Κάστρα","Η παλιά πόλη, με την καλύτερη θέα στον Θερμαϊκό."],
+    ["Εκδρομές","Παραλίες Χαλκιδικής","Κρυστάλλινα νερά και πευκοδάση, περίπου 1–1,5 ώρα με αυτοκίνητο. Το καλοκαίρι τα ΚΤΕΛ Χαλκιδικής πηγαίνουν στα περισσότερα παραθαλάσσια χωριά.","https://www.google.com/maps/search/?api=1&query=Halkidiki"],
+    ["Εκδρομές","Βεργίνα (Αιγαί)","Οι Βασιλικοί Τάφοι του Φιλίππου Β΄, από τα πιο εντυπωσιακά μουσεία της Ελλάδας, κάτω από τη γη. Περίπου 1 ώρα και 15 λεπτά με αυτοκίνητο, ή τρένο/λεωφορείο ως τη Βέροια και λίγο ταξί.","https://www.google.com/maps/search/?api=1&query=Royal+Tombs+of+Aigai+Vergina"],
+    ["Εκδρομές","Μετέωρα","Μοναστήρια πάνω σε τεράστιους βράχους. Ολοήμερη εκδρομή: περίπου 3,5 ώρες με αυτοκίνητο, τρένο για Καλαμπάκα ή οργανωμένη εκδρομή.","https://www.google.com/maps/search/?api=1&query=Meteora"],
+    ["Εκδρομές","Καταρράκτες Έδεσσας","Υπέροχοι καταρράκτες μέσα στην πόλη, περίπου 1,5 ώρα με αυτοκίνητο ή 2 με το τρένο. Συνδυάστε με τα Λουτρά Πόζαρ.","https://www.google.com/maps/search/?api=1&query=Edessa+Waterfalls"],
+    ["Εκδρομές","Όλυμπος","Το βουνό των θεών. Ξεκινήστε από το Λιτόχωρο (περίπου 1 ώρα) και περπατήστε στο φαράγγι του Ενιπέα.","https://www.google.com/maps/search/?api=1&query=Litochoro"],
+    ["Εκδρομές","Παλαιός Παντελεήμονας","Πέτρινο χωριό στις πλαγιές του Ολύμπου, με ταβέρνες στην πλατεία και θέα στη θάλασσα και στο κάστρο του Πλαταμώνα. Περίπου 1 ώρα και 15 λεπτά με αυτοκίνητο.","https://www.google.com/maps/search/?api=1&query=Palaios+Panteleimonas"]
   ],
   extras:[["late","Αργή αναχώρηση","Μείνετε έως τις 13:00, όταν δεν έρχεται άλλος επισκέπτης","€10"],["early","Νωρίς άφιξη","Από τις 13:00, ανάλογα με τη διαθεσιμότητα","€10"],["towels","Επιπλέον πετσέτες","Ένα σετ = 1 μικρή + 1 μεγάλη πετσέτα. Δωρεάν για κρατήσεις άνω των 5 ημερών, απλώς ζητήστε τις!","€5 / σετ"],["welcome","Πακέτο καλωσορίσματος","Τοπικές λιχουδιές σας περιμένουν όταν φτάσετε","Ρωτήστε μας"]],
   kb:[
@@ -644,6 +659,7 @@ function renderStatic(){
   [].forEach.call(document.querySelectorAll(".copyNum"), function(b){ b.addEventListener("click", function(){ copy(PHONES[+b.dataset.i][1], t("numLabel")); }); });
   $("rulesCard").innerHTML = t("rules").map(function(r){ return '<p><b>'+r[0]+'</b>'+(r[1]?' <span class="muted">'+r[1]+'</span>':'')+'</p>'; }).join("");
   $("qaWa").href = wa(t("wa").ask);
+  $("planWa").href = wa(t("wa").ask);
   $("stuckWa").href = wa(t("wa").door);
   $("byeWa").href = wa(t("wa").bye);
   arr();
