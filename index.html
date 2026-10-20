@@ -125,6 +125,15 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 /* floating back-to-top */
 .fab{position:fixed;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:15;width:46px;height:46px;border-radius:50%;border:0;background:var(--sea);color:var(--bg);font-size:22px;font-weight:800;line-height:1;box-shadow:0 6px 18px -6px rgba(20,60,90,.55);cursor:pointer}
 .install{align-self:flex-start}
+/* small arrows that show a sideways-scrolling row has more */
+.hscroll{position:relative}
+.hscroll::after{content:"";position:absolute;top:0;bottom:0;right:0;width:36px;pointer-events:none;background:linear-gradient(to left,var(--bg),transparent);opacity:0;transition:opacity .2s}
+.hscroll.more-r::after{opacity:1}
+.hs-btn{position:absolute;top:50%;z-index:2;width:24px;height:24px;margin-top:-12px;border-radius:50%;border:0;padding:0;background:var(--card);color:var(--sea);box-shadow:0 2px 8px rgba(0,0,0,.18);font:800 15px/1 var(--f-body);cursor:pointer;display:grid;place-items:center;transition:opacity .2s}
+.hs-btn.r{right:max(2px,env(safe-area-inset-right,0px))}
+.hs-btn.l{left:max(2px,env(safe-area-inset-left,0px))}
+.hs-btn.off{opacity:0;pointer-events:none}
+
 .tag{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--coral)}
 .card{background:var(--card);border-radius:var(--r);padding:16px 18px;display:flex;flex-direction:column;gap:10px}
 .rows{background:var(--card);border-radius:var(--r);overflow:hidden}
@@ -932,6 +941,32 @@ function onScroll(){
 }
 window.addEventListener("scroll", onScroll, {passive:true});
 $("fab").addEventListener("click", function(){ window.scrollTo({top:0, behavior:"smooth"}); });
+
+
+// small ‹ › arrows on rows that scroll sideways (jump menu, place filters)
+function scrollHints(el){
+  if (!el || el.dataset.hs) return; el.dataset.hs = "1";
+  var box = document.createElement("div"); box.className = "hscroll";
+  el.parentNode.insertBefore(box, el); box.appendChild(el);
+  var l = document.createElement("button"), r = document.createElement("button");
+  l.type = r.type = "button"; l.className = "hs-btn l off"; r.className = "hs-btn r off";
+  l.textContent = "‹"; r.textContent = "›"; l.setAttribute("aria-hidden","true"); r.setAttribute("aria-hidden","true"); l.tabIndex = r.tabIndex = -1;
+  box.appendChild(l); box.appendChild(r);
+  function upd(){
+    var max = el.scrollWidth - el.clientWidth;
+    var atStart = el.scrollLeft <= 4, atEnd = el.scrollLeft >= max - 4;
+    l.classList.toggle("off", max <= 4 || atStart);
+    r.classList.toggle("off", max <= 4 || atEnd);
+    box.classList.toggle("more-r", max > 4 && !atEnd);
+  }
+  l.addEventListener("click", function(){ el.scrollBy({left: -el.clientWidth * .6, behavior:"smooth"}); });
+  r.addEventListener("click", function(){ el.scrollBy({left: el.clientWidth * .6, behavior:"smooth"}); });
+  el.addEventListener("scroll", upd, {passive:true});
+  window.addEventListener("resize", upd);
+  new MutationObserver(upd).observe(el, {childList:true});
+  upd(); setTimeout(upd, 300);
+}
+scrollHints($("jump")); scrollHints($("filters"));
 
 // install / offline (works on the live site; ignored where service workers aren't allowed)
 var installEvt = null;
