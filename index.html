@@ -45,6 +45,9 @@
   --todo:#3a2f10; --todo-ink:#f5d888; --todo-line:#a8862e; color-scheme:dark}
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6}
+/* hide the blinking text cursor on normal text (keep it in the search box) */
+body{caret-color:transparent}
+input,textarea{caret-color:auto}
 .wrap{max-width:640px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 h1,h2,h3{font-family:var(--f-display);font-weight:600;margin:0;text-wrap:balance}
 h1{font-size:clamp(32px,8vw,42px);line-height:1.05}
